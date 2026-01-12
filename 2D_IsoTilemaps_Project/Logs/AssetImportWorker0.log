@@ -1,0 +1,2170 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.2f1 (a9779f353c9b) revision 11106207'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Core' Language: 'en' Physical Memory: 16308 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Owen Chau" at "2026-01-12T05:28:00.5568656Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+Date: 2026-01-12T05:28:00Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Owen Chau/Documents/GitHub/FBLACareerSim/2D_IsoTilemaps_Project
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54752
+-licensingIpc
+LicenseClient-Owen Chau
+-job-worker-count
+5
+-background-job-worker-count
+8
+-gc-helper-count
+1
+-name
+AssetImport
+Successfully changed project path to: C:/Users/Owen Chau/Documents/GitHub/FBLACareerSim/2D_IsoTilemaps_Project
+C:/Users/Owen Chau/Documents/GitHub/FBLACareerSim/2D_IsoTilemaps_Project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [8376]  Target information:
+
+Player connection [8376]  * "[IP] 192.168.68.73 [Port] 0 [Flags] 2 [Guid] 3711469955 [EditorId] 3711469955 [Version] 1048832 [Id] WindowsEditor(7,Shadow) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [8376] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8376] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 5
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 5.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.2f1 (a9779f353c9b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Owen Chau/Documents/GitHub/FBLACareerSim/2D_IsoTilemaps_Project/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon RX 6600 (ID=0x73ff)
+    Vendor:   ATI
+    VRAM:     8146 MB
+    Driver:   32.0.21037.1004
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56332
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002652 seconds.
+- Loaded All Assemblies, in  0.454 seconds
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              aa6ff45ef5cf4ec4b3352db177900816
+  Correlation Id:          7911264db93bc892c1d7691ed95f3b40
+  External correlation Id: 3960462431509837991
+  Machine Id:              WvINjPa+O7sz/wSL+7E8rFSecn0=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Owen Chau" (connect: 0.00s, validation: 0.00s, handshake: 0.79s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Owen Chau-notifications" at "2026-01-12T05:28:01.3446737Z"
+[Licensing::Module] Licensing Background thread has ended after 0.79s
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.385 seconds
+Domain Reload Profiling: 834ms
+	BeginReloadAssembly (139ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (191ms)
+		LoadAssemblies (136ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (187ms)
+			TypeCache.Refresh (186ms)
+				TypeCache.ScanAssembly (173ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (385ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (350ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (51ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (81ms)
+			ProcessInitializeOnLoadAttributes (150ms)
+			ProcessInitializeOnLoadMethodAttributes (65ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.596 seconds
+Refreshing native plugins compatible for Editor in 4.38 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 4.82 ms, found 2 plugins.
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.720 seconds
+Domain Reload Profiling: 1312ms
+	BeginReloadAssembly (182ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (31ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (329ms)
+		LoadAssemblies (328ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (107ms)
+			TypeCache.Refresh (79ms)
+				TypeCache.ScanAssembly (68ms)
+			BuildScriptInfoCaches (24ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (721ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (622ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (141ms)
+			ProcessInitializeOnLoadAttributes (277ms)
+			ProcessInitializeOnLoadMethodAttributes (193ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 4.85 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2971 unused Assets / (0.9 MB). Loaded Objects now: 3537.
+Memory consumption went from 89.3 MB to 88.4 MB.
+Total: 11.357900 ms (FindLiveObjects: 0.310600 ms CreateObjectMapping: 0.348200 ms MarkObjects: 9.976900 ms  DeleteObjects: 0.721400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 5291.201077 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Temple/temple-sliced_28.asset
+  artifactKey: Guid(0199be1855d4420449d66934b001d173) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Temple/temple-sliced_28.asset using Guid(0199be1855d4420449d66934b001d173) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f19d2bb050fac04ee03d67054fbb77e7') in 0.1133907 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_49.png
+  artifactKey: Guid(52cef375ef1d0554a90c0ba8d1674c02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_49.png using Guid(52cef375ef1d0554a90c0ba8d1674c02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f5c7f09b37968990093daa188995f9c7') in 0.0580195 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube07.png
+  artifactKey: Guid(21647ae4125e2df40868c208e41392b9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube07.png using Guid(21647ae4125e2df40868c208e41392b9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c33ed441a757cfba7fc774e0b80085cc') in 0.0266452 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_65.png
+  artifactKey: Guid(63a584ccc0f46ff4389d2e18fc09a742) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_65.png using Guid(63a584ccc0f46ff4389d2e18fc09a742) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '007b58478dc17b83cc41486a02c933fc') in 0.0241336 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_60.png
+  artifactKey: Guid(c64f4950b5299954aba95a6400bfba96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_60.png using Guid(c64f4950b5299954aba95a6400bfba96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6c43c825e4d31d07c32f6017e13d94de') in 0.0161912 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_12.png
+  artifactKey: Guid(60919206ec62ae74e92382a275b3e531) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_12.png using Guid(60919206ec62ae74e92382a275b3e531) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '554f64d3200c188fb7e6dda903deeb13') in 0.0252661 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_28.png
+  artifactKey: Guid(39f1c328a0d51dc4884a9e205c45d9aa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_28.png using Guid(39f1c328a0d51dc4884a9e205c45d9aa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '30a3e9bdbaa721808a413e22541c193d') in 0.0199716 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_21.png
+  artifactKey: Guid(8a319db3178c1354bb7f2b1d7f5e5bf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_21.png using Guid(8a319db3178c1354bb7f2b1d7f5e5bf2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6c49bce5190fc68143ddf120f8fac3e2') in 0.0234355 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_64.png
+  artifactKey: Guid(f77a8439147b8f042ab1d13d5d78e902) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_64.png using Guid(f77a8439147b8f042ab1d13d5d78e902) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6441c2e8ddacb72f7ac8370166411061') in 0.0220575 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_04.png
+  artifactKey: Guid(f427ccb89e8fdb745b8f47ea8b3d9d0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_04.png using Guid(f427ccb89e8fdb745b8f47ea8b3d9d0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2b2c966ec0f82db63ef16bf4e5b45cce') in 0.0258488 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_33.png
+  artifactKey: Guid(c3aafa2fe33f95e4f9c22a0521bd9286) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_33.png using Guid(c3aafa2fe33f95e4f9c22a0521bd9286) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9561df36c3b776041cd5380e5f99b9d2') in 0.0218564 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube15.png
+  artifactKey: Guid(a953126102f15964e86671d2f843877f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube15.png using Guid(a953126102f15964e86671d2f843877f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd82ce7aab8da0b16b397b45f0574aacd') in 0.0217551 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base08.png
+  artifactKey: Guid(65ef21b68e79b6e479a4de165d342c73) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base08.png using Guid(65ef21b68e79b6e479a4de165d342c73) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cff836c46d92a46fb2e7fe175039c41b') in 0.0202692 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_25.png
+  artifactKey: Guid(4bada23310046ca4bb98f9d8bdf17a15) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_25.png using Guid(4bada23310046ca4bb98f9d8bdf17a15) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '07d3f3e36ae320ab5e19fb052bf4095e') in 0.0218049 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_45.png
+  artifactKey: Guid(fd5e1ba53b59a0c48ac6bbf17322b439) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_45.png using Guid(fd5e1ba53b59a0c48ac6bbf17322b439) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '29d1ccbf664b40587380be63b74073ef') in 0.0258945 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_31.png
+  artifactKey: Guid(29ac072f835dc6945b5e1d0aa71dcc03) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_31.png using Guid(29ac072f835dc6945b5e1d0aa71dcc03) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '77850780242cf3fc77d51f2f82615283') in 0.0227768 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_42.png
+  artifactKey: Guid(a3d39130fe2494c44b9a3ef132b7de14) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_42.png using Guid(a3d39130fe2494c44b9a3ef132b7de14) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c2a84baecab51f2a2c17abfa09e9d88b') in 0.0223839 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_19.png
+  artifactKey: Guid(bca6d6dd66f75cc45ae0fce91a2706ff) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_19.png using Guid(bca6d6dd66f75cc45ae0fce91a2706ff) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fe8a0c74c19b56ddd8e77e60597d3ad6') in 0.0231459 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base15.png
+  artifactKey: Guid(4ef307053b56d894997ff3e27cb5e0e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base15.png using Guid(4ef307053b56d894997ff3e27cb5e0e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '23baf2e8628b709346c2a68829115d15') in 0.0218407 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_NW_mask.png
+  artifactKey: Guid(835d558c2a7f6af42a7fdf9c1c4389de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_NW_mask.png using Guid(835d558c2a7f6af42a7fdf9c1c4389de) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '260120b2aadd899b7b5634d5dbf0c89e') in 0.0221123 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_35.png
+  artifactKey: Guid(f89b38807f8ab934eab1510e55b02e7c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_35.png using Guid(f89b38807f8ab934eab1510e55b02e7c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1e70eb1b99b85321285eabe144865759') in 0.0231995 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube01.png
+  artifactKey: Guid(39cf1e7417ef8f5439004335a2aa242d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube01.png using Guid(39cf1e7417ef8f5439004335a2aa242d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fd2c3d595f5878868d04e34382abe31e') in 0.0221129 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base16.png
+  artifactKey: Guid(57d28511bb7947c46b922aa7c388987d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base16.png using Guid(57d28511bb7947c46b922aa7c388987d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7ed409d2ae8556d064c4482f58b107e1') in 0.0238976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_50.png
+  artifactKey: Guid(e9fd822aa2b1f1c46a19863b254e8e65) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_50.png using Guid(e9fd822aa2b1f1c46a19863b254e8e65) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'df648c50933e856529c6e84cdfe54b9f') in 0.0218408 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube06.png
+  artifactKey: Guid(9e265e6350d4e4045933ed6a411e0f81) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube06.png using Guid(9e265e6350d4e4045933ed6a411e0f81) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5a5b24668890e89623d2e8a3342fc094') in 0.0232378 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_33.png
+  artifactKey: Guid(682e5eb15ef8ce94aac992b0a2370383) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_33.png using Guid(682e5eb15ef8ce94aac992b0a2370383) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6f4ff4244ffdc32bb4e0d45baa641617') in 0.022394 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_22.png
+  artifactKey: Guid(efc68d1ef14e2d34392468a970c1eb3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_22.png using Guid(efc68d1ef14e2d34392468a970c1eb3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7f949b2d94be29460a4f03843fead1db') in 0.0147345 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1.png
+  artifactKey: Guid(5f3ef23c2f15bec45831589f2f6a8e38) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1.png using Guid(5f3ef23c2f15bec45831589f2f6a8e38) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b6946afda6aad26e1d559578e381beaf') in 0.0238195 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_12.png
+  artifactKey: Guid(37a4966f0bb8fe94b99c2fa58e6bfee7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_12.png using Guid(37a4966f0bb8fe94b99c2fa58e6bfee7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bb9cbb2ad129b5b9d55fbc3ba9dab658') in 0.0210494 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/_Recovery/0.unity
+  artifactKey: Guid(575c6597031ee70499e17a68e0640fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_Recovery/0.unity using Guid(575c6597031ee70499e17a68e0640fca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fd8c671eed0b1d0e2b26a8ad16f6ae06') in 0.0206045 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_26.png
+  artifactKey: Guid(f5a21f39a3306ad4e8b7c99428ddb2d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_26.png using Guid(f5a21f39a3306ad4e8b7c99428ddb2d9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ad68ecdaf7d789ac80149b1051c17a26') in 0.0198523 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube12.png
+  artifactKey: Guid(cb90bf2d2b60f8144aa132e6c64d342c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube12.png using Guid(cb90bf2d2b60f8144aa132e6c64d342c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e6d49a6c97878b072c814a2c6fb57537') in 0.0217573 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_17.png
+  artifactKey: Guid(b156b44008c245f4bbe342bb12a23dab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_17.png using Guid(b156b44008c245f4bbe342bb12a23dab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'afbfbb7f754e0b6126f974add84c8a1e') in 0.0208582 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/IsometricRuleTile.cs
+  artifactKey: Guid(671f4241dc80a9b439de220f62e05bea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/IsometricRuleTile.cs using Guid(671f4241dc80a9b439de220f62e05bea) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd4a437ff65900375db67450e5aa95495') in 0.0104417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_28.png
+  artifactKey: Guid(51c59536721853745b2d9abde938d517) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_28.png using Guid(51c59536721853745b2d9abde938d517) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f5af5023609e5234b6b8307bf917096c') in 0.022129 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_42.asset
+  artifactKey: Guid(818468c333e54a5469430ea0db4d17c2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_42.asset using Guid(818468c333e54a5469430ea0db4d17c2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '13e974b9817827aa8d5aa9a292bcbef0') in 0.0175117 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_22.png
+  artifactKey: Guid(e1b008b354f0b6e4e8dc71bf07c7cee1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Decoration/desert-sliced_22.png using Guid(e1b008b354f0b6e4e8dc71bf07c7cee1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bbb6eaa4539994c2e2f8741e7e40f964') in 0.0211361 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube04.png
+  artifactKey: Guid(ac8b22a52001fe444ab0cd48516af690) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube04.png using Guid(ac8b22a52001fe444ab0cd48516af690) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd6c75c038b7e75ec19ecbf1922b14f79') in 0.0214237 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1_mask.png
+  artifactKey: Guid(2cb3fbdd574005c4d90aba80a3de7fd9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_rock_1_mask.png using Guid(2cb3fbdd574005c4d90aba80a3de7fd9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '33f477ad52fb31403d4943283d9d125a') in 0.0235106 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_21.png
+  artifactKey: Guid(37f1b3547942106468df1f34edf13f2d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_21.png using Guid(37f1b3547942106468df1f34edf13f2d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e1dc6f84c744e8499e2df5740bc0dc7f') in 0.0209113 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_11.png
+  artifactKey: Guid(066751efb72ed7e498a6849c6b7b0211) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_11.png using Guid(066751efb72ed7e498a6849c6b7b0211) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '745ab993382721aba11a1327f58cf417') in 0.021323 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_34.png
+  artifactKey: Guid(59a33a5d143704146b075230a577f2d4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Wall/cave-sliced_34.png using Guid(59a33a5d143704146b075230a577f2d4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a353e213096e6590b5cecd7a9ec445a3') in 0.0222451 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_3.png
+  artifactKey: Guid(6a09cf075fd315e44b7324fd250a3ac2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_3.png using Guid(6a09cf075fd315e44b7324fd250a3ac2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '02e55727d1768004d28353d2f9a2291b') in 0.0167785 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_S_inner.png
+  artifactKey: Guid(6b1b587da749d4148a675e08358f50a3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_S_inner.png using Guid(6b1b587da749d4148a675e08358f50a3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e348bdaaa61ea71bcad22772c1370ba') in 0.0167551 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_65.png
+  artifactKey: Guid(432494848cd5fa4488c8f90069b0982e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_65.png using Guid(432494848cd5fa4488c8f90069b0982e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '831c8da43067334380d6b7276306b496') in 0.0230274 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_center_3.png
+  artifactKey: Guid(3c110f85dd5968843b4e73e2fbc9c44f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_center_3.png using Guid(3c110f85dd5968843b4e73e2fbc9c44f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '38d450a83b20aba76837879ad311fb8e') in 0.0176388 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_N.png
+  artifactKey: Guid(d3b0d5067b76a0849a0577c583a4f6d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_N.png using Guid(d3b0d5067b76a0849a0577c583a4f6d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '552c1875c98e883c14376d167fb1a51a') in 0.0227775 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_NW.png
+  artifactKey: Guid(3a5f5d74e289d674990ec3e77a803955) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_NW.png using Guid(3a5f5d74e289d674990ec3e77a803955) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '72be5062f1491897e80702dc46e225e2') in 0.0155745 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/tree_fir_mask.png
+  artifactKey: Guid(076bf4dcad357a04a806cdd514df2046) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/tree_fir_mask.png using Guid(076bf4dcad357a04a806cdd514df2046) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5a667761e6193394805adb74a2ec756d') in 0.0234465 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_center_2.png
+  artifactKey: Guid(891f8b3a047c74547901ee88145cfa09) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_center_2.png using Guid(891f8b3a047c74547901ee88145cfa09) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6f1920bced704960c287605a46c6360f') in 0.0248631 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_63.png
+  artifactKey: Guid(e4a05284ff97e60419331430a50cb219) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_63.png using Guid(e4a05284ff97e60419331430a50cb219) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '32faa4fd3987f2484856f1d8237a5d3e') in 0.0235125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_08.png
+  artifactKey: Guid(959684c48051f614a9403cb3fdca8cf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_08.png using Guid(959684c48051f614a9403cb3fdca8cf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5f524b55e7a052b5887e8d65c2d61d88') in 0.022495 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_N_inner.png
+  artifactKey: Guid(5669192b4495d5d42a8b9b0611497a40) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_N_inner.png using Guid(5669192b4495d5d42a8b9b0611497a40) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e4ebf7b66c714f7be228d52486761cce') in 0.0141422 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_4.png
+  artifactKey: Guid(9fe6871927449ff4790224027f7cb7a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/mountain_4.png using Guid(9fe6871927449ff4790224027f7cb7a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0240c9354e2f2908c56128e406903031') in 0.0246659 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_corner_SW.png
+  artifactKey: Guid(0fc0507f87ca475428ec0a0eec48a875) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_corner_SW.png using Guid(0fc0507f87ca475428ec0a0eec48a875) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f32778f7123a928290af66306b61b65d') in 0.0143824 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_center_0.png
+  artifactKey: Guid(30d66a74b561b6247bec46a3f37c921a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_center_0.png using Guid(30d66a74b561b6247bec46a3f37c921a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'db643462cfe40a070bdf30e0d02fb834') in 0.0166754 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_W.png
+  artifactKey: Guid(f88488d954b96b14c9baccaf11d9d0b2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_W.png using Guid(f88488d954b96b14c9baccaf11d9d0b2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7e1ab72849ad799522db3671a661e7a0') in 0.0235701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_corner_W.png
+  artifactKey: Guid(6a2633164b9482a45b500f78dc7483af) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_corner_W.png using Guid(6a2633164b9482a45b500f78dc7483af) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ac0fe416fea2831f0526c8644e4c5b18') in 0.016365 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_SW.png
+  artifactKey: Guid(8bc54a140b8002840a41a8fbd5a4c3f9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_SW.png using Guid(8bc54a140b8002840a41a8fbd5a4c3f9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '479266098053169348b906d124bf8f1b') in 0.013923 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_E.png
+  artifactKey: Guid(aecb2079f49f5a04086e9302dc17acaf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_E.png using Guid(aecb2079f49f5a04086e9302dc17acaf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9dd2cb818faac9c858b02d2cfb0b9718') in 0.0218619 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_70.png
+  artifactKey: Guid(13effef3774f8a84bb9106d5bba8b185) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Decoration/plains-sliced_70.png using Guid(13effef3774f8a84bb9106d5bba8b185) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '95a3d742e0469cd7350c8a004ae812af') in 0.014973 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_corner_W.png
+  artifactKey: Guid(83663076b5c8dd8419c9e5e9c0f27195) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Flat/snow_corner_W.png using Guid(83663076b5c8dd8419c9e5e9c0f27195) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4de8009d6fefab089031c568047c7aba') in 0.0160712 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_30.png
+  artifactKey: Guid(db807ee3301ce9e4c8d3610fdf69f894) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Decoration/cave-sliced_30.png using Guid(db807ee3301ce9e4c8d3610fdf69f894) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e80eec61af5fe7f8871df0e052eaf351') in 0.0228682 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_E.png
+  artifactKey: Guid(04a9242d27112364c903f48d2aa91100) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/elevation_snow_E.png using Guid(04a9242d27112364c903f48d2aa91100) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1af4a935727f93414c63edf735d6ee6d') in 0.0241394 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_20.png
+  artifactKey: Guid(9724b10684169e24583471751a22904e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_20.png using Guid(9724b10684169e24583471751a22904e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1f45b7e5c6ed3ba55b69860c8035347f') in 0.0214641 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_07.png
+  artifactKey: Guid(9d239763008adf64a957bc99534d948d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_07.png using Guid(9d239763008adf64a957bc99534d948d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6ee931b16796376c0f0e7a979e46dc89') in 0.0225087 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_06.png
+  artifactKey: Guid(a1adf2d4ed7ed7e4581549f1af6a3af5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_06.png using Guid(a1adf2d4ed7ed7e4581549f1af6a3af5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dca6f32fa9c40d2ed06cecd5138d8e50') in 0.027057 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_15.png
+  artifactKey: Guid(c3f0b6dec2372bd4394a2827784ac5b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_15.png using Guid(c3f0b6dec2372bd4394a2827784ac5b0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd724d351d1646daf27151f0435ead2e8') in 0.0257592 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_09.png
+  artifactKey: Guid(ea939fe16223a0b4ca960c87688fed50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_09.png using Guid(ea939fe16223a0b4ca960c87688fed50) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ebec5730f29d6ec3cda35b9128745b36') in 0.0233104 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_44.png
+  artifactKey: Guid(a8fefdcc5154bcd4eac2f09f26f9f3f3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_44.png using Guid(a8fefdcc5154bcd4eac2f09f26f9f3f3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '84ce375520877d497719cfb5160ecbf5') in 0.0226675 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_39.png
+  artifactKey: Guid(455da817aedab144ea7cfa86b08801b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_39.png using Guid(455da817aedab144ea7cfa86b08801b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a98910e1d2e7ea74f16842dfa9b81893') in 0.022135 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_51.png
+  artifactKey: Guid(46e3b9ddebcc3824da5d755980e56fab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_51.png using Guid(46e3b9ddebcc3824da5d755980e56fab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4356eaeff372fe444c042738ca31f96d') in 0.0215211 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_23.png
+  artifactKey: Guid(8e7bc6983260afb4dabc5be41486dc47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_23.png using Guid(8e7bc6983260afb4dabc5be41486dc47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b5beb8437f30ecef74585910d04ca209') in 0.0195381 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_48.png
+  artifactKey: Guid(acefd25af8e66fe42bd9db8493dbebba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_48.png using Guid(acefd25af8e66fe42bd9db8493dbebba) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '467f49c2094286eb35d7295843dcaac8') in 0.0174507 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_18.png
+  artifactKey: Guid(d0f8d288ad6debb44b6991c153b8e6ed) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_18.png using Guid(d0f8d288ad6debb44b6991c153b8e6ed) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '75cdefe03cb5e5cc44fe9c837a3bdd29') in 0.0173189 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_42.png
+  artifactKey: Guid(188981420f669284caa96a931b7de9dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_42.png using Guid(188981420f669284caa96a931b7de9dd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '55ac269039b419415231b2053100819a') in 0.0116472 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_35.png
+  artifactKey: Guid(8b0f51b8bcce11840a091c66081afb30) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_35.png using Guid(8b0f51b8bcce11840a091c66081afb30) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e8ac0b45cef2720859a9679af010805f') in 0.0166485 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_68.png
+  artifactKey: Guid(5442f6430a2b12c49806499f2de6cc43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_68.png using Guid(5442f6430a2b12c49806499f2de6cc43) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '23900a6d5b7ccad155709a1510f48afa') in 0.0203887 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_60.png
+  artifactKey: Guid(c7f45372f89932f4cafa2227c620c42c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_60.png using Guid(c7f45372f89932f4cafa2227c620c42c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c72e6c688f3c6a961666b2f5f5f9769b') in 0.0462348 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001272 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_72.png
+  artifactKey: Guid(a6b9b2546cf107c458e797d96397a937) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_72.png using Guid(a6b9b2546cf107c458e797d96397a937) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'feaddd376b312a31caefbf6c0fe9bedd') in 0.0269994 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/wall_door_NW.png
+  artifactKey: Guid(719db2521d746b84385a063134489689) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/wall_door_NW.png using Guid(719db2521d746b84385a063134489689) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f14eba95396d304ba40dc94338ac308b') in 0.0177105 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_71.png
+  artifactKey: Guid(65f197e0b55d5174081ccf7fb6ac0799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_71.png using Guid(65f197e0b55d5174081ccf7fb6ac0799) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6fb5dd7d5d39fe99a41f97b63e90118b') in 0.0192331 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_24.png
+  artifactKey: Guid(d42223ea6c5a1b64ea3c5d0423709b7e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_24.png using Guid(d42223ea6c5a1b64ea3c5d0423709b7e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c0010d9f2a9364fbe292dc3a0ebff397') in 0.0185147 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_20.png
+  artifactKey: Guid(076d425e4c09f194b953432a5bca20cb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_20.png using Guid(076d425e4c09f194b953432a5bca20cb) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8a1f9ee9d49178ede3e73182daff2fa0') in 0.0185968 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_38.png
+  artifactKey: Guid(6551e5b0d0ea09e4184e35443b2b8e92) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_38.png using Guid(6551e5b0d0ea09e4184e35443b2b8e92) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2f1859bdfb92e0ea009912989103f0fd') in 0.0184352 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_49.png
+  artifactKey: Guid(c47c97f5f8772174ea7ce38747f31e6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_49.png using Guid(c47c97f5f8772174ea7ce38747f31e6f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '989f54dcdd5568f59ff4dacbdcfd6c7b') in 0.0214456 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_33.png
+  artifactKey: Guid(53851950df07bf7489edae238142d644) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_33.png using Guid(53851950df07bf7489edae238142d644) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '55a22651cfa76909b5754c9ed7c9d24e') in 0.019567 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_30.png
+  artifactKey: Guid(958b56ffb75d3f7478feee28c6565159) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_30.png using Guid(958b56ffb75d3f7478feee28c6565159) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f8f93dfdb26663446d541879613e9155') in 0.0201701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/slope_NW_mask.png
+  artifactKey: Guid(e5342e8f795298c46bade3eecf613940) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Raised/slope_NW_mask.png using Guid(e5342e8f795298c46bade3eecf613940) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b18954a79ab916ab9508ac6bec7b24c1') in 0.0192549 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_05.png
+  artifactKey: Guid(1c2bfda56c029704fa6c8f4a4b86fa5f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_05.png using Guid(1c2bfda56c029704fa6c8f4a4b86fa5f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c6e108d8ecd0e9c85f7e13ff229b8b5f') in 0.0174953 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_05.png
+  artifactKey: Guid(ff182ddc523cdc949978ddbb764a0fa3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_05.png using Guid(ff182ddc523cdc949978ddbb764a0fa3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ea81207828bf95bb302ad084c33492ab') in 0.0182703 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_3.png
+  artifactKey: Guid(a69bc05fb49ba61458ff2a337a776782) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_3.png using Guid(a69bc05fb49ba61458ff2a337a776782) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6b73dc42c62daa227b39a3736ac193af') in 0.0189613 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerS.png
+  artifactKey: Guid(ea5d1ff2a4e5b4942b825a90ab2c5123) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerS.png using Guid(ea5d1ff2a4e5b4942b825a90ab2c5123) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5cadf7e8b802704fe0c8d47a267ca107') in 0.0172449 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_1.asset
+  artifactKey: Guid(6c4387abdf3db724ba8c2ab7b46719f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_1.asset using Guid(6c4387abdf3db724ba8c2ab7b46719f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ffca55e199061b03cd17fd8bcb26748f') in 0.0153167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_1.png
+  artifactKey: Guid(b8ae7bad68d546048ac7c625fa5371ab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_1.png using Guid(b8ae7bad68d546048ac7c625fa5371ab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9f101aba4fda9fe65d421108aba764af') in 0.0266564 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_41.png
+  artifactKey: Guid(3086c7c4fcf42f846b242e2e7b7e007d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_41.png using Guid(3086c7c4fcf42f846b242e2e7b7e007d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c1a4d5aec7dadd3eff470c7a62673fe7') in 0.0238762 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_32.png
+  artifactKey: Guid(dae384adc4dc4b54182664e43e8a083d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_32.png using Guid(dae384adc4dc4b54182664e43e8a083d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b387fcd1505a8b76e9fa7fa728fba0ba') in 0.0204422 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_28.png
+  artifactKey: Guid(9508c960308f5ac4fbe4d549dc0b9cde) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_28.png using Guid(9508c960308f5ac4fbe4d549dc0b9cde) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1adc3016dd9bf7dac49f5da325ea75ac') in 0.0105901 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_33.png
+  artifactKey: Guid(301c52400596c0247844f6e00bebf450) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_33.png using Guid(301c52400596c0247844f6e00bebf450) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'abc34c651eee2aaa4c40f22c953bd102') in 0.0158193 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TempleCarved_2.asset
+  artifactKey: Guid(d6ccd4012cd9e48419a36676ca2e5539) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TempleCarved_2.asset using Guid(d6ccd4012cd9e48419a36676ca2e5539) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f24415e0980198e07dd3cb996aab2be9') in 0.0096674 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_0.png
+  artifactKey: Guid(6d0fd860ada47344987a5874de1cc9ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_NW_0.png using Guid(6d0fd860ada47344987a5874de1cc9ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1ec970bd4cce75048521f5dd46ed1a51') in 0.01739 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_0.asset
+  artifactKey: Guid(fa5af3e902a89fc4e9e1a508c4a0a5bc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_0.asset using Guid(fa5af3e902a89fc4e9e1a508c4a0a5bc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '00c22898ad374c042ab3c14e372afc08') in 0.009568 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_42.png
+  artifactKey: Guid(c1f15b027d776ba478ef23ee5acf4ca1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_42.png using Guid(c1f15b027d776ba478ef23ee5acf4ca1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6df2f7b35c8a2584991f75af4c26588a') in 0.0225742 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Sprites/TemplePlants.png
+  artifactKey: Guid(d3d8c1eae533a74469328964f957ca5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Sprites/TemplePlants.png using Guid(d3d8c1eae533a74469328964f957ca5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7c3d75e4c575a1fa27d80d535da18649') in 0.0218664 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_31.png
+  artifactKey: Guid(680f1fa16cdd7174d9bc73ec35cf9514) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_31.png using Guid(680f1fa16cdd7174d9bc73ec35cf9514) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '57842cfbca5878a6a75f89fb81349632') in 0.0179947 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_2.png
+  artifactKey: Guid(28094ac6deffe8643b2d68e9b5030ec8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/MoltenLava_Animation/molten_cornerN_2.png using Guid(28094ac6deffe8643b2d68e9b5030ec8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b60074fb5a5bb4fe5160217a4de8c376') in 0.0179122 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TempleCarved_1.asset
+  artifactKey: Guid(3f3b40034044e8d43a7fd2a05baee93c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TempleCarved_1.asset using Guid(3f3b40034044e8d43a7fd2a05baee93c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5095c39a2d0ec8083d7dc1ef0e9ebe9f') in 0.0102235 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_37.png
+  artifactKey: Guid(05de6a4550a660a4d9a7eb014cb4a36c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_37.png using Guid(05de6a4550a660a4d9a7eb014cb4a36c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f561df3ffd05fd3fa77f7fe033ee31e8') in 0.0192466 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_36.png
+  artifactKey: Guid(0cece30d2ac5bde4f967bfa3aae79e69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_36.png using Guid(0cece30d2ac5bde4f967bfa3aae79e69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '19748f7d5cafea2521198cfb3a56ba94') in 0.0165528 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_24.png
+  artifactKey: Guid(324f344bdb8d39845b78c5d1c7661a4e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_24.png using Guid(324f344bdb8d39845b78c5d1c7661a4e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f5ba2802339b09393abdd9dc5239a630') in 0.0174368 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_35.png
+  artifactKey: Guid(fc19ae8e4abb1ae4a86d966b9d9b6df7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Raised/temple-sliced_35.png using Guid(fc19ae8e4abb1ae4a86d966b9d9b6df7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f07313dc18832ef6faafbeff34c36bcd') in 0.0178356 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/RuleTile.cs
+  artifactKey: Guid(d746e0082aaaaf0458b2b02bb4d45a47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/RuleTile.cs using Guid(d746e0082aaaaf0458b2b02bb4d45a47) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fd9edaf3a63c404e12f7af982ee92605') in 0.0085866 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_06.png
+  artifactKey: Guid(20ba432f5a48c9644bfa97cc455bee96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_06.png using Guid(20ba432f5a48c9644bfa97cc455bee96) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a8071b12689b7dbbbf8213819c66bcf3') in 0.0170167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_59.png
+  artifactKey: Guid(4c5d6c26c79b6d546b6b99b422bdb648) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_59.png using Guid(4c5d6c26c79b6d546b6b99b422bdb648) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3242edba129e816b120c0a702056536c') in 0.0179639 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_32.png
+  artifactKey: Guid(338493abd75ba2c48b8cb98205165bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Raised/desert-sliced_32.png using Guid(338493abd75ba2c48b8cb98205165bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '41a04bed1f2661e7f2a2dfa767f940ac') in 0.016438 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_49.png
+  artifactKey: Guid(b59fe094ae78fec48838c83c48ffa36b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_49.png using Guid(b59fe094ae78fec48838c83c48ffa36b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cfe6bec241bf1f94b68b98a04eb27d8a') in 0.0179113 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_39.png
+  artifactKey: Guid(0529251f3fb376e4396ae7120de89b3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Decoration/temple-sliced_39.png using Guid(0529251f3fb376e4396ae7120de89b3f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0ce4d2e3b6159a680d2e8e43cdc5e300') in 0.0180083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base12.png
+  artifactKey: Guid(8ae726b3a5db15e42b4fa7d9afb5f4f8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Flat/base12.png using Guid(8ae726b3a5db15e42b4fa7d9afb5f4f8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '94aeebad44803ec2f89e6879df8c6f14') in 0.0186301 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_03.png
+  artifactKey: Guid(154d133b5c43c754193d96a980493a39) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_03.png using Guid(154d133b5c43c754193d96a980493a39) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e0561fb45df838843c63b2ce413ea786') in 0.0189217 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_8.asset
+  artifactKey: Guid(e96fabaef86d1d1448a8c90694b68326) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_8.asset using Guid(e96fabaef86d1d1448a8c90694b68326) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd1cdf461858fe9a2112c3857e1d27b88') in 0.0122692 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Line Brush/Scripts/Editor/LineBrush.cs
+  artifactKey: Guid(6210598a979f8724a8dac4531c428889) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Line Brush/Scripts/Editor/LineBrush.cs using Guid(6210598a979f8724a8dac4531c428889) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9f9602ccdf762710257affc738da2706') in 0.0088461 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_7.asset
+  artifactKey: Guid(948a3d70b8fb4b6459ddfc83cd3d598c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Tile Asset/TemplePlants_7.asset using Guid(948a3d70b8fb4b6459ddfc83cd3d598c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '942b4290e8c4336b222f89e1c2342541') in 0.0101052 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/ScriptTemplates/NewCustomRuleTile.cs.txt
+  artifactKey: Guid(186e43c057806e545b5fa3fe8dc394c1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/ScriptTemplates/NewCustomRuleTile.cs.txt using Guid(186e43c057806e545b5fa3fe8dc394c1) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bf3fc93d6d61e0871d903a3462469bd5') in 0.0134279 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/_External/2d-techdemos/Brushes/Random Brush/Scripts/Editor/RandomBrush.cs
+  artifactKey: Guid(d80edd6caba93514eb01722041fe50b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Brushes/Random Brush/Scripts/Editor/RandomBrush.cs using Guid(d80edd6caba93514eb01722041fe50b4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7befbf4024e9ffb3ed13a437b94f9855') in 0.0094051 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_09.png
+  artifactKey: Guid(98d52c3e6030b8941a0ed4934b5455e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_09.png using Guid(98d52c3e6030b8941a0ed4934b5455e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e6a746d66f87936945d0fc76e96e111') in 0.0180624 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_28.png
+  artifactKey: Guid(bb2649c0ced558045bad8f7afb0456d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Flat/plains-sliced_28.png using Guid(bb2649c0ced558045bad8f7afb0456d3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fb1525b1a7c946180553b5c332e92c8d') in 0.0172124 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_03.png
+  artifactKey: Guid(a070d422b7813b0498a4dfd032ad3141) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Desert/Flat/desert-sliced_03.png using Guid(a070d422b7813b0498a4dfd032ad3141) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '51d95114cbf549487e9bbcd12ddd3e2f') in 0.0178622 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/RuleTileEditor.cs
+  artifactKey: Guid(3e71affbe222bd547ab7959462d8ea0d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/RuleTileEditor.cs using Guid(3e71affbe222bd547ab7959462d8ea0d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f0c6581c9c6a36b81ce3e21efbc43050') in 0.008926 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_45.png
+  artifactKey: Guid(c757761b08f64df4b93244d5ef737b76) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Plains/Raised/plains-sliced_45.png using Guid(c757761b08f64df4b93244d5ef737b76) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '461376994df4ee5d2908a86f69300580') in 0.0184364 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_31.asset
+  artifactKey: Guid(b67982634cf29cf47b4068deb82e4e0e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_31.asset using Guid(b67982634cf29cf47b4068deb82e4e0e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd360503fc26f1cdb9d3ddfc6af927008') in 0.0112222 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_12.asset
+  artifactKey: Guid(46cc493a3563a96499750e941cf17816) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_12.asset using Guid(46cc493a3563a96499750e941cf17816) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dc7a03a54e00dc1e1486a6027ad2cc81') in 0.0086798 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/FrozenMountain/snow_W_inner.asset
+  artifactKey: Guid(b19496d46c0045e44ae8dedef1dc4905) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/FrozenMountain/snow_W_inner.asset using Guid(b19496d46c0045e44ae8dedef1dc4905) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd1b7a3dcc6d24a0687ab24d3526c28bb') in 0.0100676 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_10.png
+  artifactKey: Guid(da1617be84061fc44a6cf0f9477bd74c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenCave/Raised/cave-sliced_10.png using Guid(da1617be84061fc44a6cf0f9477bd74c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8b75c3241bc9a8a11d166ad4fd343e32') in 0.0172765 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Hexagonal/Tiles/hex-sliced_86.asset
+  artifactKey: Guid(6ddf65af5cb7f2148a4d4e5fd2d2e6a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Hexagonal/Tiles/hex-sliced_86.asset using Guid(6ddf65af5cb7f2148a4d4e5fd2d2e6a6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '05229d33a1d5d2fefa2a89f117c459d7') in 0.0146227 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_35.asset
+  artifactKey: Guid(de735841096b64b489a1ca1a3b816ca3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_35.asset using Guid(de735841096b64b489a1ca1a3b816ca3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'de6258ada7d9dc7d128d0f261c76fb1f') in 0.0089622 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Temple/molten_center.asset
+  artifactKey: Guid(5516f2d4384162740a4f02fb98c610e4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Temple/molten_center.asset using Guid(5516f2d4384162740a4f02fb98c610e4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3e6faa1d061009a0f9ee0e4813ea8e2c') in 0.0112348 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_19.asset
+  artifactKey: Guid(53215e682acaf42449f00aab88af9d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Plains/plains-sliced_19.asset using Guid(53215e682acaf42449f00aab88af9d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '572192faeb48e6c66cbcc6e7810e1949') in 0.010926 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube03.png
+  artifactKey: Guid(f7e71c45e55ea7f45a1b3391a8edac67) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Basic/Raised/cube03.png using Guid(f7e71c45e55ea7f45a1b3391a8edac67) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f15e2e6e094f101070891ffa1a058695') in 0.0155138 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base09.asset
+  artifactKey: Guid(af0526b8124faeb409d7f3109740c5bd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base09.asset using Guid(af0526b8124faeb409d7f3109740c5bd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7e27a1de19ffd3461f9945881c2d823b') in 0.0080479 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Colliders/ColliderTiles/cube08-b.asset
+  artifactKey: Guid(f33ed7eb8e0d94540b49ee40617cac64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Colliders/ColliderTiles/cube08-b.asset using Guid(f33ed7eb8e0d94540b49ee40617cac64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '679eaab2642dc63641409b298f15740b') in 0.0084318 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_51.asset
+  artifactKey: Guid(4dd11701d5f4b7f419be05014bec3235) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_51.asset using Guid(4dd11701d5f4b7f419be05014bec3235) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ae86dd90b52c4f815b1f81a8af48423c') in 0.0080261 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_sword_in_the_stone.png
+  artifactKey: Guid(f240885671e134747afbce24ec102755) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/FrozenMountain/Decoration/decoration_sword_in_the_stone.png using Guid(f240885671e134747afbce24ec102755) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3db2273d3eda791e73c3bfa5ffa5dcf4') in 0.0118831 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Tilemaps/Isometric/Colliders/ColliderSprites/tile-border-top.png
+  artifactKey: Guid(6b19fa030e22a4aa7a4ebc2029911cf4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Colliders/ColliderSprites/tile-border-top.png using Guid(6b19fa030e22a4aa7a4ebc2029911cf4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '24c1abbde5cc86f399bd68c575456d4c') in 0.0109394 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Hexagonal/Tiles/hex-sliced_68.asset
+  artifactKey: Guid(04564397466ec0845a4997ba7d0e27ff) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Hexagonal/Tiles/hex-sliced_68.asset using Guid(04564397466ec0845a4997ba7d0e27ff) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '44749d5e38c1fd8bebdb7b5daed70e93') in 0.0176584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Temple/temple-sliced_36.asset
+  artifactKey: Guid(a20de702c8f70384f9351b8c9f79836c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Tiles/Temple/temple-sliced_36.asset using Guid(a20de702c8f70384f9351b8c9f79836c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4eb70683d4bb2146bf979232f0cd8fee') in 0.0091746 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Sprites/Temple/Flat/temple-sliced_03.png
+  artifactKey: Guid(a07a2f66ad3f430448a78332c487190a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Tilemaps/Isometric/Sprites/Temple/Flat/temple-sliced_03.png using Guid(a07a2f66ad3f430448a78332c487190a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0eef6bc625b2a5ebd4b4a579b249eaaf') in 0.0171233 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 338.827354 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0a9712fdc114c65bee4512539050dcf9') in 0.0004803 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.964710 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '53c229727444f32ddb1e82c3206fecda') in 0.010524 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 179.900848 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ff2d0c5e0d22cf067e645ca04d8cf43e') in 0.0108081 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.114010 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '516bcade858b99e996660fec3c7a4da4') in 0.0004783 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.610379 seconds.
+  path: Assets/Scenes/Examples/Scene_Biome_Desert.unity
+  artifactKey: Guid(092574b58ebb13a4283ebba9a93df23a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Examples/Scene_Biome_Desert.unity using Guid(092574b58ebb13a4283ebba9a93df23a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '41cc6519c388eba31bd26cabb1f3836a') in 0.000488 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.816383 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f8f8cc3859a16f0f1dd2ee75daaba004') in 0.010597 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.410401 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f304ecfe85be8be3770f67f8c99582c3') in 0.0005348 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.298897 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7308a73afc0796813b0fc7c4f9574fd2') in 0.0004293 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.921805 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd9814fa515572aa5734e72354c9e670e') in 0.0107524 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.539 seconds
+Refreshing native plugins compatible for Editor in 4.19 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.699 seconds
+Domain Reload Profiling: 1235ms
+	BeginReloadAssembly (188ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (280ms)
+		LoadAssemblies (277ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (89ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (79ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (700ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (595ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (115ms)
+			ProcessInitializeOnLoadAttributes (274ms)
+			ProcessInitializeOnLoadMethodAttributes (194ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 4.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2969 unused Assets / (0.9 MB). Loaded Objects now: 3540.
+Memory consumption went from 89.7 MB to 88.8 MB.
+Total: 11.008100 ms (FindLiveObjects: 0.294700 ms CreateObjectMapping: 0.152900 ms MarkObjects: 9.811600 ms  DeleteObjects: 0.748100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 99.620933 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f38e34bc9951c0d26b72c4c5d7e70576') in 0.0016955 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.414722 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main Scene.unity using Guid(7b7671dbf05b2e347bef931cdd1b2bab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c6e4fa7b06a0bc57256a19b5da9e1cc2') in 0.0484562 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 174.088081 seconds.
+  path: Assets/Characters/Witch/AnimationSprites/Run E/witch run E00.png
+  artifactKey: Guid(6a761b108787f4628931198fbe0822d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Witch/AnimationSprites/Run E/witch run E00.png using Guid(6a761b108787f4628931198fbe0822d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3983544d7802a92ef6aa204f4e8cbde5') in 0.0791199 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Characters/Witch/AnimationSprites/Run E/witch run E02.png
+  artifactKey: Guid(2e8b908b455934eaab9d3589c19fe2fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Witch/AnimationSprites/Run E/witch run E02.png using Guid(2e8b908b455934eaab9d3589c19fe2fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '66ad9ee1282406fed68bd546575cdd16') in 0.0141962 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Characters/Witch/AnimationSprites/Run E/witch run E05.png
+  artifactKey: Guid(ea836e1730ade47a9a1cdc6ff307c4ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Witch/AnimationSprites/Run E/witch run E05.png using Guid(ea836e1730ade47a9a1cdc6ff307c4ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b3dc959c0a74dcbbbaa5cd2e0d854d83') in 0.0159864 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.484365 seconds.
+  path: Assets/Characters/Witch/AnimationClips/Run E.anim
+  artifactKey: Guid(177961cd63ae94c1cac40c1deac22a7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Witch/AnimationClips/Run E.anim using Guid(177961cd63ae94c1cac40c1deac22a7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e1bef638971c56176e148b7c7457eacc') in 0.0014683 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.336423 seconds.
+  path: Packages/com.unity.ai.navigation/Editor/Unity.AI.Navigation.Editor.asmdef
+  artifactKey: Guid(86c9d8e67265f41469be06142c397d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ai.navigation/Editor/Unity.AI.Navigation.Editor.asmdef using Guid(86c9d8e67265f41469be06142c397d17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e6f82ea8707f42273a4ca06b313e8fcf') in 0.0005742 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.497288 seconds.
+  path: Packages/com.unity.ai.navigation/Editor/NavigationPreferences.cs
+  artifactKey: Guid(e8c8febe35b734f4eb15f23d12e5faed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ai.navigation/Editor/NavigationPreferences.cs using Guid(e8c8febe35b734f4eb15f23d12e5faed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9e145e878431a135dd8a75d6febfeae1') in 0.0005586 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.028640 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/RuleOverrideTileEditor.cs
+  artifactKey: Guid(dd977390416471341b10fd1278290da0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/RuleOverrideTileEditor.cs using Guid(dd977390416471341b10fd1278290da0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '55fcac0a03eb057087905090e499c04c') in 0.0009501 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.ai.assistant/Plugins/Markdig/Dependencies/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.973 seconds
+Refreshing native plugins compatible for Editor in 51.69 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 5.45 ms, found 3 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.852 seconds
+Domain Reload Profiling: 1819ms
+	BeginReloadAssembly (239ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (77ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (655ms)
+		LoadAssemblies (459ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (291ms)
+			TypeCache.Refresh (184ms)
+				TypeCache.ScanAssembly (172ms)
+			BuildScriptInfoCaches (98ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (852ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (739ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (178ms)
+			ProcessInitializeOnLoadAttributes (276ms)
+			ProcessInitializeOnLoadMethodAttributes (272ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 5.32 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6366 unused Assets / (22.3 MB). Loaded Objects now: 6784.
+Memory consumption went from 171.3 MB to 149.0 MB.
+Total: 18.174800 ms (FindLiveObjects: 0.598300 ms CreateObjectMapping: 0.749100 ms MarkObjects: 11.005400 ms  DeleteObjects: 5.821100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 129.547664 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/IsometricRuleTileEditor.cs
+  artifactKey: Guid(13aa83787898fb342b7ee5582611ee31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/IsometricRuleTileEditor.cs using Guid(13aa83787898fb342b7ee5582611ee31) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '85595c385b8b1846d9bb413fd4082171') in 0.0017546 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 84.629884 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/HexagonalRuleTileEditor.cs
+  artifactKey: Guid(38c1287dab3b2ea42860ebd2c0138bb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/HexagonalRuleTileEditor.cs using Guid(38c1287dab3b2ea42860ebd2c0138bb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '978ad423d14a1aabce6c968a6e30230e') in 0.0004806 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.327356 seconds.
+  path: Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/CustomRuleTileMenu.cs
+  artifactKey: Guid(1a641ca7aea56f8428c8c6efc8e618cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_External/2d-techdemos/Rule Tiles/Scripts/Editor/CustomRuleTileMenu.cs using Guid(1a641ca7aea56f8428c8c6efc8e618cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '72e390ed155c813a0f813c29fe3234ce') in 0.0004609 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 118.344523 seconds.
+  path: Assets/Scenes/Examples/Scene_Biome_FrozenCaves.unity
+  artifactKey: Guid(65e7004b5259ad2469c4c9fca5e22b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Examples/Scene_Biome_FrozenCaves.unity using Guid(65e7004b5259ad2469c4c9fca5e22b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2c3e5cf4f675c47ad31f430108b321c7') in 0.0007931 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 261.955756 seconds.
+  path: Assets/Scripts
+  artifactKey: Guid(011e54a1bb97a42d7b958a3a35015bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts using Guid(011e54a1bb97a42d7b958a3a35015bbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fb28f59b66b19e8bf7732e8396e85dc3') in 0.0005485 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 7.04 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6328 unused Assets / (22.9 MB). Loaded Objects now: 6785.
+Memory consumption went from 170.2 MB to 147.3 MB.
+Total: 20.787400 ms (FindLiveObjects: 0.540800 ms CreateObjectMapping: 0.592000 ms MarkObjects: 12.315800 ms  DeleteObjects: 7.337800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 19.575184 seconds.
+  path: Assets/Scripts/WitchCollisionMain.cs
+  artifactKey: Guid(87d9c79a4338d594fb6c1efbe531bc98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/WitchCollisionMain.cs using Guid(87d9c79a4338d594fb6c1efbe531bc98) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '65e55c81ae050c577275903c56a5adce') in 0.0692285 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.ai.assistant/Plugins/Markdig/Dependencies/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.884 seconds
+Refreshing native plugins compatible for Editor in 5.80 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 6.70 ms, found 3 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.891 seconds
+Domain Reload Profiling: 1770ms
+	BeginReloadAssembly (231ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (81ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (565ms)
+		LoadAssemblies (427ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (231ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (215ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (891ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (772ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (192ms)
+			ProcessInitializeOnLoadAttributes (275ms)
+			ProcessInitializeOnLoadMethodAttributes (289ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 5.56 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6367 unused Assets / (22.1 MB). Loaded Objects now: 6789.
+Memory consumption went from 172.6 MB to 150.5 MB.
+Total: 32.660200 ms (FindLiveObjects: 0.667900 ms CreateObjectMapping: 0.910700 ms MarkObjects: 16.084100 ms  DeleteObjects: 14.996600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.ai.assistant/Plugins/Markdig/Dependencies/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.068 seconds
+Refreshing native plugins compatible for Editor in 6.22 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 6.33 ms, found 3 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.846 seconds
+Domain Reload Profiling: 1909ms
+	BeginReloadAssembly (226ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (73ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (756ms)
+		LoadAssemblies (497ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (354ms)
+			TypeCache.Refresh (147ms)
+				TypeCache.ScanAssembly (131ms)
+			BuildScriptInfoCaches (199ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (847ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (720ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (183ms)
+			ProcessInitializeOnLoadAttributes (269ms)
+			ProcessInitializeOnLoadMethodAttributes (255ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 5.98 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6367 unused Assets / (21.9 MB). Loaded Objects now: 6793.
+Memory consumption went from 172.6 MB to 150.7 MB.
+Total: 18.729800 ms (FindLiveObjects: 0.622200 ms CreateObjectMapping: 0.673800 ms MarkObjects: 11.360400 ms  DeleteObjects: 6.072300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 160.054218 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_01.asset
+  artifactKey: Guid(d76927772baa0de46ad29ec17c378c42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_01.asset using Guid(d76927772baa0de46ad29ec17c378c42) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd8e923fcdec955a7eb4a0e089a8f5d39') in 0.1056722 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_44.asset
+  artifactKey: Guid(3af4d46f6519f0844a8c7a37e79aefa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_44.asset using Guid(3af4d46f6519f0844a8c7a37e79aefa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '63b9750800a420de95e6cafb5bb66904') in 0.0224591 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_37.asset
+  artifactKey: Guid(f11f50d1dc539b54f890edf78866a3eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_37.asset using Guid(f11f50d1dc539b54f890edf78866a3eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '87cf7b9e65aedf56d4ae6b948b53e5ee') in 0.0264976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_38.asset
+  artifactKey: Guid(e4ad2df1fb6ae5147bd264dd814f04b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_38.asset using Guid(e4ad2df1fb6ae5147bd264dd814f04b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '045bd760729bee2e0d88448d70258426') in 0.0213783 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_12.asset
+  artifactKey: Guid(7a9ed0fc158725b429c1db53ce76eb0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_12.asset using Guid(7a9ed0fc158725b429c1db53ce76eb0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd79761174b442418a12db3d67dadc6f5') in 0.0229089 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_26.asset
+  artifactKey: Guid(683388ac258fcff4fb0da2552b2a4068) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_26.asset using Guid(683388ac258fcff4fb0da2552b2a4068) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00ab4718b6355b7d1f95dd6dd5e50e82') in 0.0242797 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_30.asset
+  artifactKey: Guid(cf6f27a28a0408a4a822d400d0691f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_30.asset using Guid(cf6f27a28a0408a4a822d400d0691f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f43603b5dcaf14ea28498bdf22df9759') in 0.0250027 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_47.asset
+  artifactKey: Guid(66d2f82e17c6d904882a5690a96f6ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_47.asset using Guid(66d2f82e17c6d904882a5690a96f6ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b55bee9164bb73076dca6562674954e0') in 0.0109573 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_35.asset
+  artifactKey: Guid(605b485b584c3ba44acabdb498deba35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_35.asset using Guid(605b485b584c3ba44acabdb498deba35) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3374b646328c6b8d578cb5d24a2e7267') in 0.0247299 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_20.asset
+  artifactKey: Guid(7b098350d12e0f4438d1d00669e8365a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_20.asset using Guid(7b098350d12e0f4438d1d00669e8365a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'af3190e89bd2b4e32c801d1c4b1c0feb') in 0.0268562 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_04.asset
+  artifactKey: Guid(895946dd1b444bc40b7aab39872a367a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_04.asset using Guid(895946dd1b444bc40b7aab39872a367a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bed46f299a287512d8aa8cf2ecc8b525') in 0.0262297 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_08.asset
+  artifactKey: Guid(204d49abce57be445b01e5a8f390aac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_08.asset using Guid(204d49abce57be445b01e5a8f390aac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '42fdfefcf6ed595c09814f9629d40eb4') in 0.0248911 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_11.asset
+  artifactKey: Guid(706eea343fa8e6945a1bb77f55fbc45c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_11.asset using Guid(706eea343fa8e6945a1bb77f55fbc45c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3998061bce0524003770d3b23b9e3584') in 0.0268792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_07.asset
+  artifactKey: Guid(530aa099211353e43ba646ce8d30abd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_07.asset using Guid(530aa099211353e43ba646ce8d30abd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '82aef93a57d2e97b30bf274f88321533') in 0.026331 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_49.asset
+  artifactKey: Guid(6fbefa1e6eaa9474e9cf89acaaf3e760) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_49.asset using Guid(6fbefa1e6eaa9474e9cf89acaaf3e760) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '19385e31fdc99863aedd54c58ac66827') in 0.0181582 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_32.asset
+  artifactKey: Guid(f43d71ea5105dd94fb0bb66ab23898ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_32.asset using Guid(f43d71ea5105dd94fb0bb66ab23898ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8562c94642d4697d1b84762ac4d275d0') in 0.0255553 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_31.asset
+  artifactKey: Guid(3fc24c1bf7d805348a99b8aebf9d0842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_31.asset using Guid(3fc24c1bf7d805348a99b8aebf9d0842) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b79e115f1d5152dd0e63016e72204992') in 0.0245884 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_48.asset
+  artifactKey: Guid(df264822aefe94442a60af1bf8fda9d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_48.asset using Guid(df264822aefe94442a60af1bf8fda9d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '55bdeb3768305e3acb3fee9a02e17a55') in 0.0111903 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_10.asset
+  artifactKey: Guid(fb5fd48e593281149b1d0eda16fb2a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_10.asset using Guid(fb5fd48e593281149b1d0eda16fb2a4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd4304ff2fc52032ecac3d04d17fc75a2') in 0.0247975 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_62.asset
+  artifactKey: Guid(6488e0b562fa4ee4cb5ac32991b10d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_62.asset using Guid(6488e0b562fa4ee4cb5ac32991b10d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bb55b78d093ae855168fc19d70630344') in 0.011013 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_05.asset
+  artifactKey: Guid(c0389d04dfd53b6498bdc321f9892074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_05.asset using Guid(c0389d04dfd53b6498bdc321f9892074) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '324760ae8e89d0dbc0eba925ec269444') in 0.0244464 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_25.asset
+  artifactKey: Guid(8c947a52e6d787d429cbc08d792597a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_25.asset using Guid(8c947a52e6d787d429cbc08d792597a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ddb1acf3d97307699b95ee4df2fbe7e5') in 0.023943 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_34.asset
+  artifactKey: Guid(6f0b69eef1b6e1c4d9f3fb9faa24a9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_34.asset using Guid(6f0b69eef1b6e1c4d9f3fb9faa24a9e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '46b60dd5b10f53d8c06466fd470f0b61') in 0.0271922 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_46.asset
+  artifactKey: Guid(f2886551205cdb64a9b9a30ec35bfef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_46.asset using Guid(f2886551205cdb64a9b9a30ec35bfef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '12bc57a45667ffc60dd3c286d19650e2') in 0.0127989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_06.asset
+  artifactKey: Guid(483e0c44f327fb64aa3785dedc1493ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_06.asset using Guid(483e0c44f327fb64aa3785dedc1493ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '491e2e84db5f8a109b1049aba2b6d829') in 0.028057 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_55.asset
+  artifactKey: Guid(eb3f5f2e21e9a2146bee12f2488483b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_55.asset using Guid(eb3f5f2e21e9a2146bee12f2488483b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bf6fd563c31c46f604a06ae6b6548ae4') in 0.0137798 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_36.asset
+  artifactKey: Guid(2696894104f25e440bd18fa6f6f54e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_36.asset using Guid(2696894104f25e440bd18fa6f6f54e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dfe8a289c917e8dde77f9543e7c7cb09') in 0.0265881 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_03.asset
+  artifactKey: Guid(b1b0746af2aa0bb49a70cab0117fe6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_03.asset using Guid(b1b0746af2aa0bb49a70cab0117fe6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ffa5b26729e0855ac0394dcb82b20eb4') in 0.024991 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_54.asset
+  artifactKey: Guid(6118b6e7620cc9a498b5d60c6ae37079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_54.asset using Guid(6118b6e7620cc9a498b5d60c6ae37079) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4fa5c5b0183201d371bf82f999a6fc67') in 0.0128744 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_67.asset
+  artifactKey: Guid(c0d6ba29453954644996e9400846f197) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_67.asset using Guid(c0d6ba29453954644996e9400846f197) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2402c7a5a5b31e3b8f4313883c7d8679') in 0.0150587 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_53.asset
+  artifactKey: Guid(91a5d3d12044478459b926363bb0601d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_53.asset using Guid(91a5d3d12044478459b926363bb0601d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'da2188f11a1ca88aeb9f8e90df104e6b') in 0.0257535 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_23.asset
+  artifactKey: Guid(83e2c005ad9933742b7544a24f40a3d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Desert/desert-sliced_23.asset using Guid(83e2c005ad9933742b7544a24f40a3d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a372e76d51dd4cc1542fa78040bdd018') in 0.017239 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.ai.assistant/Plugins/Markdig/Dependencies/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.880 seconds
+Refreshing native plugins compatible for Editor in 6.49 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 5.45 ms, found 3 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.977 seconds
+Domain Reload Profiling: 1853ms
+	BeginReloadAssembly (229ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (73ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (570ms)
+		LoadAssemblies (447ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (221ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (201ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (978ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (856ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (213ms)
+			ProcessInitializeOnLoadAttributes (277ms)
+			ProcessInitializeOnLoadMethodAttributes (348ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 5.57 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6367 unused Assets / (23.0 MB). Loaded Objects now: 6804.
+Memory consumption went from 175.4 MB to 152.4 MB.
+Total: 21.990200 ms (FindLiveObjects: 0.668000 ms CreateObjectMapping: 0.803900 ms MarkObjects: 13.368400 ms  DeleteObjects: 7.148600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

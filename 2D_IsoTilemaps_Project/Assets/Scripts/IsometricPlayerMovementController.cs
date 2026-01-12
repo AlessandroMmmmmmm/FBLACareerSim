@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IsometricPlayerMovementController : MonoBehaviour
 {
 
-    public float movementSpeed = 1f;
+    public float movementSpeed = 100000f;
     IsometricCharacterRenderer isoRenderer;
 
     Rigidbody2D rbody;
