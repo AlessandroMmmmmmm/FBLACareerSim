@@ -841,3 +841,237 @@ Memory consumption went from 175.0 MB to 152.7 MB.
 Total: 17.613200 ms (FindLiveObjects: 0.569300 ms CreateObjectMapping: 0.619000 ms MarkObjects: 10.630800 ms  DeleteObjects: 5.793100 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 508.307339 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base01.asset
+  artifactKey: Guid(31f0467df86e14d48af8f0e4bf964d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base01.asset using Guid(31f0467df86e14d48af8f0e4bf964d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e6f5eb9ae154e24e04e1948cc0c7e7a2') in 0.0590034 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base12.asset
+  artifactKey: Guid(2e03055b52200534b9543ed63dba8f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base12.asset using Guid(2e03055b52200534b9543ed63dba8f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4f670931d3863cd9321205cac585861f') in 0.0184596 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/slope.asset
+  artifactKey: Guid(2b1703db058bd9d4b95af532f3a5b8f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/slope.asset using Guid(2b1703db058bd9d4b95af532f3a5b8f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '55a1f74cd6b3b4f771d6b32c0271a43e') in 0.0189653 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube00.asset
+  artifactKey: Guid(7dcb526135eab954aa3e816947652218) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube00.asset using Guid(7dcb526135eab954aa3e816947652218) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '59254f0baefae7c49b9850d162d69006') in 0.0180488 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube03.asset
+  artifactKey: Guid(ee09ca48676a31d46ac6f7e08d45668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube03.asset using Guid(ee09ca48676a31d46ac6f7e08d45668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cd3bdafcaa7787f54329d86e6ab2e763') in 0.0215125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base15.asset
+  artifactKey: Guid(3d3a72f43c9fd8e4a9c29b46182b914b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base15.asset using Guid(3d3a72f43c9fd8e4a9c29b46182b914b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ea74738383658506c87962442733626e') in 0.0208219 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base16.asset
+  artifactKey: Guid(47f1efda67f6ae2498262cd88b907fa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base16.asset using Guid(47f1efda67f6ae2498262cd88b907fa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '90faab0d531598fba389e9352816587f') in 0.0231863 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube16.asset
+  artifactKey: Guid(bd7d31dfe44d8464ca3b5c589ca8d52d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube16.asset using Guid(bd7d31dfe44d8464ca3b5c589ca8d52d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '888a9a7d93a0264686a377bc183195ae') in 0.0184364 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base05.asset
+  artifactKey: Guid(0ed64a7e777670747bfbb223dc0fe8ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base05.asset using Guid(0ed64a7e777670747bfbb223dc0fe8ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68ec9b626ca094b76a4b4f1ae1d7e3af') in 0.0185645 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base03.asset
+  artifactKey: Guid(ad68a6909829d4a42bbf0b43270b1fe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base03.asset using Guid(ad68a6909829d4a42bbf0b43270b1fe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5ee4a8ed7fa4ad6fa0f57caf838b0fe9') in 0.0166506 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base06.asset
+  artifactKey: Guid(0f643680892771843bb32822400777a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base06.asset using Guid(0f643680892771843bb32822400777a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '297f2c6585093783147c45303c082666') in 0.0184043 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base13.asset
+  artifactKey: Guid(a3ec3ae262d13e64fb9fb55fba53dcf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base13.asset using Guid(a3ec3ae262d13e64fb9fb55fba53dcf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dc68c6645756111e740c80e266958f5b') in 0.0175817 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube09.asset
+  artifactKey: Guid(73ce2669013ea6c44be67942f351295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube09.asset using Guid(73ce2669013ea6c44be67942f351295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b7f2e7ecb739e73ac1d13b30ab474074') in 0.020206 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base07.asset
+  artifactKey: Guid(fbed16a2efe060d49a705b635090a171) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base07.asset using Guid(fbed16a2efe060d49a705b635090a171) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '29d31238f06762a5f28bceca1db16212') in 0.0229567 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube05.asset
+  artifactKey: Guid(caae841b9df129142850793deae2534e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube05.asset using Guid(caae841b9df129142850793deae2534e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be4e0bda58a966e540be3df91459d651') in 0.0209986 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/cube01.asset
+  artifactKey: Guid(7f32039c55da1884687d6a26e1e96a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/cube01.asset using Guid(7f32039c55da1884687d6a26e1e96a20) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50720dcfa05a452bf0cd31d48932c1ec') in 0.0199573 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base08.asset
+  artifactKey: Guid(7e24c1f1960e18245a59909bac1891e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base08.asset using Guid(7e24c1f1960e18245a59909bac1891e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '07cc54c09d9256dc0cf7e57edf2bb6d5') in 0.0221074 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000095 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base10.asset
+  artifactKey: Guid(0aaa9893dce6b7648a6c5bc9da1a00ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base10.asset using Guid(0aaa9893dce6b7648a6c5bc9da1a00ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '14b8876f685f0be31a090d0121f7ad2a') in 0.0215142 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Tilemaps/Isometric/Tiles/Basic/base11.asset
+  artifactKey: Guid(0be996db82a670b4d8315e7cacd49fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tilemaps/Isometric/Tiles/Basic/base11.asset using Guid(0be996db82a670b4d8315e7cacd49fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5d7d0c7564e1a4ced3e91a8bc0db7507') in 0.0190838 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.72 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6328 unused Assets / (23.4 MB). Loaded Objects now: 6805.
+Memory consumption went from 175.1 MB to 151.7 MB.
+Total: 17.272800 ms (FindLiveObjects: 0.547700 ms CreateObjectMapping: 0.269400 ms MarkObjects: 10.242300 ms  DeleteObjects: 6.212800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-VYDB-PY66-6ERU-DUB9-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 1375879930017-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Runtime.CompilerServices.Unsafe.dll' with different versions detected, using 'Packages/com.unity.collections/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Packages/com.unity.ai.assistant/Plugins/Markdig/Dependencies/System.Runtime.CompilerServices.Unsafe.dll, AssemblyName=System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.900 seconds
+Refreshing native plugins compatible for Editor in 6.15 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Refreshing native plugins compatible for Editor in 6.11 ms, found 3 plugins.
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.909 seconds
+Domain Reload Profiling: 1805ms
+	BeginReloadAssembly (225ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (70ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (598ms)
+		LoadAssemblies (439ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (255ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (239ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (910ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (787ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (187ms)
+			ProcessInitializeOnLoadAttributes (272ms)
+			ProcessInitializeOnLoadMethodAttributes (313ms)
+			AfterProcessingInitializeOnLoad (8ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Refreshing native plugins compatible for Editor in 6.38 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 135 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6367 unused Assets / (22.3 MB). Loaded Objects now: 6807.
+Memory consumption went from 175.0 MB to 152.7 MB.
+Total: 20.380500 ms (FindLiveObjects: 1.445300 ms CreateObjectMapping: 0.554100 ms MarkObjects: 11.455200 ms  DeleteObjects: 6.924400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
