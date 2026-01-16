@@ -1,37 +1,62 @@
-// 1/11/2026 AI-Tag
-// This was created with the help of Assistant, a Unity Artificial Intelligence product.
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerTileSceneSwitcher : MonoBehaviour
 {
-    public Tilemap collisionTilemap; // Assign the Collision Tilemap in the Inspector
-    public string targetTileName = "temple-sliced_02"; // Name of the tile to check collision with
-    public string sceneToLoad = "Scene_Biome_Desert"; // Name of the scene to load upon collision
+    public Tilemap collisionTilemap;
+    public string targetTileName = "temple-sliced_02";
+    public string sceneToLoad = "Scene_Biome_Desert";
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private Collider2D playerCollider;
+
+    private void Start()
     {
-        // Check if the collision is with the tilemap
-        if (collision.gameObject == collisionTilemap.gameObject)
+        playerCollider = GetComponentInChildren<CircleCollider2D>();
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject == collisionTilemap.gameObject)
         {
-            // Get the contact point of the collision
-            Vector3 contactPoint = collision.contacts[0].point;
+            CheckTilesUnderPlayer();
+        }
+    }
 
-            // Convert the contact point to tilemap cell position
-            Vector3Int cellPosition = collisionTilemap.WorldToCell(contactPoint);
+    // Also check while staying, in case the player walks into a tile 
+    // without the collider technically "re-entering" the tilemap object
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject == collisionTilemap.gameObject)
+        {
+            CheckTilesUnderPlayer();
+        }
+    }
 
-            // Get the tile at the cell position
-            TileBase collidedTile = collisionTilemap.GetTile(cellPosition);
+    private void CheckTilesUnderPlayer()
+    {
+        // Get the bounding box of the player's collider in world space
+        Bounds bounds = playerCollider.bounds;
 
-            // Check if the tile matches the target tile name
-            if (collidedTile != null && collidedTile.name == targetTileName)
+        // Convert the corners of the bounds to tilemap cell coordinates
+        Vector3Int minCell = collisionTilemap.WorldToCell(bounds.min);
+        Vector3Int maxCell = collisionTilemap.WorldToCell(bounds.max);
+
+        // Loop through every tile cell covered by the player's bounds
+        for (int x = minCell.x; x <= maxCell.x; x++)
+        {
+            for (int y = minCell.y; y <= maxCell.y; y++)
             {
-                Debug.Log($"Player collided with the target tile: {targetTileName} at position {cellPosition}");
+                Vector3Int cellPos = new Vector3Int(x, y, 0);
+                TileBase tile = collisionTilemap.GetTile(cellPos);
 
-                // Load the new scene
-                SceneManager.LoadScene(sceneToLoad);
+                if (tile != null && tile.name == targetTileName)
+                {
+                    Debug.Log($"Overlap detected with {targetTileName} at {cellPos}");
+                    SceneManager.LoadScene(sceneToLoad);
+                    return; // Exit once we find a match to avoid multiple scene loads
+                }
             }
         }
     }
