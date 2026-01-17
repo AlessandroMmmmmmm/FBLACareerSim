@@ -71,6 +71,11 @@ providers = {
 		priority = 210
 		defaultAction = null
 	}
+	asset_knowledge = {
+		active = true
+		priority = 99999
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }

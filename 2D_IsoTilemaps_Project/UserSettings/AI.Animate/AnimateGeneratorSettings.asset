@@ -15,9 +15,23 @@ MonoBehaviour:
   m_Session:
     settings:
       lastSelectedModels:
-        serializedData: []
+        serializedData:
+        - key: 0
+          value:
+            rid: 937217514797269509
+        - key: 1
+          value:
+            rid: 937217514797269510
       previewSettings:
         sizeFactor: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 937217514797269509
+      type: {class: ModelSelection, ns: Unity.AI.Animate.Services.Stores.States, asm: Unity.AI.Animate}
+      data:
+        modelID: 
+    - rid: 937217514797269510
+      type: {class: ModelSelection, ns: Unity.AI.Animate.Services.Stores.States, asm: Unity.AI.Animate}
+      data:
+        modelID: 
