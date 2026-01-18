@@ -756,11 +756,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: fced8788-16e2-47d8-9a20-ee8e322f3470
+  cloudProjectId: cf3a8258-4747-496a-bada-cb76bf503afa
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Career Simulator
-  organizationId: unity_5ac737054711249fbebf
+  projectName: 2D_IsoTilemaps_Project (1)
+  organizationId: alessandromontesi234
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

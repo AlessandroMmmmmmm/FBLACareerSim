@@ -146,6 +146,16 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.26184398
       objectReference: {fileID: 0}
+    - target: {fileID: 3339481644051735611, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339481644051735611, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3339481645408498929, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
         type: 3}
       propertyPath: m_Name
@@ -300,6 +310,12 @@ MonoBehaviour:
   collisionTilemap: {fileID: 927350587}
   targetTileName: temple-sliced_02
   sceneToLoad: Scene_Biome_Desert
+--- !u!4 &683105074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3339481645408498932, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
+    type: 3}
+  m_PrefabInstance: {fileID: 100218391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &701162498
 GameObject:
   m_ObjectHideFlags: 0
@@ -8488,6 +8504,7 @@ GameObject:
   - component: {fileID: 1931189126}
   - component: {fileID: 1931189125}
   - component: {fileID: 1931189124}
+  - component: {fileID: 1931189127}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8569,6 +8586,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931189127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931189123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e512b9fd2f4b484db3736faef092851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicCameraFollow
+  followTarget: {fileID: 683105074}
+  moveSpeed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
