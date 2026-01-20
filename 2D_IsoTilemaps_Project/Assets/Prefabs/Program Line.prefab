@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2114063812419873461}
   - component: {fileID: 9068142761022899194}
   - component: {fileID: 7168845897526319940}
+  - component: {fileID: 7875472600699907723}
   m_Layer: 5
   m_Name: Program Line
   m_TagString: Untagged
@@ -137,3 +138,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7875472600699907723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191441446487283175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0f720661efe074880b876fb4844079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgramLine
+  text: {fileID: 7168845897526319940}

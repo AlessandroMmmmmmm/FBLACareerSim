@@ -16,33 +16,29 @@ public class IsometricCharacterRenderer : MonoBehaviour
     {
         //cache the animator component
         animator = GetComponent<Animator>();
+        // animator = GetComponentInChildren<Animator>();
     }
 
 
-    public void SetDirection(Vector2 direction){
+public void SetDirection(Vector2 direction)
+{
+    Debug.Log($"SetDirection called. Dir={direction}, mag={direction.magnitude}");
 
-        //use the Run states by default
-        string[] directionArray = null;
+    string[] directionArray;
 
-        //measure the magnitude of the input.
-        if (direction.magnitude < .01f)
-        {
-            //if we are basically standing still, we'll use the Static states
-            //we won't be able to calculate a direction if the user isn't pressing one, anyway!
-            directionArray = staticDirections;
-        }
-        else
-        {
-            //we can calculate which direction we are going in
-            //use DirectionToIndex to get the index of the slice from the direction vector
-            //save the answer to lastDirection
-            directionArray = runDirections;
-            lastDirection = DirectionToIndex(direction, 8);
-        }
-
-        //tell the animator to play the requested state
-        animator.Play(directionArray[lastDirection]);
+    if (direction.magnitude < .01f)
+    {
+        directionArray = staticDirections;
     }
+    else
+    {
+        directionArray = runDirections;
+        lastDirection = DirectionToIndex(direction, 8);
+    }
+
+    Debug.Log("Playing animation: " + directionArray[lastDirection]);
+    animator.Play(directionArray[lastDirection]);
+}
 
     //helper functions
 
