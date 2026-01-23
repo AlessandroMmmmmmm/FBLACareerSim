@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ede1eefcb225bc49add4ba04e9f06b1, type: 3}
   m_Name: Choice_DiscountAsk
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceData
-  buttonText: 
+  buttonText: We have a discount for 500$ off
   customerResponseText: 
-  profitDelta: 0
-  patienceDelta: 0
-  dealChanceDelta: 0
+  profitDelta: -500
+  patienceDelta: 15
+  dealChanceDelta: 0.353

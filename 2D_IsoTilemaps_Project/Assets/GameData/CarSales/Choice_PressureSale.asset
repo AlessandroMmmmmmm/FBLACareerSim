@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ede1eefcb225bc49add4ba04e9f06b1, type: 3}
   m_Name: Choice_PressureSale
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceData
-  buttonText: 
-  customerResponseText: 
-  profitDelta: 0
-  patienceDelta: 0
-  dealChanceDelta: 0
+  buttonText: Make the sale NOW
+  customerResponseText: I don't want the car anymore
+  profitDelta: -18000
+  patienceDelta: -10
+  dealChanceDelta: -0.761
