@@ -2057,9 +2057,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa954fce20b59c74f8be13afecaa398e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxSpawner
-  boxPrefab: {fileID: 5201489406793892483, guid: a0da4a0bbc4a2de41970259550a14e65,
-    type: 3}
-  boxCount: 3
+  boxPrefabs:
+  - {fileID: 6773915570499476573, guid: c220bb8f2b978c640b1c97545f630bcc, type: 3}
+  - {fileID: 8022513274167853266, guid: da1c431300e27284c86839fceecb72fe, type: 3}
+  - {fileID: 5527360832863044529, guid: 50fd43876e4c7c04b80b61e3059f6b01, type: 3}
+  - {fileID: 4460425605253287126, guid: 7f7b7cf1d391d834a92b4e04cec3476b, type: 3}
+  totalBoxesToSpawn: 10
   spawnArea: {x: 50, y: 0, z: 50}
 --- !u!4 &823046976
 Transform:
