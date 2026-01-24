@@ -1,12 +1,12 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DeliveryManager : MonoBehaviour
 {
     public int packagesRequired = 3;
     public int currentPackagesInTruck = 0;
     public float shiftTimer = 120f;
-    public Text statusUI;
+    public TextMeshProUGUI statusUI;
 
     void Update()
     {
