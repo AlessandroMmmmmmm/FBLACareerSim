@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\NegotiationController.cs",
               "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\NegotiationController.cs",
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\NegotiationController.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAYwNUAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAawNYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T02:26:15.58Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\ChoiceData.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAYwA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T02:23:57.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T02:23:57.994Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\CustomerData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T02:20:47.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T02:20:47.833Z"
             }
           ]
         }
