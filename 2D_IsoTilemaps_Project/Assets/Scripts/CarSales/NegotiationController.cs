@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -6,16 +6,17 @@ using System.Collections;
 public class NegotiationController : MonoBehaviour
 {
     [Header("Customer")]
-    [SerializeField] private CustomerData customer; // assign a CustomerData asset in Inspector
+    [SerializeField] private CustomerData customer;
 
     [Header("Rounds (set size = totalRounds)")]
-    [SerializeField] private RoundChoices[] rounds; // each round should have exactly 3 choices
+    [SerializeField] private RoundChoices[] rounds; // each round must have exactly 3 choices
 
     [Header("UI")]
     [SerializeField] private TMP_Text customerLineText;
     [SerializeField] private TMP_Text roundText;
     [SerializeField] private TMP_Text profitText;
     [SerializeField] private TMP_Text dealChanceText;
+    [SerializeField] private TMP_Text resultText;          // NEW: shows "Deal closed!" / "Not yet..."
     [SerializeField] private Slider patienceSlider;
 
     [SerializeField] private Button choiceAButton;
@@ -27,13 +28,16 @@ public class NegotiationController : MonoBehaviour
     [SerializeField] private TMP_Text choiceCText;
 
     [Header("Timing")]
-    [SerializeField] private float betweenRoundsDelaySeconds = 0.6f;
+    [SerializeField] private float betweenRoundsDelaySeconds = 0.7f;
 
-    [Header("Win Conditions")]
+    [Header("Deal Logic")]
     [SerializeField, Range(0f, 1f)] private float startingDealChance = 0.35f;
-    [SerializeField, Range(0f, 1f)] private float winDealChanceThreshold = 0.65f;
+    [SerializeField] private bool allowEarlyClose = true;  // NEW: if true, can close before last round
 
-    // runtime state
+    // Optional: if you want "must reach at least X chance before closing is possible"
+    [SerializeField, Range(0f, 1f)] private float minChanceToClose = 0.15f;
+
+    // runtime
     private int currentRoundIndex = 0;
     private int profit = 0;
     private float patience = 100f;
@@ -43,14 +47,21 @@ public class NegotiationController : MonoBehaviour
 
     private void Awake()
     {
-        // Safety checks help you catch missing references early
-        if (customer == null) Debug.LogError("NegotiationController: No CustomerData assigned.");
-        if (rounds == null || rounds.Length == 0) Debug.LogError("NegotiationController: No rounds assigned.");
+        if (rounds == null || rounds.Length == 0)
+            Debug.LogError("NegotiationController: No rounds assigned.");
     }
 
     private void Start()
     {
-        // Hook up button listeners once
+        // Buttons must be assigned or you'll get null refs
+        if (choiceAButton == null || choiceBButton == null || choiceCButton == null ||
+            choiceAText == null || choiceBText == null || choiceCText == null)
+        {
+            Debug.LogError("NegotiationController: UI references missing. Assign buttons and TMP texts in Inspector.");
+            enabled = false;
+            return;
+        }
+
         choiceAButton.onClick.AddListener(() => OnPickChoice(0));
         choiceBButton.onClick.AddListener(() => OnPickChoice(1));
         choiceCButton.onClick.AddListener(() => OnPickChoice(2));
@@ -66,16 +77,16 @@ public class NegotiationController : MonoBehaviour
         profit = 0;
         dealChance = Mathf.Clamp01(startingDealChance);
 
-        // Pull patience from customer data
         patienceMax = (customer != null) ? Mathf.Max(1, customer.PatienceMax) : 100f;
         patience = patienceMax;
 
-        // Intro line (you can make this data-driven later)
         if (customerLineText != null)
         {
             string cname = (customer != null) ? customer.CustomerName : "Customer";
             customerLineText.text = $"{cname}: I'm interested, but I need the right deal.";
         }
+
+        if (resultText != null) resultText.text = "";
 
         RefreshUI();
         LoadRound(currentRoundIndex);
@@ -83,33 +94,36 @@ public class NegotiationController : MonoBehaviour
 
     private void LoadRound(int roundIndex)
     {
-        if (ended) return;
 
-        if (roundIndex < 0 || rounds == null || roundIndex >= rounds.Length)
+        if (ended) return;
+        if (customerLineText != null)
         {
-            Debug.LogError("NegotiationController: Round index out of range. Check your rounds array size.");
+            string cname = (customer != null) ? customer.CustomerName : "Customer";
+            customerLineText.text = $"{cname}: What can you offer this time?";
+        }
+
+        if (roundIndex < 0 || roundIndex >= rounds.Length)
+        {
             EndNegotiation(false, "Negotiation data error.");
             return;
         }
 
-        // Expect exactly 3 choices per round
         ChoiceData[] choices = rounds[roundIndex].choices;
         if (choices == null || choices.Length != 3 || choices[0] == null || choices[1] == null || choices[2] == null)
         {
-            Debug.LogError($"NegotiationController: Round {roundIndex + 1} must have exactly 3 non-null ChoiceData assets.");
+            Debug.LogError($"Round {roundIndex + 1} must have exactly 3 non-null ChoiceData assets.");
             EndNegotiation(false, "Missing choices.");
             return;
         }
 
-        // Update round label
         if (roundText != null)
             roundText.text = $"Round {roundIndex + 1}/{rounds.Length}";
 
-        // Set button texts
         choiceAText.text = choices[0].ButtonText;
         choiceBText.text = choices[1].ButtonText;
         choiceCText.text = choices[2].ButtonText;
 
+        if (resultText != null) resultText.text = ""; // clear per round
         SetChoicesInteractable(true);
     }
 
@@ -119,16 +133,12 @@ public class NegotiationController : MonoBehaviour
 
         SetChoicesInteractable(false);
 
-        ChoiceData[] choices = rounds[currentRoundIndex].choices;
-        ChoiceData picked = choices[index];
+        ChoiceData picked = rounds[currentRoundIndex].choices[index];
 
-        // Apply deltas
+        // Apply deltas from the choice
         profit += picked.ProfitDelta;
         patience = Mathf.Clamp(patience + picked.PatienceDelta, 0f, patienceMax);
         dealChance = Mathf.Clamp01(dealChance + picked.DealChanceDelta);
-
-        // Optional: personality effect (simple example)
-        ApplyPersonalityModifier(picked);
 
         // Show customer response
         if (customerLineText != null)
@@ -139,58 +149,74 @@ public class NegotiationController : MonoBehaviour
 
         RefreshUI();
 
-        // Advance after a short beat (lets player read response)
-        StartCoroutine(AdvanceAfterDelay());
+        // Evaluate immediate outcomes (walk-away or deal close)
+        StartCoroutine(ResolveChoiceAfterDelay());
     }
 
-    private IEnumerator AdvanceAfterDelay()
+    private IEnumerator ResolveChoiceAfterDelay()
     {
         yield return new WaitForSeconds(betweenRoundsDelaySeconds);
 
         if (ended) yield break;
 
+        // Walk away check
         if (patience <= 0f)
         {
             EndNegotiation(false, "Customer walked away.");
             yield break;
         }
 
-        // If last round, decide outcome
+        // Deal close check EACH round
         bool lastRound = currentRoundIndex >= rounds.Length - 1;
+        bool canCloseNow = allowEarlyClose || lastRound;
+
+        if (canCloseNow)
+        {
+            bool closed = TryCloseDeal();
+            if (closed)
+            {
+                EndNegotiation(true, "Deal closed!");
+                yield break;
+            }
+            else
+            {
+                if (resultText != null) resultText.text = "No deal yetâ€¦ keep negotiating.";
+            }
+        }
+
+        // If this was the last round and it didnâ€™t close, end as failure
         if (lastRound)
         {
-            bool success = dealChance >= winDealChanceThreshold;
-            EndNegotiation(success, success ? "Deal closed!" : "No deal this time.");
+            EndNegotiation(false, "Negotiation ended with no deal.");
             yield break;
         }
 
+        // Otherwise progress to next round
         currentRoundIndex++;
         LoadRound(currentRoundIndex);
     }
 
-    // Keeps things “simulation-y” without getting complicated.
-    // You can delete this if you want purely ChoiceData-driven outcomes.
-    private void ApplyPersonalityModifier(ChoiceData picked)
+    private bool TryCloseDeal()
     {
-        if (customer == null) return;
+        // Optional gate: if chance is extremely low, don't even roll
+        if (dealChance < minChanceToClose)
+            return false;
 
-        // Example: Impulsive customers hate long haggling (patience drains faster on negative patience choices)
-        // Analytical customers respond better to options that increase deal chance.
-        // Cautious customers are more sensitive to pressure (negative dealChance choices hurt more).
-        switch (customer.Personality)
+        // Roll random
+        float roll = Random.value; // 0..1
+        bool success = roll <= dealChance;
+
+        // Feedback (helps player understand what happened)
+        if (resultText != null)
         {
-            case PersonalityType.Impulsive:
-                if (picked.PatienceDelta < 0) patience = Mathf.Clamp(patience - 3f, 0f, patienceMax);
-                break;
-
-            case PersonalityType.Analytical:
-                if (picked.DealChanceDelta > 0f) dealChance = Mathf.Clamp01(dealChance + 0.03f);
-                break;
-
-            case PersonalityType.Cautious:
-                if (picked.DealChanceDelta < 0f) dealChance = Mathf.Clamp01(dealChance - 0.03f);
-                break;
+            string rollStr = roll.ToString("0.00");
+            string chanceStr = dealChance.ToString("0.00");
+            resultText.text = success
+                ? $"Deal closed!)"
+                : $" Not yet.)";
         }
+
+        return success;
     }
 
     private void EndNegotiation(bool success, string message)
@@ -202,18 +228,7 @@ public class NegotiationController : MonoBehaviour
 
         SetChoicesInteractable(false);
 
-        // Send results to your GameManager (if you have one)
-        // Example (uncomment if you made GameManager.Instance like earlier):
-        /*
-        if (GameManager.Instance != null)
-        {
-            if (success) GameManager.Instance.money += Mathf.Max(0, profit);
-            GameManager.Instance.xp += success ? 100 : 30;
-            GameManager.Instance.reputation += success ? 5 : -2;
-        }
-        */
-
-        Debug.Log($"Negotiation ended | success={success} | profit=${profit} | dealChance={dealChance:0.00} | patience={patience:0}/{patienceMax:0}");
+        Debug.Log($"Ended | success={success} | profit=${profit} | chance={dealChance:0.00} | patience={patience:0}/{patienceMax:0}");
     }
 
     private void RefreshUI()
@@ -239,6 +254,5 @@ public class NegotiationController : MonoBehaviour
 [System.Serializable]
 public class RoundChoices
 {
-    // Must be EXACTLY 3 ChoiceData assets in each round for this controller.
     public ChoiceData[] choices = new ChoiceData[3];
 }
