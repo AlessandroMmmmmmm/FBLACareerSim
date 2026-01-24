@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5806668621328469382}
   - component: {fileID: 5479938457487894340}
   - component: {fileID: 1207565900837681686}
-  m_Layer: 0
+  - component: {fileID: -5916171400519377992}
+  m_Layer: 7
   m_Name: Box 1
   m_TagString: PickupZone
   m_Icon: {fileID: 0}
@@ -141,3 +142,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1242201112104700404, guid: e45be126a51afea479542063f06866f0, type: 3}
+--- !u!114 &-5916171400519377992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6773915570499476573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b688babd86f3547a41b2e4ac34dbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  isScanned: 0

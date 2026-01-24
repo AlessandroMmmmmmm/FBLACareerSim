@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\BoxSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\BoxSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\loadingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\loadingzone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\securecargobutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\securecargobutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\interactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\packagespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\packagespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\package.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\owen chau\\documents\\github\\fblacareersim\\2d_isotilemaps_project\\assets\\scripts\\truckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +42,72 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SecureCargoButton.cs",
+              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\SecureCargoButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SecureCargoButton.cs",
+              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\SecureCargoButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SecureCargoButton.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAYwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T01:52:21.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "InteractionManager.cs",
+              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\InteractionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InteractionManager.cs",
+              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\InteractionManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InteractionManager.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T01:49:13.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoadingZone.cs",
+              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\LoadingZone.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LoadingZone.cs",
+              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\LoadingZone.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LoadingZone.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T01:47:49.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PackageSpawner.cs",
+              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\PackageSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PackageSpawner.cs",
+              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\PackageSpawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PackageSpawner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T01:35:41.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Package.cs",
+              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\Package.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Package.cs",
+              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\Package.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Package.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T01:28:54.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "CameraFollow.cs",
               "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CameraFollow.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CameraFollow.cs",
@@ -38,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "TruckController.cs",
               "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\TruckController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TruckController.cs",
@@ -46,21 +127,7 @@
               "RelativeToolTip": "Assets\\Scripts\\TruckController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAYwDsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T02:17:30.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BoxSpawner.cs",
-              "DocumentMoniker": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\BoxSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BoxSpawner.cs",
-              "ToolTip": "C:\\Users\\Owen Chau\\Documents\\GitHub\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\BoxSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BoxSpawner.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:00:48.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-22T02:17:30.128Z"
             }
           ]
         }

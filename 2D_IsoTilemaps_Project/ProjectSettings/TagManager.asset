@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - PickupZone
   - DropOffZone
+  - Road
+  - LoadingZone
+  - PickupZone
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Truck
-  - 
+  - Packages
   - 
   - 
   - 
