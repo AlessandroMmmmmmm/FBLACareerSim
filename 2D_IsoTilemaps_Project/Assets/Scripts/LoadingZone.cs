@@ -2,41 +2,49 @@ using UnityEngine;
 
 public class LoadingZone : MonoBehaviour
 {
+    public WarehouseManager warehouseManager;
+    public DeliveryManager deliveryManager;
+    [Header("Startup Objective")]
+    public GameObject globalObjectiveText; // Drag 'GlobalObjectiveText' here
+    private bool objectiveCompleted = false;
     public bool isTruckInZone = false;
-
-    [Header("UI Elements")]
-    public GameObject loadingInstructionsUI; // Text: "Park here to load"
-    public GameObject secureButton;          // The button that calls SecureCargo
-
-    void Start()
-    {
-        // Ensure UI is hidden when the career level starts
-        if (loadingInstructionsUI != null) loadingInstructionsUI.SetActive(false);
-        if (secureButton != null) secureButton.SetActive(false);
-    }
-
+    public GameObject sharedHUD;
+    //
     void OnTriggerEnter(Collider other)
     {
-        // Requirement: Your truck MUST have the "Player" tag
         if (other.CompareTag("Player"))
         {
-            isTruckInZone = true;
 
-            if (loadingInstructionsUI != null) loadingInstructionsUI.SetActive(true);
-            if (secureButton != null) secureButton.SetActive(true);
+            if (!objectiveCompleted)
+            {
+                if (globalObjectiveText != null)
+                {
+                    // Hard Fix: Physically delete the object from the game
+                    Destroy(globalObjectiveText);
+                    Debug.Log("Objective Destroyed Permanently.");
+                }
+                objectiveCompleted = true;
+            }
+            // 1. Show the Timer group immediately
+            if (sharedHUD != null) sharedHUD.SetActive(true);
 
-            Debug.Log("Entered Loading Zone: Career Task - Load and Secure Cargo");
+            // 2. Start the clock logic
+            if (deliveryManager != null) deliveryManager.StartShiftTimer();
+
+            // 3. Trigger warehouse instructions
+            if (warehouseManager != null) warehouseManager.SetInLoadingZone(true);
         }
     }
+
+
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isTruckInZone = false;
-
-            if (loadingInstructionsUI != null) loadingInstructionsUI.SetActive(false);
-            if (secureButton != null) secureButton.SetActive(false);
+            if (warehouseManager != null)
+                warehouseManager.SetInLoadingZone(false);
         }
     }
 }

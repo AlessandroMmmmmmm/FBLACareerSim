@@ -16,8 +16,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     public GameObject borderPrefab;
     void Start()
     {
-        InitializeWaveFunction();
-        StartCoroutine(CollapseOverTime());
+        //InitializeWaveFunction();
+        //StartCoroutine(CollapseOverTime());
     }
     private void LoadData()
     {
