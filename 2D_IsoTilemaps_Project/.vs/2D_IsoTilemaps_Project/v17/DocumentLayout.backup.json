@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\SalesEncounterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\SalesEncounterController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarCardUI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\CarCardUI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CustomerData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\CustomerData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarModelData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\CarModelData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\NegotiationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\NegotiationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\ChoiceData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\ChoiceData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CustomerData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CarSales\\CustomerData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,19 +39,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SalesEncounterController.cs",
+              "DocumentMoniker": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\SalesEncounterController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\SalesEncounterController.cs",
+              "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\SalesEncounterController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CarSales\\SalesEncounterController.cs",
+              "ViewState": "AgIAACoBAAAAAAAAAAAqwE4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T03:29:25.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarCardUI.cs",
+              "DocumentMoniker": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarCardUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\CarCardUI.cs",
+              "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarCardUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CarSales\\CarCardUI.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAqwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T03:28:51.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CarModelData.cs",
+              "DocumentMoniker": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarModelData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\CarModelData.cs",
+              "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CarModelData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CarSales\\CarModelData.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAqwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T03:27:27.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "NegotiationController.cs",
               "DocumentMoniker": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\NegotiationController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\NegotiationController.cs",
               "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\NegotiationController.cs",
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\NegotiationController.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAYwNUAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAawC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T02:26:15.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ChoiceData.cs",
               "DocumentMoniker": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\ChoiceData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\ChoiceData.cs",
@@ -47,8 +98,7 @@
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\ChoiceData.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAYwA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T02:23:57.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T02:23:57.994Z"
             },
             {
               "$type": "Document",
@@ -58,7 +108,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\CarSales\\CustomerData.cs",
               "ToolTip": "C:\\Users\\raove\\Documents\\Github\\FBLACareerSim\\2D_IsoTilemaps_Project\\Assets\\Scripts\\CarSales\\CustomerData.cs",
               "RelativeToolTip": "Assets\\Scripts\\CarSales\\CustomerData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T02:20:47.833Z",
               "EditorCaption": ""

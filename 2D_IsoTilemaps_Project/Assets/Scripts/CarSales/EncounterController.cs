@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-public class NegotiationController : MonoBehaviour
+public class EncounterController : MonoBehaviour
 {
     [Header("Customer")]
     [SerializeField] private CustomerData customer;
