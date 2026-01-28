@@ -8,8 +8,8 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
-/[MemoryCaptures]/
-/[UserSettings]/
+/[Mm]emoryCaptures/
+/[Uu]ser[Ss]ettings/
 
 # Asset store packages can be redownloaded
 /[Aa]ssets/AssetStoreTools*
@@ -40,6 +40,21 @@ sysinfo.txt
 *.unitypackage
 *.bundle
 
+# Crashlytics generated file
+crashlytics-build.properties
+
+# ==========================================
+# IDE Files (ADD THESE)
+# ==========================================
+
+# Visual Studio
+.vs/
+.vscode/
+
+# Rider
+.idea/
+*.DotSettings.user
+
 # ==========================================
 # Operating System Files
 # ==========================================
@@ -60,3 +75,16 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+# ==========================================
+# Unity Plastic SCM (ADD IF USING)
+# ==========================================
+.plastic/
+
+# ==========================================
+# Temporary Files (ADD THESE)
+# ==========================================
+*.tmp
+*.log
+*.stackdump
+*~
