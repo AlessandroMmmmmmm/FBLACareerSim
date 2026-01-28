@@ -17,6 +17,27 @@ public class ProgramManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ProgramManager Start() called");
+        
+        // Check if player reference is assigned
+        if (player == null)
+        {
+            Debug.Log("Player reference is null, trying to find it...");
+            player = FindFirstObjectByType<PlayerController>();
+            if (player == null)
+            {
+                Debug.LogError("ProgramManager: No PlayerController found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found PlayerController: " + player.gameObject.name);
+            }
+        }
+        else
+        {
+            Debug.Log("Player reference already assigned: " + player.gameObject.name);
+        }
+        
         moveDropdown.ClearOptions();
 
         List<string> options = new List<string>();
@@ -87,6 +108,17 @@ public class ProgramManager : MonoBehaviour
 
     public void RunProgram()
     {
+        Debug.Log("RunProgram called");
+        Debug.Log("Player is: " + (player == null ? "NULL" : player.gameObject.name));
+        Debug.Log("Program count: " + program.Count);
+        Debug.Log("IsRunning: " + isRunning);
+        
+        if (player == null)
+        {
+            Debug.LogError("ProgramManager: Player reference is missing!");
+            return;
+        }
+        
         if (isRunning || program.Count == 0) return;
         StartCoroutine(RunProgramRoutine());
     }

@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   tilemap: {fileID: 526607797}
-  player: {fileID: 1880860829}
+  player: {fileID: 1880860834}
   programManager: {fileID: 1563578956}
   floorTile: {fileID: 11400000, guid: 7c457362d71146a42a885a404c42ca2b, type: 2}
   wallTile: {fileID: 11400000, guid: 8b073e4accc8a6a449bb159aac07a57d, type: 2}
@@ -3553,7 +3553,6 @@ GameObject:
   - component: {fileID: 1563578955}
   - component: {fileID: 1563578954}
   - component: {fileID: 1563578956}
-  - component: {fileID: 1563578957}
   m_Layer: 5
   m_Name: Panel_Logic
   m_TagString: Untagged
@@ -3632,34 +3631,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563578952}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd17d2a25f8487408d0f9b4ffc9fc74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProgramManager
-  moveDropdown: {fileID: 449300789}
-  programLinePrefab: {fileID: 1191441446487283175, guid: 775bf52f7a694a7498732ed761644600,
-    type: 3}
-  contentParent: {fileID: 1349138561}
-  player: {fileID: 0}
-  stepDelay: 0.6
---- !u!114 &1563578957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563578952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd17d2a25f8487408d0f9b4ffc9fc74, type: 3}
+  m_Script: {fileID: 11500000, guid: 537649ddfdd88394c99e7107f14993e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgramManager
   moveDropdown: {fileID: 449300789}
   programLinePrefab: {fileID: 1191441446487283175, guid: 775bf52f7a694a7498732ed761644600,
     type: 3}
-  contentParent: {fileID: 1349138561}
-  player: {fileID: 0}
+  contentParent: {fileID: 1814265368}
+  player: {fileID: 1880860834}
   stepDelay: 0.6
 --- !u!1 &1571132921
 GameObject:
@@ -4154,7 +4135,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2079923369, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2079923369, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
       propertyPath: movementSpeed
@@ -4296,7 +4277,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3339481645408498929, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1880860829}
+      addedObject: {fileID: 1880860834}
   m_SourcePrefab: {fileID: 100100000, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
 --- !u!1 &1739681538
 GameObject:
@@ -4654,7 +4635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
   collisionTilemap: {fileID: 0}
   targetTileName: desert-sliced_04
---- !u!114 &1880860829
+--- !u!114 &1880860834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4663,7 +4644,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1880860821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7299d3a68a930b5458f1e68846078395, type: 3}
+  m_Script: {fileID: 11500000, guid: 60972bc4a4da4954d95ea31d9e51e60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   tilemap: {fileID: 526607797}
