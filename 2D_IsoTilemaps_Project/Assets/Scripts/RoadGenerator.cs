@@ -32,12 +32,15 @@ public class RoadGenerator : MonoBehaviour
     public float maxZPosition = 50f; // Don't generate anything past this Z value
 
     [Header("Warehouse Connection")]
+    [Tooltip("Enable to create roads from warehouse entrances into the city")]
     public bool connectToWarehouse = true;
+    [Tooltip("First warehouse entrance position (creates road extending into city)")]
     public Vector3 warehouseEntrance1 = new Vector3(5f, 0f, 50f);
+    [Tooltip("Second warehouse entrance position (creates road extending into city)")]
     public Vector3 warehouseEntrance2 = new Vector3(-10f, 0f, 50f);
 
     [Header("Fixed Points")]
-    public Transform loadingZone; // Starting point
+    public Transform loadingZone; // Starting point (warehouse loading zone at X=-1.5, Z=5)
     public Transform[] dropOffPoints; // Your 3 delivery locations (fixed positions)
 
     [Header("Road Style")]
@@ -107,6 +110,15 @@ public class RoadGenerator : MonoBehaviour
             return;
         }
 
+        // CRITICAL: Reserve drop-off tiles FIRST before anything else
+        ReserveDropOffTiles();
+
+        // Validate drop-off spacing
+        if (!ValidateDropOffSpacing())
+        {
+            Debug.LogWarning("Drop-off points are too close together! This may cause shared roads.");
+        }
+
         // Generate main paths from loading zone to each drop-off
         GenerateMainPaths();
 
@@ -137,6 +149,48 @@ public class RoadGenerator : MonoBehaviour
         Debug.Log("Road network generated successfully!");
     }
 
+    private void ReserveDropOffTiles()
+    {
+        // Reserve drop-off tiles FIRST before any other generation
+        foreach (Transform dropOff in dropOffPoints)
+        {
+            Vector2Int dropOffGrid = WorldToGrid(dropOff.position);
+
+            Debug.Log($"Reserving drop-off at world {dropOff.position} = grid ({dropOffGrid.x}, {dropOffGrid.y})");
+
+            if (roadGrid.IsValid(dropOffGrid.x, dropOffGrid.y))
+            {
+                roadGrid.hasBuilding[dropOffGrid.x, dropOffGrid.y] = true; // Mark as reserved
+            }
+            else
+            {
+                Debug.LogError($"Drop-off grid position ({dropOffGrid.x}, {dropOffGrid.y}) is OUT OF BOUNDS!");
+            }
+        }
+
+        // Reserve additional empty tiles for delivery zones with box colliders
+        Vector3[] additionalEmptyTiles = {
+            new Vector3(-60f, 0f, -140f),
+            new Vector3(20f, 0f, -200f)
+        };
+
+        foreach (Vector3 emptyTilePos in additionalEmptyTiles)
+        {
+            Vector2Int emptyGrid = WorldToGrid(emptyTilePos);
+
+            Debug.Log($"Reserving additional empty tile at world {emptyTilePos} = grid ({emptyGrid.x}, {emptyGrid.y})");
+
+            if (roadGrid.IsValid(emptyGrid.x, emptyGrid.y))
+            {
+                roadGrid.hasBuilding[emptyGrid.x, emptyGrid.y] = true; // Mark as reserved
+            }
+            else
+            {
+                Debug.LogError($"Additional empty tile at ({emptyGrid.x}, {emptyGrid.y}) is OUT OF BOUNDS!");
+            }
+        }
+    }
+
     private bool ValidateSetup()
     {
         if (loadingZone == null)
@@ -160,6 +214,27 @@ public class RoadGenerator : MonoBehaviour
         return true;
     }
 
+    private bool ValidateDropOffSpacing()
+    {
+        // Check if drop-off points are at least 2 grid cells apart (to avoid overlapping approach roads)
+        float minDistance = gridSize * 2; // At least 2 tiles apart
+
+        for (int i = 0; i < dropOffPoints.Length; i++)
+        {
+            for (int j = i + 1; j < dropOffPoints.Length; j++)
+            {
+                float distance = Vector3.Distance(dropOffPoints[i].position, dropOffPoints[j].position);
+                if (distance < minDistance)
+                {
+                    Debug.LogWarning($"Drop-off {i} and {j} are only {distance:F1} units apart (minimum recommended: {minDistance}). They may share approach roads!");
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     private void ClearOldRoads()
     {
         // Find or create road parent
@@ -177,21 +252,119 @@ public class RoadGenerator : MonoBehaviour
     {
         Vector2Int startGrid = WorldToGrid(loadingZone.position);
 
-        // Create path to each drop-off point
+        // Mark loading zone as occupied
+        if (roadGrid.IsValid(startGrid.x, startGrid.y))
+        {
+            roadGrid.occupied[startGrid.x, startGrid.y] = true;
+        }
+
+        Debug.Log($"Loading zone at world {loadingZone.position} = grid ({startGrid.x}, {startGrid.y})");
+
+        // Create exit roads FROM each drop-off extending outward (away from grid center)
         foreach (Transform dropOff in dropOffPoints)
         {
-            Vector2Int endGrid = WorldToGrid(dropOff.position);
-            List<Vector2Int> path = GeneratePath(startGrid, endGrid);
+            GenerateExitRoad(dropOff.position);
+        }
 
-            // Mark these grid cells as occupied
-            foreach (Vector2Int cell in path)
+        // Create paths from loading zone to the exit roads (not to drop-offs directly)
+        foreach (Transform dropOff in dropOffPoints)
+        {
+            Vector2Int dropOffGrid = WorldToGrid(dropOff.position);
+
+            // Find the exit road tile (adjacent to drop-off)
+            Vector2Int exitTile = FindAdjacentRoadTile(dropOffGrid);
+
+            if (exitTile != Vector2Int.zero)
             {
-                if (roadGrid.IsValid(cell.x, cell.y))
+                List<Vector2Int> path = GeneratePath(startGrid, exitTile);
+
+                // Mark all path cells as occupied
+                foreach (Vector2Int cell in path)
                 {
-                    roadGrid.occupied[cell.x, cell.y] = true;
+                    if (roadGrid.IsValid(cell.x, cell.y))
+                    {
+                        roadGrid.occupied[cell.x, cell.y] = true;
+                    }
                 }
             }
         }
+    }
+
+    private void GenerateExitRoad(Vector3 dropOffWorldPos)
+    {
+        Vector2Int dropOffGrid = WorldToGrid(dropOffWorldPos);
+
+        // Determine direction to extend (away from grid center toward edge)
+        Vector2Int centerGrid = new Vector2Int(gridWidth / 2, gridHeight / 2);
+        Vector2Int directionFromCenter = dropOffGrid - centerGrid;
+
+        // Normalize to get primary direction
+        Vector2Int exitDirection = Vector2Int.zero;
+        if (Mathf.Abs(directionFromCenter.x) > Mathf.Abs(directionFromCenter.y))
+        {
+            exitDirection = new Vector2Int(directionFromCenter.x > 0 ? 1 : -1, 0);
+        }
+        else
+        {
+            exitDirection = new Vector2Int(0, directionFromCenter.y > 0 ? 1 : -1);
+        }
+
+        // Create a straight road extending outward for 3-5 tiles
+        int exitLength = Random.Range(3, 6);
+        Vector2Int currentTile = dropOffGrid + exitDirection;
+
+        for (int i = 0; i < exitLength; i++)
+        {
+            if (!roadGrid.IsValid(currentTile.x, currentTile.y)) break;
+            if (roadGrid.hasBuilding[currentTile.x, currentTile.y]) break; // Don't overwrite other drop-offs
+
+            roadGrid.occupied[currentTile.x, currentTile.y] = true;
+            currentTile += exitDirection;
+        }
+    }
+
+    private Vector2Int FindAdjacentRoadTile(Vector2Int dropOffGrid)
+    {
+        // Find the road tile adjacent to drop-off
+        Vector2Int[] directions = {
+            Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
+        };
+
+        foreach (Vector2Int dir in directions)
+        {
+            Vector2Int adjacentTile = dropOffGrid + dir;
+            if (roadGrid.IsValid(adjacentTile.x, adjacentTile.y) && roadGrid.occupied[adjacentTile.x, adjacentTile.y])
+            {
+                return adjacentTile;
+            }
+        }
+
+        // If no road found, return the tile in the most common direction
+        return dropOffGrid + Vector2Int.down;
+    }
+
+    private Vector2Int FindApproachTile(Vector2Int dropOffGrid)
+    {
+        // Try to find an approach from the south (negative Y, which is negative Z in world)
+        // Priority: South, West, East, North
+        Vector2Int[] directions = {
+            Vector2Int.down,  // Approach from south
+            Vector2Int.left,  // Approach from west
+            Vector2Int.right, // Approach from east
+            Vector2Int.up     // Approach from north
+        };
+
+        foreach (Vector2Int dir in directions)
+        {
+            Vector2Int approach = dropOffGrid + dir;
+            if (roadGrid.IsValid(approach.x, approach.y))
+            {
+                return approach;
+            }
+        }
+
+        // Fallback
+        return dropOffGrid + Vector2Int.down;
     }
 
     private List<Vector2Int> GeneratePath(Vector2Int start, Vector2Int end)
@@ -263,38 +436,83 @@ public class RoadGenerator : MonoBehaviour
 
     private void GenerateWarehouseRoads()
     {
+        // WAREHOUSE CONNECTION EXPLAINED:
+        // Your warehouse loading zone is at X=-1.5, Z=5
+        // The warehouse building itself is at Z=50 with 2 entrance/exit points at X=5 and X=-10
+        // This creates straight roads extending from those entrances TOWARD THE LOADING ZONE (negative Z direction)
+        // These roads connect the warehouse exits at Z=50 to your loading zone at Z=5
+        // Result: You can drive from the loading zone through the city and back to the warehouse area
+
         // Generate straight roads from warehouse entrances toward the city
         Vector2Int entrance1Grid = WorldToGrid(warehouseEntrance1);
         Vector2Int entrance2Grid = WorldToGrid(warehouseEntrance2);
 
         // Create straight roads going south (negative Z) from each entrance
-        // Continue until we hit an existing road or reach a reasonable distance
-        int maxRoadLength = 10; // Maximum cells to extend
+        // Continue until we hit an existing road to ensure connection
+        int maxRoadLength = 20; // Increased to ensure connection
 
         // Entrance 1 road
+        bool connected1 = false;
         for (int i = 0; i < maxRoadLength; i++)
         {
             Vector2Int currentCell = new Vector2Int(entrance1Grid.x, entrance1Grid.y - i);
 
             if (!roadGrid.IsValid(currentCell.x, currentCell.y)) break;
 
-            // Stop if we hit an existing road
-            if (roadGrid.occupied[currentCell.x, currentCell.y] && i > 0) break;
+            // Check if we hit an existing road (connection made!)
+            if (roadGrid.occupied[currentCell.x, currentCell.y] && i > 0)
+            {
+                connected1 = true;
+                break;
+            }
 
             roadGrid.occupied[currentCell.x, currentCell.y] = true;
         }
 
+        // If entrance 1 didn't connect, force a connection to loading zone
+        if (!connected1)
+        {
+            Vector2Int loadingGrid = WorldToGrid(loadingZone.position);
+            List<Vector2Int> connectPath = GeneratePath(entrance1Grid, loadingGrid);
+            foreach (Vector2Int cell in connectPath)
+            {
+                if (roadGrid.IsValid(cell.x, cell.y))
+                {
+                    roadGrid.occupied[cell.x, cell.y] = true;
+                }
+            }
+        }
+
         // Entrance 2 road
+        bool connected2 = false;
         for (int i = 0; i < maxRoadLength; i++)
         {
             Vector2Int currentCell = new Vector2Int(entrance2Grid.x, entrance2Grid.y - i);
 
             if (!roadGrid.IsValid(currentCell.x, currentCell.y)) break;
 
-            // Stop if we hit an existing road
-            if (roadGrid.occupied[currentCell.x, currentCell.y] && i > 0) break;
+            // Check if we hit an existing road (connection made!)
+            if (roadGrid.occupied[currentCell.x, currentCell.y] && i > 0)
+            {
+                connected2 = true;
+                break;
+            }
 
             roadGrid.occupied[currentCell.x, currentCell.y] = true;
+        }
+
+        // If entrance 2 didn't connect, force a connection to loading zone
+        if (!connected2)
+        {
+            Vector2Int loadingGrid = WorldToGrid(loadingZone.position);
+            List<Vector2Int> connectPath = GeneratePath(entrance2Grid, loadingGrid);
+            foreach (Vector2Int cell in connectPath)
+            {
+                if (roadGrid.IsValid(cell.x, cell.y))
+                {
+                    roadGrid.occupied[cell.x, cell.y] = true;
+                }
+            }
         }
     }
 
@@ -308,7 +526,7 @@ public class RoadGenerator : MonoBehaviour
         {
             attempts++;
 
-            // Pick a random occupied cell
+            // Pick a random occupied cell (ensures connection to existing network)
             int x = Random.Range(0, gridWidth);
             int y = Random.Range(0, gridHeight);
 
@@ -325,14 +543,9 @@ public class RoadGenerator : MonoBehaviour
             // Check if valid and not occupied
             if (roadGrid.IsValid(newCell.x, newCell.y) && !roadGrid.occupied[newCell.x, newCell.y])
             {
-                // Check if this would connect to another road (avoid isolated segments)
-                int adjacentRoads = CountAdjacentRoads(newCell.x, newCell.y);
-
-                if (adjacentRoads >= 1 || Random.value < branchingChance)
-                {
-                    roadGrid.occupied[newCell.x, newCell.y] = true;
-                    added++;
-                }
+                // This road segment is guaranteed to be connected since it extends from existing road
+                roadGrid.occupied[newCell.x, newCell.y] = true;
+                added++;
             }
         }
     }
@@ -370,6 +583,9 @@ public class RoadGenerator : MonoBehaviour
 
                     // Don't place roads past maxZPosition
                     if (worldPos.z > maxZPosition) continue;
+
+                    // Don't place roads on drop-off tiles
+                    if (roadGrid.hasBuilding[x, y]) continue;
 
                     GameObject roadPrefab = DetermineRoadType(x, y);
                     Quaternion rotation = DetermineRoadRotation(x, y);
@@ -561,9 +777,18 @@ public class RoadGenerator : MonoBehaviour
 
     private Vector2Int WorldToGrid(Vector3 worldPos)
     {
+        // Convert world position to grid coordinates
+        // Subtract the Z offset first to get actual grid position
+        float zOffset = maxZPosition - (gridSize / 2);
+        float adjustedZ = worldPos.z - zOffset;
+
         int x = Mathf.RoundToInt(worldPos.x / gridSize) + gridWidth / 2;
-        int y = Mathf.RoundToInt(worldPos.z / gridSize) + gridHeight / 2;
-        return new Vector2Int(Mathf.Clamp(x, 0, gridWidth - 1), Mathf.Clamp(y, 0, gridHeight - 1));
+        int y = Mathf.RoundToInt(adjustedZ / gridSize) + gridHeight / 2;
+
+        return new Vector2Int(
+            Mathf.Clamp(x, 0, gridWidth - 1),
+            Mathf.Clamp(y, 0, gridHeight - 1)
+        );
     }
 
     private void PlaceBuildings()
@@ -572,6 +797,9 @@ public class RoadGenerator : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
+                // CRITICAL: Skip if tile is reserved (drop-off or already has building)
+                if (roadGrid.hasBuilding[x, y]) continue;
+
                 // Skip if there's already a road here
                 if (roadGrid.occupied[x, y]) continue;
 
@@ -624,6 +852,22 @@ public class RoadGenerator : MonoBehaviour
                     GameObject building = Instantiate(buildingPrefab, worldPos, rotation, roadParent);
                     building.name = $"Building_{x}_{y}";
 
+                    // Add penalty component if not already present
+                    if (building.GetComponent<OffRoadPenalty>() == null)
+                    {
+                        OffRoadPenalty penalty = building.AddComponent<OffRoadPenalty>();
+                        penalty.penaltyType = OffRoadPenalty.PenaltyType.Building;
+                        penalty.penaltyPerSecond = 5f; // Higher penalty for buildings
+                    }
+
+                    // Add collider if not present
+                    if (building.GetComponent<Collider>() == null)
+                    {
+                        BoxCollider col = building.AddComponent<BoxCollider>();
+                        col.isTrigger = true;
+                        col.size = new Vector3(gridSize, 5f, gridSize);
+                    }
+
                     // Mark this cell as having a building
                     roadGrid.hasBuilding[x, y] = true;
                 }
@@ -659,20 +903,20 @@ public class RoadGenerator : MonoBehaviour
 
     private Quaternion GetBuildingRotation(Vector2Int roadDirection)
     {
-        // Buildings face +Z by default, rotate to face the road
-        if (roadDirection == Vector2Int.up) // Road to the north, building faces north
+        // Buildings face +Z by default, rotate to face the road, then add 180 degrees to turn away
+        if (roadDirection == Vector2Int.up) // Road to the north, building faces south (away from road)
         {
             return Quaternion.Euler(0, 180, 0);
         }
-        else if (roadDirection == Vector2Int.right) // Road to the east, building faces east
+        else if (roadDirection == Vector2Int.right) // Road to the east, building faces west (away from road)
         {
             return Quaternion.Euler(0, 270, 0);
         }
-        else if (roadDirection == Vector2Int.down) // Road to the south, building faces south
+        else if (roadDirection == Vector2Int.down) // Road to the south, building faces north (away from road)
         {
             return Quaternion.Euler(0, 0, 0);
         }
-        else // Road to the west, building faces west
+        else // Road to the west, building faces east (away from road)
         {
             return Quaternion.Euler(0, 90, 0);
         }
@@ -694,6 +938,22 @@ public class RoadGenerator : MonoBehaviour
 
                     GameObject grass = Instantiate(grassTilePrefab, worldPos, Quaternion.identity, roadParent);
                     grass.name = $"Grass_{x}_{y}";
+
+                    // Add penalty component if not already present
+                    if (grass.GetComponent<OffRoadPenalty>() == null)
+                    {
+                        OffRoadPenalty penalty = grass.AddComponent<OffRoadPenalty>();
+                        penalty.penaltyType = OffRoadPenalty.PenaltyType.Grass;
+                        penalty.penaltyPerSecond = 2f;
+                    }
+
+                    // Add collider if not present
+                    if (grass.GetComponent<Collider>() == null)
+                    {
+                        BoxCollider col = grass.AddComponent<BoxCollider>();
+                        col.isTrigger = true;
+                        col.size = new Vector3(gridSize, 2f, gridSize);
+                    }
                 }
             }
         }
@@ -703,7 +963,14 @@ public class RoadGenerator : MonoBehaviour
     {
         float worldX = (x - gridWidth / 2) * gridSize;
         float worldZ = (y - gridHeight / 2) * gridSize;
-        return new Vector3(worldX, 0.509f, worldZ);
+
+        // Shift grid toward negative Z to expand downward
+        // Top edge should stay near maxZPosition (Z=50)
+        // As gridHeight increases, grid expands toward negative Z
+        float zOffset = maxZPosition - (gridSize / 2); // Keep top near Z=50
+        worldZ += zOffset;
+
+        return new Vector3(worldX, 0.503f, worldZ);
     }
 
     private void OnDrawGizmos()

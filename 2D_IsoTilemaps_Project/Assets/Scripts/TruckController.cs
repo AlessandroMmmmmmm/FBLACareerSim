@@ -14,7 +14,6 @@ public class ArcadeTruck : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // Freeze X and Z rotation so the truck doesn't tip over
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
         if (packageVisual != null) packageVisual.SetActive(false);
     }
 
@@ -52,7 +51,6 @@ public class ArcadeTruck : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PickupZone") && !hasPackage)
@@ -65,6 +63,30 @@ public class ArcadeTruck : MonoBehaviour
         {
             hasPackage = false;
             if (packageVisual) packageVisual.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Call this method when SecureCargo button is clicked
+    /// </summary>
+    public void LoadPackage()
+    {
+        hasPackage = true;
+        if (packageVisual != null)
+        {
+            packageVisual.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Call this method when package is delivered
+    /// </summary>
+    public void UnloadPackage()
+    {
+        hasPackage = false;
+        if (packageVisual != null)
+        {
+            packageVisual.SetActive(false);
         }
     }
 }
