@@ -12,13 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82f9bbf887360046a8607cf1abfe59c, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelNumber: 0
-  levelName: 
-  description: 
+  levelNumber: 3
+  levelName: System Integration
+  description: Activate both servers, avoid security scans, deploy to production!
   gridSize: {x: 10, y: 10}
-  startPosition: {x: 0, y: 0}
-  goalPosition: {x: 0, y: 0}
-  obstacles: []
+  startPosition: {x: 1, y: 1}
+  goalPosition: {x: 8, y: 8}
+  obstacles:
+  - type: 0
+    positions:
+    - {x: 2, y: 0}
+    - {x: 2, y: 1}
+    - {x: 2, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    patrolPath: []
+    moveSpeed: 0
+  - type: 0
+    positions:
+    - {x: 6, y: 3}
+    - {x: 6, y: 4}
+    - {x: 6, y: 5}
+    - {x: 6, y: 6}
+    - {x: 6, y: 7}
+    patrolPath: []
+    moveSpeed: 0
+  - type: 2
+    positions:
+    - {x: 3, y: 2}
+    patrolPath: []
+    moveSpeed: 0
+  - type: 2
+    positions:
+    - {x: 7, y: 5}
+    patrolPath: []
+    moveSpeed: 0
+  - type: 1
+    positions:
+    - {x: 5, y: 2}
+    patrolPath:
+    - {x: 5, y: 2}
+    - {x: 5, y: 4}
+    - {x: 3, y: 4}
+    - {x: 3, y: 2}
+    - {x: 5, y: 2}
+    moveSpeed: 2
   maxMoves: -1
   restrictMoveTypes: 0
   allowedMoves: 
