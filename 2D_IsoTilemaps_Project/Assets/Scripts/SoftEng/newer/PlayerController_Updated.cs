@@ -5,6 +5,13 @@
 // {
 //     public Tilemap tilemap;
 //     public float moveSpeed = 4f;
+    
+//     [Header("Tile References")]
+//     public TileBase wallTile; // Assign your wall tile here
+    
+//     [Header("Isometric Alignment")]
+//     [Tooltip("Adjust this Y value to fix vertical alignment (try -0.25 to -0.5)")]
+//     public float yOffset = -0.25f;
 
 //     private Vector3Int gridPosition;
 //     private bool isMoving = false;
@@ -23,11 +30,28 @@
 //         characterRenderer = GetComponentInChildren<IsometricCharacterRenderer>();
 //         levelManager = FindFirstObjectByType<LevelManager>();
 
-//         gridPosition = tilemap.WorldToCell(transform.position);
-//         gridPosition.z = tilemap.origin.z;
-//         transform.position = tilemap.GetCellCenterWorld(gridPosition);
+//         // Convert current world position to grid cell position
+//         Vector3Int cellPos = tilemap.WorldToCell(transform.position);
+        
+//         // Get the actual world center of that cell
+//         Vector3 cellCenter = tilemap.GetCellCenterWorld(cellPos);
+        
+//         // Set grid position
+//         gridPosition = cellPos;
+//         gridPosition.z = 0;
+        
+//         // Apply offset and set position
+//         cellCenter.y += yOffset;
+//         transform.position = cellCenter;
 
+//         // Set initial facing direction
+//         if (characterRenderer != null)
+//         {
+//             characterRenderer.SetDirection(DirectionFromIndex());
+//         }
+        
 //         UpdateAnimationDirection(Vector2.zero);
+
 //     }
 
 //     public bool IsMoving()
@@ -40,28 +64,37 @@
 //         return gridPosition;
 //     }
     
-//     // public void SetGridPosition(Vector3Int newPosition)
-//     // {
-//     //     gridPosition = newPosition;
-//     //     gridPosition.z = tilemap.origin.z;
-//     //     transform.position = tilemap.GetCellCenterWorld(gridPosition);
-//     //     UpdateAnimationDirection(Vector2.zero);
-//     // }
-
 //     public void SetGridPosition(Vector3Int newPosition)
 //     {
 //         gridPosition = newPosition;
-//         gridPosition.z = tilemap.origin.z;
+//         gridPosition.z = 0;
+        
+//         // Get world center from tilemap (accounts for tilemap offset)
 //         Vector3 worldPos = tilemap.GetCellCenterWorld(gridPosition);
-//         worldPos.y -= 30f; // Add offset here - adjust value as needed
+//         worldPos.y += yOffset;
 //         transform.position = worldPos;
+        
+//         // Reset facing direction to default (NE - matches starting direction)
+//         facingIndex = 7;
+        
+//         // Update animation to show correct facing direction
+//         if (characterRenderer != null)
+//         {
+//             characterRenderer.SetDirection(DirectionFromIndex());
+//         }
+        
 //         UpdateAnimationDirection(Vector2.zero);
 //     }
     
 //     public void TeleportTo(Vector3Int targetCell)
 //     {
 //         gridPosition = targetCell;
-//         transform.position = tilemap.GetCellCenterWorld(targetCell);
+        
+//         // Apply offset consistently
+//         Vector3 worldPos = tilemap.GetCellCenterWorld(targetCell);
+//         worldPos.y += yOffset;
+//         transform.position = worldPos;
+        
 //         UpdateAnimationDirection(Vector2.zero);
 //     }
 
@@ -77,7 +110,10 @@
 //             gridPosition.z
 //         );
 
-//         if (!tilemap.HasTile(targetCell)) return;
+//         if (!tilemap.HasTile(targetCell))
+//         {
+//             return;
+//         }
         
 //         // Check if target is a wall
 //         if (IsWall(targetCell)) return;
@@ -88,13 +124,20 @@
     
 //     bool IsWall(Vector3Int position)
 //     {
-//         // Check if the tile at this position is a wall tile
-//         // This assumes you have a way to identify wall tiles
-//         // You might need to adjust this based on your tile setup
 //         TileBase tile = tilemap.GetTile(position);
         
-//         // You'll need to compare against your wall tile
-//         // For now, return false - implement this based on your tile setup
+//         // If wallTile is assigned, compare directly
+//         if (wallTile != null && tile == wallTile)
+//         {
+//             return true;
+//         }
+        
+//         // Fallback: check if tile name contains "Wall"
+//         if (tile != null && tile.name.Contains("Wall"))
+//         {
+//             return true;
+//         }
+        
 //         return false;
 //     }
 
@@ -112,7 +155,7 @@
 
 //     void UpdateAnimationDirection(Vector2 dir)
 //     {
-//         Debug.Log("Ayty: " + dir);
+//         Debug.Log("Animation Direction: " + dir);
 //         if (characterRenderer != null)
 //             characterRenderer.SetDirection(dir);
 //     }
@@ -154,9 +197,14 @@
 //         isMoving = true;
 
 //         Vector3 start = transform.position;
+        
+//         // Apply offset consistently
 //         Vector3 end = tilemap.GetCellCenterWorld(targetCell);
-//         end.y += 0.5f; // Add offset here - adjust value as needed
+//         end.y += yOffset;
 
+//         // Keep the walking animation direction active during movement
+//         // (it was already set in MoveForward before this coroutine started)
+        
 //         float t = 0;
 //         while (t < 1)
 //         {
@@ -169,6 +217,10 @@
 //         gridPosition = targetCell;
 //         isMoving = false;
 
+//         // Small delay before switching to idle to ensure animation plays
+//         yield return new WaitForSeconds(0.1f);
+
+//         // NOW switch to idle/static animation (after movement is done)
 //         UpdateAnimationDirection(Vector2.zero);
         
 //         if (levelManager != null)
@@ -224,6 +276,12 @@ public class PlayerController : MonoBehaviour
         cellCenter.y += yOffset;
         transform.position = cellCenter;
 
+        // Set initial facing direction
+        if (characterRenderer != null)
+        {
+            characterRenderer.SetDirection(DirectionFromIndex());
+        }
+        
         UpdateAnimationDirection(Vector2.zero);
         
         Debug.Log($"Player starting at grid position: {gridPosition}, world pos: {transform.position}");
@@ -248,6 +306,15 @@ public class PlayerController : MonoBehaviour
         Vector3 worldPos = tilemap.GetCellCenterWorld(gridPosition);
         worldPos.y += yOffset;
         transform.position = worldPos;
+        
+        // Reset facing direction to default (NE - matches starting direction)
+        facingIndex = 7;
+        
+        // Update animation to show correct facing direction
+        if (characterRenderer != null)
+        {
+            characterRenderer.SetDirection(DirectionFromIndex());
+        }
         
         UpdateAnimationDirection(Vector2.zero);
     }
@@ -287,7 +354,7 @@ public class PlayerController : MonoBehaviour
         // Check if target is a wall
         if (IsWall(targetCell)) return;
 
-        UpdateAnimationDirection(DirectionFromIndex());
+        // Don't update animation here - let the coroutine handle it
         StartCoroutine(MoveToCell(targetCell));
     }
     
@@ -326,6 +393,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAnimationDirection(Vector2 dir)
     {
+        Debug.Log("Animation Direction: " + dir);
         if (characterRenderer != null)
             characterRenderer.SetDirection(dir);
     }
@@ -365,13 +433,16 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator MoveToCell(Vector3Int targetCell)
     {
         isMoving = true;
+        
+        // Set walking animation direction at the START of movement
+        UpdateAnimationDirection(DirectionFromIndex());
 
         Vector3 start = transform.position;
         
         // Apply offset consistently
         Vector3 end = tilemap.GetCellCenterWorld(targetCell);
         end.y += yOffset;
-
+        
         float t = 0;
         while (t < 1)
         {
@@ -384,7 +455,7 @@ public class PlayerController : MonoBehaviour
         gridPosition = targetCell;
         isMoving = false;
 
-        // Switch to idle/static animation
+        // Switch to idle/static animation AFTER movement is complete
         UpdateAnimationDirection(Vector2.zero);
         
         if (levelManager != null)

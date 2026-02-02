@@ -222,7 +222,10 @@ public class LevelManager : MonoBehaviour
     
     public void RestartLevel()
     {
+        // Stop the current program execution but keep the commands
+        programManager.StopProgram();
+        
+        // Reload the same level (resets player position and obstacles)
         LoadLevel(currentLevelIndex);
-        programManager.ClearProgram();
     }
 }

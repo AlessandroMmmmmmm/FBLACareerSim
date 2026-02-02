@@ -8,8 +8,17 @@
 //     private int currentPathIndex = 0;
 //     private Tilemap tilemap;
 //     private float moveSpeed = 1f;
-//     private float moveTimer = 0f;
 //     private bool isMoving = false;
+//     private ProgramManager programManager;
+    
+//     [Header("Isometric Alignment")]
+//     [Tooltip("Y offset to align with tiles (should match player's yOffset)")]
+//     public float yOffset = -0.25f;
+    
+//     void Start()
+//     {
+//         programManager = FindFirstObjectByType<ProgramManager>();
+//     }
     
 //     public void SetPatrolPath(Vector2Int[] path, Tilemap map, float speed)
 //     {
@@ -20,21 +29,18 @@
 //         if (path.Length > 0)
 //         {
 //             Vector3Int startPos = new Vector3Int(path[0].x, path[0].y, 0);
-//             transform.position = tilemap.GetCellCenterWorld(startPos);
+//             Vector3 worldPos = tilemap.GetCellCenterWorld(startPos);
+//             worldPos.y += yOffset;
+//             transform.position = worldPos;
 //         }
 //     }
     
-//     void Update()
+//     // Call this method from ProgramManager when player moves
+//     public void StepForward()
 //     {
-//         if (patrolPath == null || patrolPath.Length <= 1) return;
+//         if (patrolPath == null || patrolPath.Length <= 1 || isMoving) return;
         
-//         moveTimer += Time.deltaTime;
-        
-//         if (moveTimer >= moveSpeed && !isMoving)
-//         {
-//             moveTimer = 0f;
-//             MoveToNextPoint();
-//         }
+//         MoveToNextPoint();
 //     }
     
 //     void MoveToNextPoint()
@@ -42,7 +48,9 @@
 //         currentPathIndex = (currentPathIndex + 1) % patrolPath.Length;
 //         Vector3Int targetPos = new Vector3Int(patrolPath[currentPathIndex].x, patrolPath[currentPathIndex].y, 0);
         
-//         StartCoroutine(SmoothMove(tilemap.GetCellCenterWorld(targetPos)));
+//         Vector3 worldPos = tilemap.GetCellCenterWorld(targetPos);
+//         worldPos.y += yOffset;
+//         StartCoroutine(SmoothMove(worldPos));
 //     }
     
 //     System.Collections.IEnumerator SmoothMove(Vector3 targetPos)
@@ -96,6 +104,10 @@ public class BugObstacle : Obstacle
     private bool isMoving = false;
     private ProgramManager programManager;
     
+    [Header("Isometric Alignment")]
+    [Tooltip("Y offset to align with tiles (should match player's yOffset)")]
+    public float yOffset = -0.25f;
+    
     void Start()
     {
         programManager = FindFirstObjectByType<ProgramManager>();
@@ -110,7 +122,9 @@ public class BugObstacle : Obstacle
         if (path.Length > 0)
         {
             Vector3Int startPos = new Vector3Int(path[0].x, path[0].y, 0);
-            transform.position = tilemap.GetCellCenterWorld(startPos);
+            Vector3 worldPos = tilemap.GetCellCenterWorld(startPos);
+            worldPos.y += yOffset;
+            transform.position = worldPos;
         }
     }
     
@@ -127,7 +141,9 @@ public class BugObstacle : Obstacle
         currentPathIndex = (currentPathIndex + 1) % patrolPath.Length;
         Vector3Int targetPos = new Vector3Int(patrolPath[currentPathIndex].x, patrolPath[currentPathIndex].y, 0);
         
-        StartCoroutine(SmoothMove(tilemap.GetCellCenterWorld(targetPos)));
+        Vector3 worldPos = tilemap.GetCellCenterWorld(targetPos);
+        worldPos.y += yOffset;
+        StartCoroutine(SmoothMove(worldPos));
     }
     
     System.Collections.IEnumerator SmoothMove(Vector3 targetPos)
@@ -150,7 +166,13 @@ public class BugObstacle : Obstacle
     public override void OnPlayerEnter(PlayerController player)
     {
         Debug.Log("Player hit a bug! Restarting level...");
-        FindFirstObjectByType<LevelManager>().RestartLevel();
+        
+        // Use Invoke to delay restart slightly, preventing collection modification errors
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.Invoke("RestartLevel", 0.1f);
+        }
     }
     
     public override void OnPlayerExit(PlayerController player)

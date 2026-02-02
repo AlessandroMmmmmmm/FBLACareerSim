@@ -22,7 +22,7 @@ public class IsometricCharacterRenderer : MonoBehaviour
 
 public void SetDirection(Vector2 direction)
 {
-    Debug.Log($"SetDirection called. Dir={direction}, mag={direction.magnitude}");
+    // Debug.Log($"SetDirection called. Dir={direction}, mag={direction.magnitude}");
 
     string[] directionArray;
 
@@ -36,7 +36,7 @@ public void SetDirection(Vector2 direction)
         lastDirection = DirectionToIndex(direction, 8);
     }
 
-    Debug.Log("Playing animation: " + directionArray[lastDirection]);
+    // Debug.Log("Playing animation: " + directionArray[lastDirection]);
     animator.Play(directionArray[lastDirection]);
 }
 
