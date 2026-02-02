@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class ArcadeTruck : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class ArcadeTruck : MonoBehaviour
 
     [Header("Delivery System")]
     public int packagesDelivered = 0;
+    public GameObject box1; // Assign Box1 GameObject
+    public GameObject box2; // Assign Box2 GameObject
+    public GameObject box3; // Assign Box3 GameObject
+    public TextMeshProUGUI deliveryInstructionText; // Shows "Press E to deliver"
+
     private bool inDeliveryZone = false;
     private string currentDeliveryZone = "";
 
@@ -24,8 +30,29 @@ public class ArcadeTruck : MonoBehaviour
 
         if (packageVisual != null) packageVisual.SetActive(false);
 
+        // Hide all boxes at start
+        if (box1 != null) box1.SetActive(false);
+        if (box2 != null) box2.SetActive(false);
+        if (box3 != null) box3.SetActive(false);
+
+        // Hide instruction text at start
+        if (deliveryInstructionText != null)
+        {
+            deliveryInstructionText.gameObject.SetActive(false);
+        }
+
         // Find delivery manager
         deliveryManager = FindObjectOfType<DeliveryManager>();
+    }
+
+    void Update()
+    {
+        // DELIVERY INPUT - Press E to deliver when in zone
+        // Put in Update() for better input responsiveness
+        if (Input.GetKeyDown(KeyCode.E) && inDeliveryZone && hasPackage)
+        {
+            DeliverPackage();
+        }
     }
 
     void FixedUpdate()
@@ -62,12 +89,6 @@ public class ArcadeTruck : MonoBehaviour
         {
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, Time.fixedDeltaTime * 3f);
         }
-
-        // 5. DELIVERY INPUT - Press E to deliver when in zone
-        if (Input.GetKeyDown(KeyCode.E) && inDeliveryZone && hasPackage)
-        {
-            DeliverPackage();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,6 +98,14 @@ public class ArcadeTruck : MonoBehaviour
         {
             inDeliveryZone = true;
             currentDeliveryZone = other.tag;
+
+            // Show instruction
+            if (deliveryInstructionText != null)
+            {
+                deliveryInstructionText.gameObject.SetActive(true);
+                deliveryInstructionText.text = "Press E to Deliver Package";
+            }
+
             Debug.Log($"Entered {currentDeliveryZone}. Press E to deliver package!");
         }
 
@@ -101,38 +130,80 @@ public class ArcadeTruck : MonoBehaviour
         {
             inDeliveryZone = false;
             currentDeliveryZone = "";
+
+            // Hide instruction
+            if (deliveryInstructionText != null)
+            {
+                deliveryInstructionText.gameObject.SetActive(false);
+            }
+
             Debug.Log("Left delivery zone");
         }
     }
 
     private void DeliverPackage()
     {
-        // Unload package
-        hasPackage = false;
-        if (packageVisual != null)
-        {
-            packageVisual.SetActive(false);
-        }
-
-        // Increment delivery count
+        // Increment delivery count FIRST
         packagesDelivered++;
+
+        // Show the appropriate box at the door
+        if (currentDeliveryZone == "Tile1Hitbox" && box1 != null)
+        {
+            box1.SetActive(true);
+            Debug.Log("Package delivered to Tile 1!");
+        }
+        else if (currentDeliveryZone == "Tile2Hitbox" && box2 != null)
+        {
+            box2.SetActive(true);
+            Debug.Log("Package delivered to Tile 2!");
+        }
+        else if (currentDeliveryZone == "Tile3Hitbox" && box3 != null)
+        {
+            box3.SetActive(true);
+            Debug.Log("Package delivered to Tile 3!");
+        }
 
         // Update delivery manager
         if (deliveryManager != null)
         {
-            deliveryManager.currentPackagesInTruck--;
             Debug.Log($"Package delivered! Total: {packagesDelivered}/{deliveryManager.packagesRequired}");
 
-            // Check if all deliveries complete
+            // Update delivery manager's package count
+            deliveryManager.RegisterDelivery();
+
+            // Check if this is the LAST delivery
             if (packagesDelivered >= deliveryManager.packagesRequired)
             {
+                // Hide package visual only after last delivery
+                hasPackage = false;
+                if (packageVisual != null)
+                {
+                    packageVisual.SetActive(false);
+                }
+
                 deliveryManager.CheckDelivery();
             }
         }
         else
         {
+            // No delivery manager - just hide after each delivery
+            hasPackage = false;
+            if (packageVisual != null)
+            {
+                packageVisual.SetActive(false);
+            }
+
             Debug.Log($"Package delivered! Total: {packagesDelivered}");
         }
+
+        // Hide instruction after delivery
+        if (deliveryInstructionText != null)
+        {
+            deliveryInstructionText.gameObject.SetActive(false);
+        }
+
+        // Exit the zone
+        inDeliveryZone = false;
     }
 
     /// <summary>
