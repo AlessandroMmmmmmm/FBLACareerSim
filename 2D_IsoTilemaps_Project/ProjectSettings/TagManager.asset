@@ -9,6 +9,9 @@ TagManager:
   - LoadingZone
   - PickupZone
   - Obstacle
+  - Tile1Hitbox
+  - Tile2Hitbox
+  - Tile3Hitbox
   layers:
   - Default
   - TransparentFX

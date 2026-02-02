@@ -7,18 +7,33 @@ public class ArcadeTruck : MonoBehaviour
     public GameObject packageVisual;
     public bool hasPackage = false;
 
+    [Header("Delivery System")]
+    public int packagesDelivered = 0;
+    private bool inDeliveryZone = false;
+    private string currentDeliveryZone = "";
+
     private Rigidbody rb;
+    private DeliveryManager deliveryManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        // Freeze X and Z rotation so the truck doesn't tip over
+
+        // COMPLETELY FREEZE X and Z rotation - truck stays upright always
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
         if (packageVisual != null) packageVisual.SetActive(false);
+
+        // Find delivery manager
+        deliveryManager = FindObjectOfType<DeliveryManager>();
     }
 
     void FixedUpdate()
     {
+        // Force truck to stay level (extra safety)
+        Vector3 currentRotation = transform.eulerAngles;
+        transform.eulerAngles = new Vector3(0, currentRotation.y, 0);
+
         // 1. INPUT
         float moveInput = 0;
         if (Input.GetKey(KeyCode.W)) moveInput = 1;
@@ -37,22 +52,35 @@ public class ArcadeTruck : MonoBehaviour
         transform.Rotate(0, rotation, 0);
 
         // --- THE FIX: STOP AUTOMATIC SPINNING ---
-        // This tells Unity: "Unless I am pressing A or D, stop spinning immediately."
         if (turnInput == 0)
         {
             rb.angularVelocity = Vector3.zero;
         }
-        // ----------------------------------------
 
         // 4. BRAKING
         if (moveInput == 0)
         {
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, Time.fixedDeltaTime * 3f);
         }
+
+        // 5. DELIVERY INPUT - Press E to deliver when in zone
+        if (Input.GetKeyDown(KeyCode.E) && inDeliveryZone && hasPackage)
+        {
+            DeliverPackage();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Check for delivery zones
+        if (other.CompareTag("Tile1Hitbox") || other.CompareTag("Tile2Hitbox") || other.CompareTag("Tile3Hitbox"))
+        {
+            inDeliveryZone = true;
+            currentDeliveryZone = other.tag;
+            Debug.Log($"Entered {currentDeliveryZone}. Press E to deliver package!");
+        }
+
+        // Old pickup zone code (if still needed)
         if (other.CompareTag("PickupZone") && !hasPackage)
         {
             hasPackage = true;
@@ -63,6 +91,47 @@ public class ArcadeTruck : MonoBehaviour
         {
             hasPackage = false;
             if (packageVisual) packageVisual.SetActive(false);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Exit delivery zone
+        if (other.CompareTag("Tile1Hitbox") || other.CompareTag("Tile2Hitbox") || other.CompareTag("Tile3Hitbox"))
+        {
+            inDeliveryZone = false;
+            currentDeliveryZone = "";
+            Debug.Log("Left delivery zone");
+        }
+    }
+
+    private void DeliverPackage()
+    {
+        // Unload package
+        hasPackage = false;
+        if (packageVisual != null)
+        {
+            packageVisual.SetActive(false);
+        }
+
+        // Increment delivery count
+        packagesDelivered++;
+
+        // Update delivery manager
+        if (deliveryManager != null)
+        {
+            deliveryManager.currentPackagesInTruck--;
+            Debug.Log($"Package delivered! Total: {packagesDelivered}/{deliveryManager.packagesRequired}");
+
+            // Check if all deliveries complete
+            if (packagesDelivered >= deliveryManager.packagesRequired)
+            {
+                deliveryManager.CheckDelivery();
+            }
+        }
+        else
+        {
+            Debug.Log($"Package delivered! Total: {packagesDelivered}");
         }
     }
 

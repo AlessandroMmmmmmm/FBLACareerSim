@@ -54,7 +54,10 @@ public class DeliveryManager : MonoBehaviour
     void EndShift(bool success)
     {
         timerRunning = false; // Stop the timer when the shift ends
+        ShiftScoring scoring = FindObjectOfType<ShiftScoring>();
+        if (scoring != null) scoring.ShowEndOfShiftReport(success);
         Debug.Log(success ? "Shift Complete! Career XP Gained." : "Shift Failed. Try again.");
         Time.timeScale = 0; // Pause game
+
     }
 }
