@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1b7e9bc8d46c642ae4101fe481dee5, type: 3}
-  m_Name: Customer_BudgetBuyer
+  m_Name: CustomerData
   m_EditorClassIdentifier: Assembly-CSharp::CustomerData
-  customerName: Alex
-  budget: 20000
-  maxStretch: 2000
-  patienceMax: 100
-  personalityType: 1
-  friendliness: 60
-  wantReliability: 83
-  wantSafety: 69
-  wantFuelEconomy: 70
-  wantTechnology: 55
-  wantSpace: 65
-  wantPerformance: 71
+  customerName: Tim
+  budget: 80000
+  maxStretch: 10000
+  patienceMax: 40
+  personalityType: 0
+  friendliness: 34
+  wantReliability: 82
+  wantSafety: 84
+  wantFuelEconomy: 68
+  wantTechnology: 96
+  wantSpace: 66
+  wantPerformance: 88

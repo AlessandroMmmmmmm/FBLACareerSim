@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceData
   buttonText: Make the sale NOW
   customerResponseText: I don't want the car anymore
-  profitDelta: -18000
+  profitDelta: 0
   patienceDelta: -10
-  dealChanceDelta: -0.761
+  dealChanceDelta: -0.12
+  priceDelta: 0

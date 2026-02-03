@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarModelData
   modelName: 'Kona 2026 '
   tag: 1
-  msrp: 0
-  reliability: 50
-  safety: 50
-  fuelEconomy: 50
-  technology: 50
-  space: 50
-  performance: 50
+  msrp: 50000
+  reliability: 73
+  safety: 59
+  fuelEconomy: 69
+  technology: 73
+  space: 95
+  performance: 63
   image: {fileID: 0}

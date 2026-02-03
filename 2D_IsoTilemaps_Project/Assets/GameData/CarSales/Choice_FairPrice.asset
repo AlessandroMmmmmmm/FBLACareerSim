@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceData
   buttonText: Offer fair price and highlight safety
   customerResponseText: That seems reasonable. Tell me more.
-  profitDelta: 50
-  patienceDelta: 5
+  profitDelta: 0
+  patienceDelta: 10
   dealChanceDelta: 0.15
+  priceDelta: 0

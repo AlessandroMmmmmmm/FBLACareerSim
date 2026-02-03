@@ -16,4 +16,5 @@ MonoBehaviour:
   customerResponseText: 
   profitDelta: -500
   patienceDelta: 15
-  dealChanceDelta: 0.353
+  dealChanceDelta: 0.24
+  priceDelta: -1500

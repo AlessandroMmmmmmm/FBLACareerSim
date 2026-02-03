@@ -15,10 +15,10 @@ MonoBehaviour:
   modelName: Honda Accord 2001
   tag: 0
   msrp: 18000
-  reliability: 50
-  safety: 50
-  fuelEconomy: 50
-  technology: 50
-  space: 50
-  performance: 50
+  reliability: 97
+  safety: 69
+  fuelEconomy: 73
+  technology: 31
+  space: 75
+  performance: 87
   image: {fileID: 0}
