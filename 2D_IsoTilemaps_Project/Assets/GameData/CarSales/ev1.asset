@@ -22,3 +22,12 @@ MonoBehaviour:
   space: 84
   performance: 66
   image: {fileID: 0}
+  stackLayers:
+  - {fileID: 159800316, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: -609332754, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: -643052116, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: -218716338, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: 512440680, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: 1809836428, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: -2005456665, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}
+  - {fileID: -971276291, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}

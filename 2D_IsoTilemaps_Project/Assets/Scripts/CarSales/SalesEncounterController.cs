@@ -52,6 +52,8 @@ public class SalesEncounterController : MonoBehaviour
     [Header("Rounds")]
     [SerializeField] private int roundsTotal = 3;          // ✅ Round 1..3 then game ends
     [SerializeField] private float nextRoundDelay = 1.5f;  // small delay after result before next customer
+    [Header("References")]
+    [SerializeField] private SpriteStackRotator carDisplay; // Drag your 3D display object here
 
     // Runtime state - per customer
     private CarModelData selectedCar;
@@ -132,7 +134,7 @@ public class SalesEncounterController : MonoBehaviour
             customerLineText.text = $"{customer.CustomerName}: {BuildCustomerIntroLine(customer)}";
 
         if (hintText)
-            hintText.text = $"Round {currentRound}/{roundsTotal} — Pick a car to start.";
+            UpdateHint($"Round {currentRound}/{roundsTotal} — Pick a car to start.");
 
         if (walkAwayButton) walkAwayButton.gameObject.SetActive(false);
         if (speechBubble) speechBubble.SetActive(false);
@@ -211,7 +213,16 @@ public class SalesEncounterController : MonoBehaviour
 
     private void OnSelectCar(CarModelData car)
     {
-        if (ended) return;
+
+        selectedCar = car;
+
+        // NEW: Update the visual stack
+        if (carDisplay != null)
+        {
+            carDisplay.SetCarModel(car);
+        }
+
+        currentOfferPrice = selectedCar.MSRP;
 
         selectedCar = car;
         currentOfferPrice = selectedCar.MSRP;
@@ -226,13 +237,15 @@ public class SalesEncounterController : MonoBehaviour
             customerLineText.text = $"{customer.CustomerName}: Tell me why {selectedCar.ModelName} is right for me.";
 
         if (hintText)
-            hintText.text = $"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0}";
+            UpdateHint($"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0}");
 
         if (walkAwayButton) walkAwayButton.gameObject.SetActive(true);
 
         SetupChoicesForTurn();
         SetupChoiceButtonsEnabled(true);
         RefreshHUD();
+        if (ended) return;
+
     }
 
     private void SetupChoicesForTurn()
@@ -259,7 +272,7 @@ public class SalesEncounterController : MonoBehaviour
         }
 
         if (hintText)
-            hintText.text = $"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0} | Turn {turnIndex + 1}/{turnsPerCustomer}";
+            UpdateHint($"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0} | Turn {turnIndex + 1}/{turnsPerCustomer}");
     }
     private void OnEnable()
     {
@@ -280,7 +293,7 @@ public class SalesEncounterController : MonoBehaviour
 
         if (selectedCar == null)
         {
-            if (hintText) hintText.text = $"Round {currentRound}/{roundsTotal} — Pick a car first.";
+            if (hintText) UpdateHint($"Round {currentRound}/{roundsTotal} — Pick a car first.");
             return;
         }
 
@@ -360,7 +373,7 @@ public class SalesEncounterController : MonoBehaviour
             customerLineText.text = $"{customer.CustomerName}: {customerResponse}";
 
         if (hintText)
-            hintText.text = $"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0} | Turn {turnIndex + 1}/{turnsPerCustomer}";
+            UpdateHint($"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0} | Turn {turnIndex + 1}/{turnsPerCustomer}");
 
         RefreshHUD();
 
@@ -427,17 +440,17 @@ public class SalesEncounterController : MonoBehaviour
         if (!IsOfferAffordable())
         {
             if (hintText)
-                hintText.text = $"Round {currentRound}/{roundsTotal} — ❌ Too expensive (max ${customer.Budget + customer.MaxStretch:N0})";
+                UpdateHint($"Round {currentRound}/{roundsTotal} — ❌ Too expensive (max ${customer.Budget + customer.MaxStretch:N0})");
             return false;
         }
 
-        float roll = Random.value;
+        float roll = 0.50F;
         bool success = roll <= dealChance;
 
         if (hintText)
-            hintText.text = success
-                ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
-                : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)";
+            UpdateHint(
+              success  ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
+                : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)");
 
         return success;
     }
@@ -472,7 +485,7 @@ public class SalesEncounterController : MonoBehaviour
         else
         {
             if (hintText)
-                hintText.text = $"Next: Round {currentRound}/{roundsTotal} starting...";
+                UpdateHint($"Next: Round {currentRound}/{roundsTotal} starting...");
             Invoke(nameof(StartEncounter), nextRoundDelay);
         }
     }
@@ -486,7 +499,7 @@ public class SalesEncounterController : MonoBehaviour
             customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
 
         if (hintText)
-            hintText.text = "Shift complete.";
+            UpdateHint("Shift complete.");
     }
 
     // ==========================
@@ -981,4 +994,13 @@ public class SalesEncounterController : MonoBehaviour
         if (type == PersonalityType.Cautious && picked == choiceDiscountAsk) return +0.03f;
         return 0f;
     }
+    private void UpdateHint(string message)
+    {
+        if (!hintText) return;
+        hintText.text = message;
+    }
+
+
+
+
 }

@@ -43,5 +43,9 @@ public class CarModelData : ScriptableObject
     public int Space => space;
     public int Performance => performance;
 
-    public Sprite Image => image;
+    // Inside your CarModelData.cs
+    [Header("Visuals")]
+    public Sprite[] stackLayers; // Drag the slices for THIS specific car here
+
+
 }
