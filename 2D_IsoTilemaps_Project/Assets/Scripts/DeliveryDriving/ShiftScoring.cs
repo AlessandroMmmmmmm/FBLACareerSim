@@ -1,25 +1,55 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
-/// Calculates and displays end-of-shift performance rating
-/// Based on packages delivered, time remaining, and penalties
+/// Calculates and displays end-of-shift performance rating with real star images
+/// All colors are fully customizable in the Inspector!
 /// </summary>
 public class ShiftScoring : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject scorePanel; // Panel to show at end of shift
-    public TextMeshProUGUI starsText; // Shows "★★★★★" or "★★★☆☆"
+
+    [Header("Star Images (Assign 5 Image GameObjects)")]
+    public Image[] starImages = new Image[5]; // Drag 5 UI Image objects here
+    public Sprite filledStarSprite; // Sprite for filled star
+    public Sprite emptyStarSprite; // Sprite for empty star
+
+    [Header("Text Elements")]
     public TextMeshProUGUI packagesText; // "Packages: 3/3"
     public TextMeshProUGUI timeText; // "Time Remaining: 45s"
     public TextMeshProUGUI penaltyText; // "Penalties: -12s"
     public TextMeshProUGUI finalScoreText; // "Score: 4/5 Stars"
+    public TextMeshProUGUI statusText; // "SHIFT COMPLETE" / "SHIFT FAILED"
+    public TextMeshProUGUI ratingText; // "Excellent Work"
+
+    [Header("Text Colors - Customize Here!")]
+    public Color statusSuccessColor = new Color(0.4f, 1f, 0.4f); // Light green
+    public Color statusFailColor = new Color(1f, 0.4f, 0.4f); // Light red
+    public Color packagesTextColor = Color.white;
+    public Color timeGoodColor = new Color(0.4f, 1f, 0.4f); // Green
+    public Color timeWarningColor = new Color(1f, 1f, 0.4f); // Yellow
+    public Color timeCriticalColor = new Color(1f, 0.4f, 0.4f); // Red
+    public Color penaltyTextColor = new Color(1f, 0.4f, 0.4f); // Red
+    public Color noPenaltyColor = new Color(0.4f, 1f, 0.4f); // Green
+    public Color scoreTextColor = Color.white;
+    public Color ratingTextColor = new Color(1f, 0.84f, 0f); // Gold
+
+    [Header("Star Colors - Customize Here!")]
+    public Color fiveStarColor = new Color(1f, 0.84f, 0f); // Gold
+    public Color fourStarColor = new Color(0.75f, 0.75f, 0.75f); // Silver
+    public Color threeStarColor = new Color(0.8f, 0.5f, 0.2f); // Bronze
+    public Color twoStarColor = new Color(1f, 0.5f, 0f); // Orange
+    public Color oneStarColor = Color.red;
+    public Color zeroStarColor = Color.gray;
+    public Color emptyStarColor = new Color(0.3f, 0.3f, 0.3f); // Dark gray for empty stars
 
     [Header("Scoring Thresholds")]
-    public float fiveStarTimeThreshold = 60f; // Need 60+ seconds for 5 stars
-    public float fourStarTimeThreshold = 40f; // Need 40+ seconds for 4 stars
-    public float threeStarTimeThreshold = 20f; // Need 20+ seconds for 3 stars
-    public float twoStarTimeThreshold = 10f; // Need 10+ seconds for 2 stars
+    public float fiveStarTimeThreshold = 60f;
+    public float fourStarTimeThreshold = 40f;
+    public float threeStarTimeThreshold = 20f;
+    public float twoStarTimeThreshold = 10f;
 
     private DeliveryManager deliveryManager;
     private ArcadeTruck truck;
@@ -52,44 +82,35 @@ public class ShiftScoring : MonoBehaviour
     {
         if (scorePanel == null) return;
 
-        // Show the panel
         scorePanel.SetActive(true);
 
-        // Get stats
         int packagesDelivered = truck != null ? truck.packagesDelivered : 0;
         int packagesRequired = deliveryManager != null ? deliveryManager.packagesRequired : 3;
         float timeRemaining = deliveryManager != null ? deliveryManager.shiftTimer : 0f;
 
-        // Calculate star rating
         int stars = CalculateStars(packagesDelivered, packagesRequired, timeRemaining, totalPenalties);
 
-        // Color based on performance
-        Color starColor = GetStarColor(stars);
-        string starColorHex = ColorUtility.ToHtmlStringRGB(starColor);
+        UpdateStarDisplay(stars);
 
-        // Update UI with professional formatting
-        if (starsText != null)
+        if (statusText != null)
         {
-            starsText.text = $"<color=#{starColorHex}>{GetStarDisplay(stars)}</color>";
-            starsText.fontSize = 100;
+            statusText.text = success ? "== SHIFT COMPLETE ==" : "== SHIFT FAILED ==";
+            statusText.color = success ? statusSuccessColor : statusFailColor;
         }
 
         if (packagesText != null)
         {
-            Color pkgColor = packagesDelivered >= packagesRequired ? Color.green : Color.red;
-            string pkgColorHex = ColorUtility.ToHtmlStringRGB(pkgColor);
-
-            packagesText.text = $"<size=40>Packages Delivered</size>\n" +
-                               $"<size=80><color=#{pkgColorHex}><b>{packagesDelivered}</b></color> <size=50>/ {packagesRequired}</size></size>";
+            packagesText.text = $"Packages Delivered\n<size=80><b>{packagesDelivered}</b></size> <size=50>/ {packagesRequired}</size>";
+            packagesText.color = packagesTextColor;
         }
 
         if (timeText != null)
         {
             int timeLeft = Mathf.Max(0, Mathf.RoundToInt(timeRemaining));
-            string timeColor = timeLeft > 30 ? "66FF66" : (timeLeft > 10 ? "FFFF66" : "FF6666");
+            Color timeColor = timeLeft > 30 ? timeGoodColor : (timeLeft > 10 ? timeWarningColor : timeCriticalColor);
 
-            timeText.text = $"<size=40>Time Remaining</size>\n" +
-                           $"<size=80><color=#{timeColor}><b>{timeLeft}</b></color> <size=50>seconds</size></size>";
+            timeText.text = $"Time Remaining\n<size=80><b>{timeLeft}</b></size> <size=50>seconds</size>";
+            timeText.color = timeColor;
         }
 
         if (penaltyText != null)
@@ -97,29 +118,65 @@ public class ShiftScoring : MonoBehaviour
             int penaltySeconds = Mathf.RoundToInt(totalPenalties);
             if (penaltySeconds > 0)
             {
-                penaltyText.text = $"<size=40>Off-Road Penalties</size>\n" +
-                                  $"<size=80><color=#FF6666><b>-{penaltySeconds}</b></color> <size=50>seconds</size></size>";
+                penaltyText.text = $"Off-Road Penalties\n<size=80><b>-{penaltySeconds}</b></size> <size=50>seconds</size>";
+                penaltyText.color = penaltyTextColor;
             }
             else
             {
-                penaltyText.text = $"<size=40>Off-Road Penalties</size>\n" +
-                                  $"<size=60><color=#66FF66><b>PERFECT DRIVING!</b></color></size>";
+                penaltyText.text = $"Off-Road Penalties\n<size=60><b>PERFECT DRIVING!</b></size>";
+                penaltyText.color = noPenaltyColor;
             }
         }
 
         if (finalScoreText != null)
         {
-            string statusText = success ?
-                "<size=50><color=#66FF66>== SHIFT COMPLETE ==</color></size>" :
-                "<size=50><color=#FF6666>== SHIFT FAILED ==</color></size>";
-
-            string ratingText = GetRatingText(stars);
-
-            finalScoreText.text = $"{statusText}\n\n" +
-                                 $"<size=45>PERFORMANCE RATING</size>\n" +
-                                 $"<size=90><color=#{starColorHex}><b>{stars}</b></color> <size=60>/ 5</size></size>\n" +
-                                 $"<size=40><i>{ratingText}</i></size>";
+            finalScoreText.text = $"PERFORMANCE RATING\n<size=90><b>{stars}</b></size> <size=60>/ 5</size>";
+            finalScoreText.color = scoreTextColor;
         }
+
+        if (ratingText != null)
+        {
+            ratingText.text = GetRatingText(stars);
+            ratingText.color = ratingTextColor;
+        }
+    }
+
+    private void UpdateStarDisplay(int stars)
+    {
+        if (starImages == null || starImages.Length != 5) return;
+
+        Color starColor = GetStarColor(stars);
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (starImages[i] != null)
+            {
+                if (i < stars)
+                {
+                    starImages[i].sprite = filledStarSprite;
+                    starImages[i].color = starColor;
+                }
+                else
+                {
+                    starImages[i].sprite = emptyStarSprite;
+                    starImages[i].color = emptyStarColor;
+                }
+            }
+        }
+    }
+
+    private int CalculateStars(int delivered, int required, float timeLeft, float penalties)
+    {
+        if (delivered < required) return 0;
+
+        float effectiveTime = timeLeft;
+
+        if (effectiveTime >= fiveStarTimeThreshold) return 5;
+        else if (effectiveTime >= fourStarTimeThreshold) return 4;
+        else if (effectiveTime >= threeStarTimeThreshold) return 3;
+        else if (effectiveTime >= twoStarTimeThreshold) return 2;
+        else if (effectiveTime > 0) return 1;
+        else return 0;
     }
 
     private string GetRatingText(int stars)
@@ -135,81 +192,16 @@ public class ShiftScoring : MonoBehaviour
         }
     }
 
-    private int CalculateStars(int delivered, int required, float timeLeft, float penalties)
-    {
-        // Must deliver all packages to get any stars
-        if (delivered < required)
-        {
-            return 0; // Failed - no stars
-        }
-
-        // All packages delivered - calculate stars based on time and penalties
-        float effectiveTime = timeLeft; // Already has penalties subtracted by OffRoadPenalty
-
-        // 5 stars: All packages + 60+ seconds remaining
-        if (effectiveTime >= fiveStarTimeThreshold)
-        {
-            return 5;
-        }
-        // 4 stars: All packages + 40+ seconds
-        else if (effectiveTime >= fourStarTimeThreshold)
-        {
-            return 4;
-        }
-        // 3 stars: All packages + 20+ seconds
-        else if (effectiveTime >= threeStarTimeThreshold)
-        {
-            return 3;
-        }
-        // 2 stars: All packages + 10+ seconds
-        else if (effectiveTime >= twoStarTimeThreshold)
-        {
-            return 2;
-        }
-        // 1 star: All packages but barely any time left
-        else if (effectiveTime > 0)
-        {
-            return 1;
-        }
-        // 0 stars: Failed (time ran out)
-        else
-        {
-            return 0;
-        }
-    }
-
-    private string GetStarDisplay(int stars)
-    {
-        // Use asterisks instead of unicode stars for better compatibility
-        string fullStar = "*";
-        string emptyStar = "-";
-
-        string display = "";
-        for (int i = 0; i < 5; i++)
-        {
-            if (i < stars)
-            {
-                display += fullStar + " ";
-            }
-            else
-            {
-                display += emptyStar + " ";
-            }
-        }
-
-        return display.Trim();
-    }
-
     private Color GetStarColor(int stars)
     {
         switch (stars)
         {
-            case 5: return new Color(1f, 0.84f, 0f); // Gold
-            case 4: return new Color(0.75f, 0.75f, 0.75f); // Silver
-            case 3: return new Color(0.8f, 0.5f, 0.2f); // Bronze
-            case 2: return new Color(1f, 0.5f, 0f); // Orange
-            case 1: return Color.red;
-            default: return Color.gray;
+            case 5: return fiveStarColor;
+            case 4: return fourStarColor;
+            case 3: return threeStarColor;
+            case 2: return twoStarColor;
+            case 1: return oneStarColor;
+            default: return zeroStarColor;
         }
     }
 }

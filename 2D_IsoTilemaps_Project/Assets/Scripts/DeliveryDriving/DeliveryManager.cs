@@ -41,6 +41,18 @@ public class DeliveryManager : MonoBehaviour
         timerRunning = true;
         packagesDelivered = 0;
 
+        // Generate new road layout for this shift
+        RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
+        if (roadGen != null)
+        {
+            Debug.Log("Generating new road layout for shift...");
+            roadGen.GenerateRoadNetwork();
+        }
+        else
+        {
+            Debug.LogWarning("No RoadGenerator found in scene!");
+        }
+
         // Initialize the Delivery Text immediately so it doesn't show old data
         if (packageText != null)
         {
