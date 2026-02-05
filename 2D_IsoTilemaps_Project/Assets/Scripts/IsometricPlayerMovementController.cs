@@ -3,7 +3,7 @@
 public class IsometricPlayerMovementController : MonoBehaviour
 {
 
-    public float movementSpeed = 100000f;
+    public float movementSpeed = 2f;
     IsometricCharacterRenderer isoRenderer;
 
     Rigidbody2D rbody;

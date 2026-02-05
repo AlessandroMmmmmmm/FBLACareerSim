@@ -14,6 +14,10 @@ public class ProgramManager : MonoBehaviour
     private List<MoveType> program = new List<MoveType>();
     private MoveType selectedMove;
     private bool isRunning = false;
+    
+    [Header("Cursor Settings")]
+    public GameObject cursorIndicator; // Visual indicator for cursor position
+    private int cursorPosition = 0; // Where new commands will be inserted (0 = start, program.Count = end)
 
     void Start()
     {
@@ -58,6 +62,18 @@ public class ProgramManager : MonoBehaviour
         moveDropdown.RefreshShownValue();
 
         selectedMove = MoveType.MoveForward;
+        
+        // Initialize cursor
+        cursorPosition = 0;
+        if (cursorIndicator != null)
+        {
+            cursorIndicator.SetActive(true);
+            UpdateCursorVisual();
+        }
+        else
+        {
+            Debug.LogWarning("Cursor Indicator not assigned in ProgramManager!");
+        }
     }
 
     // Called by Dropdown → On Value Changed
@@ -89,28 +105,57 @@ public class ProgramManager : MonoBehaviour
     {
         if (isRunning) return; // Don't allow adding while program is running
         
-        program.Add(selectedMove);
+        // Insert at cursor position
+        program.Insert(cursorPosition, selectedMove);
+        
+        // Create UI line
         GameObject line = Instantiate(programLinePrefab, contentParent);
-        uiLines.Add(line);
+        uiLines.Insert(cursorPosition, line);
         line.GetComponent<ProgramLine>().SetMove(selectedMove);
+        
+        // Add click handler if not present
+        ProgramLineClickHandler clickHandler = line.GetComponentInChildren<ProgramLineClickHandler>();
+        if (clickHandler != null)
+        {
+            clickHandler.SetLineIndex(cursorPosition);
+        }
+        
+        // Move cursor forward after inserting
+        cursorPosition++;
+        
+        // Rebuild UI to maintain correct order
+        RebuildProgramUI();
     }
 
     public void DeleteLastMove()
     {
-        if (program.Count == 0 || isRunning) return;
+        if (program.Count == 0 || isRunning || cursorPosition == 0) return;
 
-        program.RemoveAt(program.Count - 1);
+        // Delete the item before the cursor
+        int deleteIndex = cursorPosition - 1;
+        program.RemoveAt(deleteIndex);
 
-        GameObject lastLine = uiLines[uiLines.Count - 1];
-        uiLines.RemoveAt(uiLines.Count - 1);
-        Destroy(lastLine);
+        GameObject lineToDelete = uiLines[deleteIndex];
+        uiLines.RemoveAt(deleteIndex);
+        Destroy(lineToDelete);
+        
+        // Move cursor back
+        cursorPosition--;
+        
+        // Rebuild UI
+        RebuildProgramUI();
     }
 
     public void RunProgram()
     {
+        Debug.Log("RunProgram called");
+        Debug.Log("Player is: " + (player == null ? "NULL" : player.gameObject.name));
+        Debug.Log("Program count: " + program.Count);
+        Debug.Log("IsRunning: " + isRunning);
         
         if (player == null)
         {
+            Debug.LogError("ProgramManager: Player reference is missing!");
             return;
         }
         
@@ -121,6 +166,7 @@ public class ProgramManager : MonoBehaviour
     private System.Collections.IEnumerator RunProgramRoutine()
     {
         isRunning = true;
+        bool goalReached = false;
         
         foreach (MoveType move in program)
         {
@@ -155,6 +201,21 @@ public class ProgramManager : MonoBehaviour
         }
         
         isRunning = false;
+        
+        // Check if player reached the goal
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null)
+        {
+            goalReached = levelManager.IsLevelComplete();
+            
+            // If program finished but goal NOT reached, reset player position
+            if (!goalReached)
+            {
+                Debug.Log("Program finished without reaching goal - resetting player position");
+                yield return new WaitForSeconds(0.5f); // Small delay before reset
+                levelManager.ResetPlayerPosition();
+            }
+        }
     }
     
     public void ClearProgram()
@@ -170,12 +231,81 @@ public class ProgramManager : MonoBehaviour
             Destroy(line);
         }
         uiLines.Clear();
+        
+        cursorPosition = 0;
+        UpdateCursorVisual();
     }
     
     public void StopProgram()
     {
         StopAllCoroutines();
         isRunning = false;
+    }
+    
+    // Called when user clicks between lines to set cursor position
+    public void SetCursorPosition(int position)
+    {
+        cursorPosition = Mathf.Clamp(position, 0, program.Count);
+        UpdateCursorVisual();
+        Debug.Log($"Cursor moved to position {cursorPosition}");
+    }
+    
+    // Move cursor to end
+    public void MoveCursorToEnd()
+    {
+        cursorPosition = program.Count;
+        UpdateCursorVisual();
+    }
+    
+    // Move cursor to start
+    public void MoveCursorToStart()
+    {
+        cursorPosition = 0;
+        UpdateCursorVisual();
+    }
+    
+    // Rebuild the UI to maintain correct hierarchy order
+    void RebuildProgramUI()
+    {
+        for (int i = 0; i < uiLines.Count; i++)
+        {
+            uiLines[i].transform.SetSiblingIndex(i);
+            
+            // Update click handler index (might be on child GameObject)
+            ProgramLineClickHandler clickHandler = uiLines[i].GetComponentInChildren<ProgramLineClickHandler>();
+            if (clickHandler != null)
+            {
+                clickHandler.SetLineIndex(i);
+            }
+            else
+            {
+                Debug.LogWarning($"No ProgramLineClickHandler found on line {i}");
+            }
+        }
+        UpdateCursorVisual();
+    }
+    
+    // Update visual indicator of cursor position
+    void UpdateCursorVisual()
+    {
+        if (cursorIndicator == null) return;
+        
+        // Position cursor indicator at the correct location
+        if (cursorPosition == 0)
+        {
+            // At the start
+            cursorIndicator.transform.SetAsFirstSibling();
+        }
+        else if (cursorPosition >= uiLines.Count)
+        {
+            // At the end
+            cursorIndicator.transform.SetAsLastSibling();
+        }
+        else
+        {
+            // Between items
+            cursorIndicator.transform.SetSiblingIndex(cursorPosition);
+        }
     }
 }
 
@@ -307,6 +437,7 @@ public class ProgramManager : MonoBehaviour
 //     private System.Collections.IEnumerator RunProgramRoutine()
 //     {
 //         isRunning = true;
+//         bool goalReached = false;
         
 //         foreach (MoveType move in program)
 //         {
@@ -341,10 +472,29 @@ public class ProgramManager : MonoBehaviour
 //         }
         
 //         isRunning = false;
+        
+//         // Check if player reached the goal
+//         LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+//         if (levelManager != null)
+//         {
+//             goalReached = levelManager.IsLevelComplete();
+            
+//             // If program finished but goal NOT reached, reset player position
+//             if (!goalReached)
+//             {
+//                 Debug.Log("Program finished without reaching goal - resetting player position");
+//                 yield return new WaitForSeconds(0.5f); // Small delay before reset
+//                 levelManager.ResetPlayerPosition();
+//             }
+//         }
 //     }
     
 //     public void ClearProgram()
 //     {
+//         // Stop any running program first
+//         StopAllCoroutines();
+//         isRunning = false;
+        
 //         program.Clear();
         
 //         foreach (GameObject line in uiLines)

@@ -2738,9 +2738,9 @@ MonoBehaviour:
   teleporterPrefab: {fileID: 1320731026379961543, guid: 8b194cc4637670048b3698c5d8d1f0c8,
     type: 3}
   levels:
+  - {fileID: 11400000, guid: db6cbf9ceaefe274aadcb89db3c7ab24, type: 2}
   - {fileID: 11400000, guid: f23208a422be4ec4a8fc78033ef03973, type: 2}
   - {fileID: 11400000, guid: 154d49f8bd0a7fe4bbd79e9f58592b50, type: 2}
-  - {fileID: 11400000, guid: db6cbf9ceaefe274aadcb89db3c7ab24, type: 2}
 --- !u!4 &1077197506
 Transform:
   m_ObjectHideFlags: 0
@@ -4279,6 +4279,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1880860834}
+    - targetCorrespondingSourceObject: {fileID: 3339481645408498929, guid: 5e2a82902b6ea4c0b9b652322ffadcff,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880860839}
   m_SourcePrefab: {fileID: 100100000, guid: 5e2a82902b6ea4c0b9b652322ffadcff, type: 3}
 --- !u!1 &1739681538
 GameObject:
@@ -4619,7 +4623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ea13e149d9f324fbc186abce2040fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTileSceneSwitcher
-  collisionTilemap: {fileID: 0}
+  collisionTilemap: {fileID: 526607797}
   targetTileName: temple-sliced_02
   sceneToLoad: Scene_Biome_Desert
 --- !u!114 &1880860823
@@ -4634,7 +4638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d9c79a4338d594fb6c1efbe531bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
-  collisionTilemap: {fileID: 0}
+  collisionTilemap: {fileID: 526607797}
   targetTileName: desert-sliced_04
 --- !u!114 &1880860834
 MonoBehaviour:
@@ -4654,6 +4658,42 @@ MonoBehaviour:
   yOffset: -14
   spriteRenderer: {fileID: 0}
   characterRenderer: {fileID: 1074476633}
+--- !u!58 &1880860839
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880860821}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.054223396}
+  m_Radius: 0.10375288
 --- !u!1 &1893498290
 GameObject:
   m_ObjectHideFlags: 0
