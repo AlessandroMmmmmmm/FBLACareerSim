@@ -21,21 +21,52 @@ MonoBehaviour:
   obstacles:
   - type: 0
     positions:
-    - {x: 2, y: 0}
-    - {x: 2, y: 1}
-    - {x: 2, y: 2}
-    - {x: 2, y: 3}
+    - {x: 4, y: 0}
+    - {x: 4, y: 1}
+    - {x: 4, y: 2}
+    - {x: 4, y: 3}
+    - {x: 4, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 5}
+    - {x: 6, y: 5}
+    - {x: 7, y: 5}
+    - {x: 8, y: 5}
+    - {x: 9, y: 5}
     patrolPath: []
     moveSpeed: 0
   - type: 1
     positions:
-    - {x: 3, y: 2}
+    - {x: 0, y: 3}
     patrolPath:
-    - {x: 3, y: 2}
+    - {x: 0, y: 3}
+    - {x: 1, y: 3}
+    - {x: 2, y: 3}
     - {x: 3, y: 3}
+    - {x: 2, y: 3}
+    - {x: 1, y: 3}
+    moveSpeed: 4
+  - type: 1
+    positions:
     - {x: 3, y: 4}
-    - {x: 3, y: 3}
-    moveSpeed: 1.5
+    patrolPath:
+    - {x: 3, y: 4}
+    - {x: 2, y: 4}
+    - {x: 1, y: 4}
+    - {x: 0, y: 4}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    moveSpeed: 4
+  - type: 1
+    positions:
+    - {x: 4, y: 9}
+    patrolPath:
+    - {x: 4, y: 9}
+    - {x: 4, y: 8}
+    - {x: 4, y: 7}
+    - {x: 4, y: 6}
+    - {x: 4, y: 7}
+    - {x: 4, y: 8}
+    moveSpeed: 4
   maxMoves: -1
   restrictMoveTypes: 0
   allowedMoves: 

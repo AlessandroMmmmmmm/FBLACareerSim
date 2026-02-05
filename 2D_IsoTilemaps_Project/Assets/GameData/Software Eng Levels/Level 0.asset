@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 0
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelNumber: 0
-  levelName: 
-  description: 
+  levelName: Tutorial
+  description: Learn the Controls!
   gridSize: {x: 10, y: 10}
   startPosition: {x: 0, y: 0}
   goalPosition: {x: 0, y: 0}
