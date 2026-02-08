@@ -6,7 +6,7 @@ public class PlayerTileSceneSwitcher : MonoBehaviour
 {
     public Tilemap collisionTilemap;
     public string targetTileName = "temple-sliced_02";
-    public string sceneToLoad = "Scene_Biome_Desert";
+    public int sceneToLoad = 5;
 
     private Collider2D playerCollider;
 
