@@ -411,7 +411,7 @@ TilemapRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.0022560954, y: 0.250423, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
@@ -475,10 +475,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7701892341433649182, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4463895010634113322, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
         type: 3}
       propertyPath: m_Name
       value: Fast delivery truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588346856482761932, guid: 57d44a32c4dc3904f8376d6c7c88eedb,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -491,7 +516,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6120995260629270864}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7010191581375494243
+--- !u!114 &3305288681112293959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

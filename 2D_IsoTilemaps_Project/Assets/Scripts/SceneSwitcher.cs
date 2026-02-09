@@ -1,63 +1,181 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
-public class PlayerTileSceneSwitcher : MonoBehaviour
+/// <summary>
+/// Portal system using GameObject with PolygonCollider2D
+/// Place this script on the portal GameObject (not the player!)
+/// The portal GameObject should have a PolygonCollider2D set to "Is Trigger"
+/// </summary>
+[RequireComponent(typeof(PolygonCollider2D))]
+public class PortalTrigger : MonoBehaviour
 {
-    public Tilemap collisionTilemap;
-    public string targetTileName = "temple-sliced_02";
+    [Header("Portal Settings")]
+    [Tooltip("Scene build index to load when player enters")]
     public int sceneToLoad = 5;
 
-    private Collider2D playerCollider;
+    [Header("Activation Settings")]
+    [Tooltip("Require player to press a button to activate")]
+    public bool requireButtonPress = false;
+
+    [Tooltip("Button to press (e.g., 'E', 'Space', 'Return')")]
+    public KeyCode activationKey = KeyCode.E;
+
+    [Header("Visual Feedback")]
+    [Tooltip("Optional UI prompt (e.g., 'Press E to Enter')")]
+    public GameObject promptUI;
+
+    [Tooltip("Optional sprite/effect to show portal visual")]
+    public SpriteRenderer portalVisual;
+
+    [Header("Debug")]
+    public bool showDebugInfo = true;
+
+    private PolygonCollider2D portalCollider;
+    private bool playerInPortal = false;
+    private GameObject playerObject;
 
     private void Start()
     {
-        playerCollider = GetComponentInChildren<CircleCollider2D>();
+        // Get the polygon collider
+        portalCollider = GetComponent<PolygonCollider2D>();
+
+        // Validate setup
+        if (portalCollider == null)
+        {
+            Debug.LogError("PortalTrigger: PolygonCollider2D not found! Add one to this GameObject.");
+            return;
+        }
+
+        if (!portalCollider.isTrigger)
+        {
+            Debug.LogWarning("PortalTrigger: PolygonCollider2D is not set to trigger! Fixing it now...");
+            portalCollider.isTrigger = true;
+        }
+
+        // Hide prompt initially
+        if (promptUI != null)
+            promptUI.SetActive(false);
+
+        if (showDebugInfo)
+        {
+            Debug.Log($"Portal '{gameObject.name}' initialized. Will load scene {sceneToLoad}");
+        }
     }
 
+    private void Update()
+    {
+        // If player is in portal and button press is required
+        if (requireButtonPress && playerInPortal)
+        {
+            if (Input.GetKeyDown(activationKey))
+            {
+                ActivatePortal();
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == collisionTilemap.gameObject)
+        // Check if the object that entered is the player
+        if (other.CompareTag("Player"))
         {
-            CheckTilesUnderPlayer();
-        }
-    }
+            playerInPortal = true;
+            playerObject = other.gameObject;
 
-    // Also check while staying, in case the player walks into a tile 
-    // without the collider technically "re-entering" the tilemap object
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject == collisionTilemap.gameObject)
-        {
-            CheckTilesUnderPlayer();
-        }
-    }
-
-    private void CheckTilesUnderPlayer()
-    {
-        // Get the bounding box of the player's collider in world space
-        Bounds bounds = playerCollider.bounds;
-
-        // Convert the corners of the bounds to tilemap cell coordinates
-        Vector3Int minCell = collisionTilemap.WorldToCell(bounds.min);
-        Vector3Int maxCell = collisionTilemap.WorldToCell(bounds.max);
-
-        // Loop through every tile cell covered by the player's bounds
-        for (int x = minCell.x; x <= maxCell.x; x++)
-        {
-            for (int y = minCell.y; y <= maxCell.y; y++)
+            if (showDebugInfo)
             {
-                Vector3Int cellPos = new Vector3Int(x, y, 0);
-                TileBase tile = collisionTilemap.GetTile(cellPos);
-
-                if (tile != null && tile.name == targetTileName)
-                {
-                    Debug.Log($"Overlap detected with {targetTileName} at {cellPos}");
-                    SceneManager.LoadScene(sceneToLoad);
-                    return; // Exit once we find a match to avoid multiple scene loads
-                }
+                Debug.Log($"Player entered portal '{gameObject.name}'");
             }
+
+            if (requireButtonPress)
+            {
+                // Show prompt
+                if (promptUI != null)
+                    promptUI.SetActive(true);
+            }
+            else
+            {
+                // Immediate activation
+                ActivatePortal();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInPortal = false;
+            playerObject = null;
+
+            if (showDebugInfo)
+            {
+                Debug.Log($"Player exited portal '{gameObject.name}'");
+            }
+
+            // Hide prompt
+            if (promptUI != null)
+                promptUI.SetActive(false);
+        }
+    }
+
+    private void ActivatePortal()
+    {
+        if (showDebugInfo)
+        {
+            Debug.Log($"Portal '{gameObject.name}' activated! Loading scene {sceneToLoad}");
+        }
+
+        SceneManager.LoadScene(sceneToLoad);
+    }
+
+    // Visualize the portal polygon in Scene view
+    private void OnDrawGizmos()
+    {
+        PolygonCollider2D col = GetComponent<PolygonCollider2D>();
+        if (col == null || col.pathCount == 0)
+            return;
+
+        // Draw the polygon outline
+        Gizmos.color = playerInPortal ? Color.green : Color.cyan;
+
+        Vector2[] points = col.GetPath(0);
+        for (int i = 0; i < points.Length; i++)
+        {
+            Vector3 start = transform.TransformPoint(points[i]);
+            Vector3 end = transform.TransformPoint(points[(i + 1) % points.Length]);
+            Gizmos.DrawLine(start, end);
+        }
+
+        // Draw filled semi-transparent area
+        if (playerInPortal)
+        {
+            Gizmos.color = new Color(0, 1, 0, 0.2f);
+        }
+        else
+        {
+            Gizmos.color = new Color(0, 1, 1, 0.1f);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // When selected, show the portal more clearly
+        PolygonCollider2D col = GetComponent<PolygonCollider2D>();
+        if (col == null || col.pathCount == 0)
+            return;
+
+        // Draw bright outline when selected
+        Gizmos.color = Color.yellow;
+        Vector2[] points = col.GetPath(0);
+        for (int i = 0; i < points.Length; i++)
+        {
+            Vector3 start = transform.TransformPoint(points[i]);
+            Vector3 end = transform.TransformPoint(points[(i + 1) % points.Length]);
+            Gizmos.DrawLine(start, end);
+
+            // Draw points
+            Gizmos.DrawSphere(start, 0.1f);
         }
     }
 }
