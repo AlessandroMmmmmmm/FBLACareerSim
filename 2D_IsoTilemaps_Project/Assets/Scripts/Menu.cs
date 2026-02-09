@@ -9,11 +9,18 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(1);
 
     }
-      public void onInstructionButton()
+    public void onInstructionButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Instructions");
 
     }
+
+    public void onBackButton()
+    {
+        SceneManager.LoadScene(0);
+
+    }
+    
     public void onQuitButton()
     {
         Application.Quit();

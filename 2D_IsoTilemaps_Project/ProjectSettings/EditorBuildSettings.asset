@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scene.unity
     guid: 7b7671dbf05b2e347bef931cdd1b2bab
   - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: ecce21b3413f366489e2ae2470ba7d0b
+  - enabled: 1
     path: Assets/Scenes/Examples/Scene_Biome_Desert.unity
     guid: 092574b58ebb13a4283ebba9a93df23a
   - enabled: 1
