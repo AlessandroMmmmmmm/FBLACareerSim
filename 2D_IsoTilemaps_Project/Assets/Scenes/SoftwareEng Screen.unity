@@ -3168,7 +3168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   tilemap: {fileID: 526607797}
-  player: {fileID: 1880860834}
+  player: {fileID: 1993180569}
   programManager: {fileID: 1563578956}
   floorTile: {fileID: 11400000, guid: 7c457362d71146a42a885a404c42ca2b, type: 2}
   wallTile: {fileID: 11400000, guid: 84c000d8926ebe74bbd5b2f45232c182, type: 2}

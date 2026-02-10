@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3Int gridPosition;
     private bool isMoving = false;
+    private Coroutine currentMoveCoroutine = null;
 
     // Facing direction (grid-based)
     private int facingIndex = 7; // NE to start (matches your sprite)
@@ -28,8 +29,9 @@ public class PlayerController : MonoBehaviour
     private static readonly int MoveY = Animator.StringToHash("MoveY");
     private static readonly int IsMovingParam = Animator.StringToHash("IsMoving");
 
-    // Reference to level manager
+    // References
     private LevelManager levelManager;
+    private ProgramManager programManager;
 
     void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         levelManager = FindFirstObjectByType<LevelManager>();
+        programManager = FindFirstObjectByType<ProgramManager>();
 
         if (animator == null)
         {
@@ -68,6 +71,71 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player starting at grid position: {gridPosition}, world pos: {transform.position}");
     }
 
+    void Update()
+    {
+        // Check for bug collision every frame
+        CheckBugCollision();
+    }
+
+    /// <summary>
+    /// Check if player is colliding with a bug and reset if so
+    /// </summary>
+    void CheckBugCollision()
+    {
+        // Find all bugs in the scene
+        BugObstacle[] bugs = FindObjectsByType<BugObstacle>(FindObjectsSortMode.None);
+
+        foreach (BugObstacle bug in bugs)
+        {
+            // Get bug's grid position
+            Vector3Int bugGridPos = tilemap.WorldToCell(bug.transform.position);
+
+            // Check if player and bug are on the same grid cell
+            if (bugGridPos == gridPosition)
+            {
+                Debug.Log("===== PLAYER HIT BY BUG =====");
+
+                // Stop current movement immediately
+                StopMovement();
+
+                // IMPORTANT: Stop/abort the program so it doesn't try to reset again
+                if (programManager != null)
+                {
+                    Debug.Log("Aborting program execution...");
+                    programManager.AbortProgram();
+                }
+
+                // Call the level manager to reset player position
+                if (levelManager != null)
+                {
+                    Debug.Log("Calling ResetPlayerPosition...");
+                    levelManager.ResetPlayerPosition();
+                }
+                else
+                {
+                    Debug.LogError("LevelManager not found!");
+                }
+
+                return; // Only reset once per frame
+            }
+        }
+    }
+
+    /// <summary>
+    /// Stop any current movement and set to idle
+    /// </summary>
+    void StopMovement()
+    {
+        if (currentMoveCoroutine != null)
+        {
+            StopCoroutine(currentMoveCoroutine);
+            currentMoveCoroutine = null;
+        }
+
+        isMoving = false;
+        UpdateAnimator(Vector2.zero); // Set to idle
+    }
+
     public bool IsMoving()
     {
         return isMoving;
@@ -80,6 +148,13 @@ public class PlayerController : MonoBehaviour
 
     public void SetGridPosition(Vector3Int newPosition)
     {
+        Debug.Log($"===== SetGridPosition called =====");
+        Debug.Log($"From: {gridPosition} (world: {transform.position})");
+        Debug.Log($"To: {newPosition}");
+
+        // Stop any current movement first
+        StopMovement();
+
         gridPosition = newPosition;
         gridPosition.z = 0;
 
@@ -87,6 +162,9 @@ public class PlayerController : MonoBehaviour
         Vector3 worldPos = tilemap.GetCellCenterWorld(gridPosition);
         worldPos.y += yOffset;
         transform.position = worldPos;
+
+        Debug.Log($"New world position: {transform.position}");
+        Debug.Log($"===== SetGridPosition complete =====");
 
         // Reset facing direction to default (NE - matches starting direction)
         facingIndex = 7;
@@ -130,7 +208,7 @@ public class PlayerController : MonoBehaviour
         // Check if target is a wall
         if (IsWall(targetCell)) return;
 
-        StartCoroutine(MoveToCell(targetCell));
+        currentMoveCoroutine = StartCoroutine(MoveToCell(targetCell));
     }
 
     bool IsWall(Vector3Int position)
@@ -185,8 +263,6 @@ public class PlayerController : MonoBehaviour
 
         // Handle sprite flipping for left-facing directions
         FlipSprite(animDirection);
-
-        Debug.Log($"Animator updated - MoveX: {animDirection.x}, MoveY: {animDirection.y}, IsMoving: {moveDirection.magnitude > 0.01f}");
     }
 
     /// <summary>
@@ -234,14 +310,14 @@ public class PlayerController : MonoBehaviour
     {
         switch (facingIndex)
         {
-            case 0: return Vector2.up;                  // N
-            case 1: return new Vector2(-1, 1).normalized;  // NW
-            case 2: return Vector2.left;                // W
-            case 3: return new Vector2(-1, -1).normalized; // SW
-            case 4: return Vector2.down;                // S
-            case 5: return new Vector2(1, -1).normalized;  // SE
-            case 6: return Vector2.right;               // E
-            case 7: return new Vector2(1, 1).normalized;   // NE
+            case 0: return Vector2.up;                      // N
+            case 1: return new Vector2(-1, 1).normalized;   // NW
+            case 2: return Vector2.left;                    // W
+            case 3: return new Vector2(-1, -1).normalized;  // SW
+            case 4: return Vector2.down;                    // S
+            case 5: return new Vector2(1, -1).normalized;   // SE
+            case 6: return Vector2.right;                   // E
+            case 7: return new Vector2(1, 1).normalized;    // NE
         }
         return Vector2.zero;
     }
@@ -283,6 +359,7 @@ public class PlayerController : MonoBehaviour
 
         // Set isMoving to false AFTER setting idle animation
         isMoving = false;
+        currentMoveCoroutine = null;
 
         if (levelManager != null)
         {
