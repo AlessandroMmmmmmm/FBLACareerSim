@@ -20,7 +20,12 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(0);
 
     }
-    
+
+    public void onOptionsButton()
+    {
+        SceneManager.LoadScene("Options");
+    }
+
     public void onQuitButton()
     {
         Application.Quit();
