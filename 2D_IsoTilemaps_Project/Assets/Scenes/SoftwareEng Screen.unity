@@ -4569,7 +4569,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 873414299}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: RestartLevel
+        m_MethodName: LoadMainScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

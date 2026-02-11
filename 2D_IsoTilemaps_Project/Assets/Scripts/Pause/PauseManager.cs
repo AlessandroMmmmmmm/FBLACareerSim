@@ -50,10 +50,10 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
     
-    public void LoadMainMenu()
+    public void LoadMainScene()
     {
         Time.timeScale = 1f; // Make sure time is running
-        SceneManager.LoadScene(0); // Assumes title screen is index 0
+        SceneManager.LoadScene(2); // Assumes title screen is index 0
     }
     
     public void QuitGame()
