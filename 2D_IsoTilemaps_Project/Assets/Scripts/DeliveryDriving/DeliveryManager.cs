@@ -45,12 +45,14 @@ public class DeliveryManager : MonoBehaviour
         RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
         if (roadGen != null)
         {
-            Debug.Log("Generating new road layout for shift...");
+            Debug.Log("=== STARTING NEW SHIFT ===");
+            Debug.Log("Clearing old roads and generating new layout...");
             roadGen.GenerateRoadNetwork();
+            Debug.Log("New road layout generated successfully!");
         }
         else
         {
-            Debug.LogWarning("No RoadGenerator found in scene!");
+            Debug.LogError("CRITICAL: No RoadGenerator found in scene!");
         }
 
         // Initialize the Delivery Text immediately so it doesn't show old data

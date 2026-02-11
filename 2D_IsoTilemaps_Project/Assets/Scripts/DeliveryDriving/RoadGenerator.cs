@@ -87,8 +87,19 @@ public class RoadGenerator : MonoBehaviour
 
     private void Start()
     {
-        // Optional: Generate on start
-        // GenerateRoadNetwork();
+        // DO NOT generate roads at start
+        // Roads will be generated when DeliveryManager calls StartShiftTimer()
+        // This ensures a fresh layout for each shift
+
+        // Create the road parent for later use
+        GameObject roadParentObj = GameObject.Find("Roads_Generated");
+        if (roadParentObj != null)
+        {
+            DestroyImmediate(roadParentObj);
+        }
+
+        roadParentObj = new GameObject("Roads_Generated");
+        roadParent = roadParentObj.transform;
     }
 
     /// <summary>
@@ -170,8 +181,8 @@ public class RoadGenerator : MonoBehaviour
 
         // Reserve additional empty tiles for delivery zones with box colliders
         Vector3[] additionalEmptyTiles = {
-            new Vector3(-60f, 0f, -140f),
-            new Vector3(20f, 0f, -200f)
+            new Vector3(20f, 0f, -200f),
+            new Vector3(-60f, 0f, 140f)
         };
 
         foreach (Vector3 emptyTilePos in additionalEmptyTiles)
@@ -857,7 +868,7 @@ public class RoadGenerator : MonoBehaviour
                     {
                         OffRoadPenalty penalty = building.AddComponent<OffRoadPenalty>();
                         penalty.penaltyType = OffRoadPenalty.PenaltyType.Building;
-                        penalty.penaltyPerSecond = 10f; // Higher penalty for buildings
+                        penalty.penaltyPerSecond = 5f; // Higher penalty for buildings
                     }
 
                     // Add collider if not present
@@ -944,7 +955,7 @@ public class RoadGenerator : MonoBehaviour
                     {
                         OffRoadPenalty penalty = grass.AddComponent<OffRoadPenalty>();
                         penalty.penaltyType = OffRoadPenalty.PenaltyType.Grass;
-                        penalty.penaltyPerSecond = 6f;
+                        penalty.penaltyPerSecond = 2f;
                     }
 
                     // Add collider if not present
