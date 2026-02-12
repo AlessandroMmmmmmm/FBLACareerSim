@@ -182,7 +182,7 @@ public class RoadGenerator : MonoBehaviour
         // Reserve additional empty tiles for delivery zones with box colliders
         Vector3[] additionalEmptyTiles = {
             new Vector3(20f, 0f, -200f),
-            new Vector3(-60f, 0f, 140f)
+            new Vector3(-60f, 0f, -140f)
         };
 
         foreach (Vector3 emptyTilePos in additionalEmptyTiles)
