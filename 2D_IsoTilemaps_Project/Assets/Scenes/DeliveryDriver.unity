@@ -6268,7 +6268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.8, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.029955864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6276,7 +6276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 18b9c566a721aa048ad1322e9accd8d1, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10309,9 +10309,8 @@ MonoBehaviour:
   pulseSpeed: 2
   pulseMinScale: 0.8
   pulseMaxScale: 1.2
-  cameraOffset: {x: 0, y: 50}
-  manualWorldCenter: {x: 0, y: -50}
-  useManualCenter: 0
+  manualWorldCenter: {x: 0, y: -94}
+  cameraOffset: {x: 0, y: 0}
 --- !u!1 &782863721
 GameObject:
   m_ObjectHideFlags: 0
@@ -12601,6 +12600,7 @@ MonoBehaviour:
   packageVisual: {fileID: 977462174}
   hasPackage: 0
   packagesDelivered: 0
+  zoneDelivered: 000000
   box1: {fileID: 1139507302}
   box2: {fileID: 1915570899}
   box3: {fileID: 1313316569}
@@ -15736,7 +15736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 835, y: -415}
+  m_AnchoredPosition: {x: 201, y: -249}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1112957523
@@ -19106,7 +19106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -24.943726}
+  m_AnchoredPosition: {x: 0, y: -24.943726}
   m_SizeDelta: {x: -684.80176, y: -363.3506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1343394317

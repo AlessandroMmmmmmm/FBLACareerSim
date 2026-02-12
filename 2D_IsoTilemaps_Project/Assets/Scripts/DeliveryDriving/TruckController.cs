@@ -10,6 +10,7 @@ public class ArcadeTruck : MonoBehaviour
 
     [Header("Delivery System")]
     public int packagesDelivered = 0;
+    public bool[] zoneDelivered = new bool[3]; // Tracks WHICH specific zones were delivered
     public GameObject box1; // Assign Box1 GameObject
     public GameObject box2; // Assign Box2 GameObject
     public GameObject box3; // Assign Box3 GameObject
@@ -20,6 +21,7 @@ public class ArcadeTruck : MonoBehaviour
 
     private Rigidbody rb;
     private DeliveryManager deliveryManager;
+    private MinimapController minimap; // NEW: reference to minimap
 
     void Start()
     {
@@ -41,8 +43,12 @@ public class ArcadeTruck : MonoBehaviour
             deliveryInstructionText.gameObject.SetActive(false);
         }
 
-        // Find delivery manager
+        // Reset zone tracking
+        zoneDelivered = new bool[3];
+
+        // Find delivery manager and minimap
         deliveryManager = FindObjectOfType<DeliveryManager>();
+        minimap = FindObjectOfType<MinimapController>();
     }
 
     void Update()
@@ -143,25 +149,45 @@ public class ArcadeTruck : MonoBehaviour
 
     private void DeliverPackage()
     {
-        // Increment delivery count FIRST
+        // Determine which zone index (0, 1, 2) was delivered
+        int zoneIndex = -1;
+        if (currentDeliveryZone == "Tile1Hitbox") zoneIndex = 0;
+        else if (currentDeliveryZone == "Tile2Hitbox") zoneIndex = 1;
+        else if (currentDeliveryZone == "Tile3Hitbox") zoneIndex = 2;
+
+        if (zoneIndex == -1) return;
+
+        // Don't deliver to same zone twice
+        if (zoneDelivered[zoneIndex])
+        {
+            Debug.Log($"Zone {zoneIndex + 1} already delivered!");
+            return;
+        }
+
+        // Mark this specific zone as delivered
+        zoneDelivered[zoneIndex] = true;
         packagesDelivered++;
 
         // Show the appropriate box at the door
-        if (currentDeliveryZone == "Tile1Hitbox" && box1 != null)
+        if (zoneIndex == 0 && box1 != null)
         {
             box1.SetActive(true);
             Debug.Log("Package delivered to Tile 1!");
         }
-        else if (currentDeliveryZone == "Tile2Hitbox" && box2 != null)
+        else if (zoneIndex == 1 && box2 != null)
         {
             box2.SetActive(true);
             Debug.Log("Package delivered to Tile 2!");
         }
-        else if (currentDeliveryZone == "Tile3Hitbox" && box3 != null)
+        else if (zoneIndex == 2 && box3 != null)
         {
             box3.SetActive(true);
             Debug.Log("Package delivered to Tile 3!");
         }
+
+        // Tell minimap which SPECIFIC marker to turn green
+        if (minimap != null)
+            minimap.OnDeliveryMade(zoneIndex);
 
         // Update delivery manager
         if (deliveryManager != null)
