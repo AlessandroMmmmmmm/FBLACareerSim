@@ -2,6 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// 8-Directional Character Controller for top-down games
+/// Uses custom keybinds from KeybindManager
 /// Uses blend trees to smoothly transition between directional animations
 /// Automatically flips sprite for left-facing directions
 /// </summary>
@@ -82,13 +83,25 @@ public class CharacterController8Direction : MonoBehaviour
     }
 
     /// <summary>
-    /// Get movement input from keyboard or gamepad
+    /// Get movement input from custom keybinds or fallback to default input
     /// </summary>
     private void GetInput()
     {
-        // Get raw input for 8-directional movement
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = 0f;
+        float vertical = 0f;
+
+        // Use custom keybinds if KeybindManager exists, otherwise use default input
+        if (KeybindManager.Instance != null)
+        {
+            horizontal = KeybindManager.Instance.GetHorizontalInput();
+            vertical = KeybindManager.Instance.GetVerticalInput();
+        }
+        else
+        {
+            // Fallback to default Unity Input Manager
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
 
         moveInput = new Vector2(horizontal, vertical);
 
