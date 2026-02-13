@@ -986,8 +986,8 @@ Tilemap:
   - first: {x: 4, y: -5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1086,8 +1086,8 @@ Tilemap:
   - first: {x: 4, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1186,8 +1186,8 @@ Tilemap:
   - first: {x: 4, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1286,8 +1286,8 @@ Tilemap:
   - first: {x: 4, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1985,20 +1985,20 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 4
+    m_Data: {fileID: 11400000, guid: 86cad3d55840fdc46a54de5798a5bffe, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: ca6ffe901ea8b6b4a93be75ca871aa4b, type: 2}
-  - m_RefCount: 98
+    m_Data: {fileID: 11400000, guid: 9b405f884fab3134dbadb56224404981, type: 2}
+  - m_RefCount: 94
     m_Data: {fileID: 11400000, guid: 7c457362d71146a42a885a404c42ca2b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 29e66803ead0fb745a4dc0d84727665b, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 4
+    m_Data: {fileID: 21300000, guid: 381437a649f337a41b99466197c69562, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: f5bef09da24bdd549bd7d551b0fac42f, type: 3}
-  - m_RefCount: 98
+    m_Data: {fileID: 21300000, guid: 9d436e62417593a45986f7af04303304, type: 3}
+  - m_RefCount: 94
     m_Data: {fileID: 21300000, guid: d75e5874c936c664cb51b897a0ea22e4, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 83eab4a136d03364e9feaae065ef41eb, type: 3}
@@ -3170,22 +3170,22 @@ MonoBehaviour:
   tilemap: {fileID: 526607797}
   player: {fileID: 1993180569}
   programManager: {fileID: 1563578956}
-  floorTile: {fileID: 11400000, guid: 7c457362d71146a42a885a404c42ca2b, type: 2}
+  floorTile: {fileID: 11400000, guid: 86cad3d55840fdc46a54de5798a5bffe, type: 2}
   wallTile: {fileID: 11400000, guid: 84c000d8926ebe74bbd5b2f45232c182, type: 2}
-  goalTile: {fileID: 11400000, guid: ca6ffe901ea8b6b4a93be75ca871aa4b, type: 2}
+  goalTile: {fileID: 11400000, guid: 9b405f884fab3134dbadb56224404981, type: 2}
   startTile: {fileID: 11400000, guid: 29e66803ead0fb745a4dc0d84727665b, type: 2}
   bugPrefab: {fileID: 7909711042920267800, guid: ce1f3d1d3a4d196479b21c7c9d8b3422,
     type: 3}
-  serverPrefab: {fileID: 3717931152557595072, guid: 1f3d07218974e8741b06357be9de2f57,
+  serverPrefab: {fileID: 7263817265806059963, guid: b3c15e50cf872dc48aaeebd359d12f50,
     type: 3}
   oneWayGatePrefab: {fileID: 0}
   teleporterPrefab: {fileID: 1320731026379961543, guid: 8b194cc4637670048b3698c5d8d1f0c8,
     type: 3}
   levels:
+  - {fileID: 11400000, guid: db6cbf9ceaefe274aadcb89db3c7ab24, type: 2}
   - {fileID: 11400000, guid: f23208a422be4ec4a8fc78033ef03973, type: 2}
   - {fileID: 11400000, guid: 0a304c041d438a34892791c6c0536933, type: 2}
   - {fileID: 11400000, guid: 154d49f8bd0a7fe4bbd79e9f58592b50, type: 2}
-  - {fileID: 11400000, guid: db6cbf9ceaefe274aadcb89db3c7ab24, type: 2}
 --- !u!4 &1077197506
 Transform:
   m_ObjectHideFlags: 0
@@ -4067,8 +4067,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.6129119, y: -2.179209}
-  m_Size: {x: 0.2861166, y: 0.6858349}
+  m_Offset: {x: -1.5547994, y: -0.95881045}
+  m_Size: {x: 1.0997274, y: 3.0336711}
   m_Direction: 0
 --- !u!1 &1463442235
 GameObject:

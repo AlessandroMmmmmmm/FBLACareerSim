@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82f9bbf887360046a8607cf1abfe59c, type: 3}
+  m_Name: Level 4
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelNumber: 0
+  levelName: 
+  description: 
+  gridSize: {x: 10, y: 10}
+  startPosition: {x: 0, y: 0}
+  goalPosition: {x: 0, y: 0}
+  obstacles: []
+  maxMoves: -1
+  restrictMoveTypes: 0
+  allowedMoves: 
