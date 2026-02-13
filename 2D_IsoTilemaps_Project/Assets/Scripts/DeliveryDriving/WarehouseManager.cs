@@ -19,7 +19,6 @@ public class WarehouseManager : MonoBehaviour
     public TextMeshProUGUI scanCountText;
     public int packagesScanned = 0;
     public int requiredPackages = 3;
-    public WaveFunctionCollapse cityGenerator;
 
     void Start()
     {
@@ -123,18 +122,20 @@ public class WarehouseManager : MonoBehaviour
         if (driveHUD != null)
             driveHUD.SetActive(true);
 
-        // Start shift timer + generate new roads
+        // Generate roads ONCE here - single source of truth
+        RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
+        if (roadGen != null)
+            roadGen.GenerateRoadNetwork();
+
+        // Start shift timer
         if (deliveryManager != null)
             deliveryManager.StartShiftTimer();
-
-        // Build the city
-        cityGenerator.InitializeWaveFunction();
     }
 
     private void FinishCareerTask()
     {
         minigamePanel.SetActive(false);
-        cityGenerator.InitializeWaveFunction();
+        // Road generation is handled by DeliveryManager.StartShiftTimer()
         Debug.Log("Quest Progress: Logistics Task Complete. Starting City Drive.");
     }
 }

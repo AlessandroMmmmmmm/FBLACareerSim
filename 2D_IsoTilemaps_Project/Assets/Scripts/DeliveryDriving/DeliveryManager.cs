@@ -36,32 +36,16 @@ public class DeliveryManager : MonoBehaviour
         if (shiftTimer <= 0) EndShift(false);
     }
 
-    // Called by LoadingZone once scanning is complete
+    // Called by WarehouseManager once secure packages is clicked
     public void StartShiftTimer()
     {
         timerRunning = true;
         packagesDelivered = 0;
-        totalPenalties = 0f; // Reset penalties for new shift
-
-        // Generate new road layout for this shift
-        RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
-        if (roadGen != null)
-        {
-            Debug.Log("=== STARTING NEW SHIFT ===");
-            Debug.Log("Clearing old roads and generating new layout...");
-            roadGen.GenerateRoadNetwork();
-            Debug.Log("New road layout generated successfully!");
-        }
-        else
-        {
-            Debug.LogError("CRITICAL: No RoadGenerator found in scene!");
-        }
+        totalPenalties = 0f;
 
         // Initialize the Delivery Text immediately so it doesn't show old data
         if (packageText != null)
-        {
             packageText.text = $"Deliveries: 0/{packagesRequired}";
-        }
     }
 
     // Called by ArcadeTruck when a package is delivered
