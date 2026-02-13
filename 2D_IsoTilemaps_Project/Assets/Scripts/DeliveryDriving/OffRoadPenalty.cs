@@ -58,6 +58,7 @@ public class OffRoadPenalty : MonoBehaviour
             if (deliveryManager != null)
             {
                 deliveryManager.shiftTimer -= penalty;
+                deliveryManager.totalPenalties += penalty; // Track total for scoring
 
                 // Clamp to 0 minimum
                 if (deliveryManager.shiftTimer < 0f)

@@ -53,7 +53,6 @@ public class ShiftScoring : MonoBehaviour
 
     private DeliveryManager deliveryManager;
     private ArcadeTruck truck;
-    private float totalPenalties = 0f;
 
     void Start()
     {
@@ -64,18 +63,8 @@ public class ShiftScoring : MonoBehaviour
         {
             scorePanel.SetActive(false);
         }
-
-        // Subscribe to penalty events
-        OffRoadPenalty[] penalties = FindObjectsOfType<OffRoadPenalty>();
-        foreach (var penalty in penalties)
-        {
-            penalty.onPenaltyApplied.AddListener(AddPenalty);
-        }
-    }
-
-    public void AddPenalty(float amount)
-    {
-        totalPenalties += amount;
+        // NOTE: Penalties are now tracked directly in DeliveryManager.totalPenalties
+        // by OffRoadPenalty - no event subscription needed here
     }
 
     public void ShowEndOfShiftReport(bool success)
@@ -87,6 +76,7 @@ public class ShiftScoring : MonoBehaviour
         int packagesDelivered = truck != null ? truck.packagesDelivered : 0;
         int packagesRequired = deliveryManager != null ? deliveryManager.packagesRequired : 3;
         float timeRemaining = deliveryManager != null ? deliveryManager.shiftTimer : 0f;
+        float totalPenalties = deliveryManager != null ? deliveryManager.totalPenalties : 0f;
 
         int stars = CalculateStars(packagesDelivered, packagesRequired, timeRemaining, totalPenalties);
 
@@ -127,7 +117,6 @@ public class ShiftScoring : MonoBehaviour
                 penaltyText.color = noPenaltyColor;
             }
         }
-
         if (finalScoreText != null)
         {
             finalScoreText.text = $"PERFORMANCE RATING\n<size=90><b>{stars}</b></size> <size=60>/ 5</size>";
@@ -169,6 +158,8 @@ public class ShiftScoring : MonoBehaviour
     {
         if (delivered < required) return 0;
 
+        // penalties are already subtracted from shiftTimer by OffRoadPenalty,
+        // but we show the penalty total separately on the screen
         float effectiveTime = timeLeft;
 
         if (effectiveTime >= fiveStarTimeThreshold) return 5;

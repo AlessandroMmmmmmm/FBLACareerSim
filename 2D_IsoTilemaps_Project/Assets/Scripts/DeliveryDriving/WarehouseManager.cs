@@ -12,6 +12,9 @@ public class WarehouseManager : MonoBehaviour
     public GameObject driveHUD;
     public DeliveryManager deliveryManager;
 
+    [Header("Scan Instruction")]
+    public GameObject scanInstructionBox;    // NEW: Panel/Text telling user to hold click
+
     [Header("Minigame Logic")]
     public TextMeshProUGUI scanCountText;
     public int packagesScanned = 0;
@@ -20,37 +23,37 @@ public class WarehouseManager : MonoBehaviour
 
     void Start()
     {
-        // 2026 Security: Start everything hidden
+        // Start everything hidden
         truckInstructionsText.SetActive(false);
         enterWarehouseButton.SetActive(false);
         minigamePanel.SetActive(false);
+
+        // Hide scan instruction at start
+        if (scanInstructionBox != null)
+            scanInstructionBox.SetActive(false);
     }
 
     // Step 1: Called by LoadingZone Trigger
     public void SetInLoadingZone(bool isInside)
     {
-        // Toggle the master folder
         if (masterWarehouseUI != null)
             masterWarehouseUI.SetActive(isInside);
 
-        // If entering, show only the first instruction
         if (isInside)
         {
             truckInstructionsText.SetActive(true);
-            enterWarehouseButton.SetActive(false); // Hide button until they hit the Ramp_Trigger
+            enterWarehouseButton.SetActive(false);
             minigamePanel.SetActive(false);
         }
     }
-
-
 
     // Step 2: Called by Ramp_Trigger
     public void SetAtRamp(bool isAtRamp)
     {
         if (isAtRamp)
         {
-            truckInstructionsText.SetActive(false); // Hide instructions
-            enterWarehouseButton.SetActive(true);   // Show button
+            truckInstructionsText.SetActive(false);
+            enterWarehouseButton.SetActive(true);
         }
         else
         {
@@ -58,78 +61,75 @@ public class WarehouseManager : MonoBehaviour
         }
     }
 
-    // Step 3: Button Click Action
-    // Inside WarehouseManager.cs
-
+    // Step 3: Button Click - opens the minigame
     public void OnEnterWarehouseClick()
     {
-        // 1. Hide the button that got us here
         if (enterWarehouseButton != null)
             enterWarehouseButton.SetActive(false);
 
-        // 2. Hide the instructions (if they were still visible)
         if (truckInstructionsText != null)
             truckInstructionsText.SetActive(false);
 
-        // 3. Show the 2D UI Minigame
         if (minigamePanel != null)
             minigamePanel.SetActive(true);
+
+        // Show the scan instruction when minigame opens
+        if (scanInstructionBox != null)
+            scanInstructionBox.SetActive(true);
+
+        // Reset scan count each time warehouse is entered
+        packagesScanned = 0;
+        if (scanCountText != null)
+            scanCountText.text = $"Scanned: 0/{requiredPackages}";
 
         Debug.Log("Career Quest: User entered Warehouse. Launching Minigame.");
     }
 
-
+    // Step 4: Called each time a package is scanned
     public void OnScanPackage()
     {
         packagesScanned++;
 
-        // Update the minigame text
         if (scanCountText != null)
             scanCountText.text = $"Scanned: {packagesScanned}/{requiredPackages}";
 
         if (packagesScanned >= requiredPackages)
         {
-            // ONLY show the secure button. 
-            // DO NOT activate driveHUD or InitializeWaveFunction here!
+            // All packages scanned - hide instruction, show secure button
+            if (scanInstructionBox != null)
+                scanInstructionBox.SetActive(false);
+
             ShowSecureButton();
         }
     }
 
-
-
-
-
-    // Step 2: Show the final button
+    // Step 5: Show the final secure button
     private void ShowSecureButton()
     {
-        // Ensure the scanning interface stays up or hides, 
-        // but the HUD must stay FALSE.
         if (securePackagesButton != null)
-        {
             securePackagesButton.SetActive(true);
-        }
 
-        // Safety check:
-        if (driveHUD != null) driveHUD.SetActive(false);
+        if (driveHUD != null)
+            driveHUD.SetActive(false);
     }
 
-
-
+    // Step 6: Secure packages - start the shift
     public void OnSecurePackagesClick()
     {
         // Hide warehouse UI
         masterWarehouseUI.SetActive(false);
 
-        // Show ONLY the delivery info now
-        if (driveHUD != null) driveHUD.SetActive(true);
+        // Show the delivery HUD
+        if (driveHUD != null)
+            driveHUD.SetActive(true);
+
+        // Start shift timer + generate new roads
+        if (deliveryManager != null)
+            deliveryManager.StartShiftTimer();
 
         // Build the city
         cityGenerator.InitializeWaveFunction();
     }
-
-
-
-
 
     private void FinishCareerTask()
     {

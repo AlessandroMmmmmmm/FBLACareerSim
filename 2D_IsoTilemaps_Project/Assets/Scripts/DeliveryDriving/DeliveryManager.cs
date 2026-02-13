@@ -7,6 +7,7 @@ public class DeliveryManager : MonoBehaviour
     public int currentPackagesInTruck = 0;
     public int packagesDelivered = 0; // Track deliveries
     public float shiftTimer = 120f;
+    public float totalPenalties = 0f; // Accumulated off-road penalty seconds
     public GameObject driveHUD;
 
     [Header("UI References")]
@@ -40,6 +41,7 @@ public class DeliveryManager : MonoBehaviour
     {
         timerRunning = true;
         packagesDelivered = 0;
+        totalPenalties = 0f; // Reset penalties for new shift
 
         // Generate new road layout for this shift
         RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
