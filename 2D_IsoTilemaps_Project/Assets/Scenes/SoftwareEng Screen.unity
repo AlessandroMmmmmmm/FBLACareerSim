@@ -409,7 +409,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1739681540}
   m_HandleRect: {fileID: 1739681539}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -968,7 +968,7 @@ TilemapRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.0022560954, y: 0.250423, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &815099604
@@ -3170,7 +3170,7 @@ MonoBehaviour:
   tilemap: {fileID: 526607797}
   player: {fileID: 1993180569}
   programManager: {fileID: 1563578956}
-  floorTile: {fileID: 11400000, guid: 86cad3d55840fdc46a54de5798a5bffe, type: 2}
+  floorTile: {fileID: 11400000, guid: 197c8a1ad017d1840a516860b63cd496, type: 2}
   wallTile: {fileID: 11400000, guid: 84c000d8926ebe74bbd5b2f45232c182, type: 2}
   goalTile: {fileID: 11400000, guid: 9b405f884fab3134dbadb56224404981, type: 2}
   startTile: {fileID: 11400000, guid: 29e66803ead0fb745a4dc0d84727665b, type: 2}
