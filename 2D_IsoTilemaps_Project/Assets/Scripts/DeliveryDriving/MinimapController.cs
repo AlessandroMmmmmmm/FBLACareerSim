@@ -110,6 +110,10 @@ public class MinimapController : MonoBehaviour
     {
         if (truckTransform == null || minimapDisplay == null || truckMarker == null) return;
 
+        // Force color every frame in case it gets overridden
+        Image truckImg = truckMarker.GetComponent<Image>();
+        if (truckImg != null) truckImg.color = truckMarkerColor;
+
         float minimapSize = minimapDisplay.rectTransform.rect.width;
         float worldToMapScale = (minimapSize * 0.5f) / viewSize;
 
