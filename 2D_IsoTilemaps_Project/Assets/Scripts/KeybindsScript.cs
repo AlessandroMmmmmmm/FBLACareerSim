@@ -57,6 +57,24 @@ public class KeybindManager : MonoBehaviour
         }
     }
 
+    // Call this method to reassign buttons when returning to options scene
+    public void ReassignButtons(Button up, Button right, Button left, Button down,
+                                 TextMeshProUGUI upText, TextMeshProUGUI rightText,
+                                 TextMeshProUGUI leftText, TextMeshProUGUI downText)
+    {
+        upButton = up;
+        rightButton = right;
+        leftButton = left;
+        downButton = down;
+
+        upButtonText = upText;
+        rightButtonText = rightText;
+        leftButtonText = leftText;
+        downButtonText = downText;
+
+        SetupButtons();
+    }
+
     void SetupButtons()
     {
         // Add button listeners

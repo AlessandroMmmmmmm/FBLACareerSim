@@ -67,14 +67,25 @@ public class ArcadeTruck : MonoBehaviour
         Vector3 currentRotation = transform.eulerAngles;
         transform.eulerAngles = new Vector3(0, currentRotation.y, 0);
 
-        // 1. INPUT
+        // 1. INPUT - Use custom keybinds if available, otherwise use defaults
         float moveInput = 0;
-        if (Input.GetKey(KeyCode.W)) moveInput = 1;
-        else if (Input.GetKey(KeyCode.S)) moveInput = -1;
-
         float turnInput = 0;
-        if (Input.GetKey(KeyCode.D)) turnInput = 1;
-        else if (Input.GetKey(KeyCode.A)) turnInput = -1;
+
+        if (KeybindManager.Instance != null)
+        {
+            // Use custom keybinds
+            moveInput = KeybindManager.Instance.GetVerticalInput();
+            turnInput = KeybindManager.Instance.GetHorizontalInput();
+        }
+        else
+        {
+            // Fallback to default WASD
+            if (Input.GetKey(KeyCode.W)) moveInput = 1;
+            else if (Input.GetKey(KeyCode.S)) moveInput = -1;
+
+            if (Input.GetKey(KeyCode.D)) turnInput = 1;
+            else if (Input.GetKey(KeyCode.A)) turnInput = -1;
+        }
 
         // 2. MOVEMENT
         Vector3 movement = transform.forward * moveInput * speed;
