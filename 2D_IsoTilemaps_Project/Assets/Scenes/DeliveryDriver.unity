@@ -10295,7 +10295,7 @@ MonoBehaviour:
   minimapBorder: {fileID: 1146138539}
   truckMarker: {fileID: 484454195}
   truckTransform: {fileID: 964959763}
-  truckMarkerColor: {r: 0.2, g: 0.8, b: 1, a: 1}
+  truckMarkerColor: {r: 1, g: 1, b: 1, a: 1}
   dropOffMarkers:
   - {fileID: 1060207503}
   - {fileID: 381748107}
@@ -12743,6 +12743,7 @@ MonoBehaviour:
   box2: {fileID: 1915570899}
   box3: {fileID: 1313316569}
   deliveryInstructionText: {fileID: 1133256186}
+  speedLimit: 40
 --- !u!135 &964959761
 SphereCollider:
   m_ObjectHideFlags: 0
