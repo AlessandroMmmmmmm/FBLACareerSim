@@ -7,7 +7,7 @@ public class CarCardUI : MonoBehaviour
     [SerializeField] private TMP_Text modelText;
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private TMP_Text statsText;
-    
+
     [Header("Sprite Stack UI Settings")]
     [SerializeField] private RectTransform stackContainer; // A child UI object to hold layers
     [SerializeField] private GameObject uiLayerPrefab;    // A UI Image prefab
@@ -43,11 +43,11 @@ public class CarCardUI : MonoBehaviour
 
         // Clear existing layers or reuse them
         int childCount = stackContainer.childCount;
-        
+
         for (int i = 0; i < car.stackLayers.Length; i++)
         {
             Image layerImg;
-            
+
             // Reuse existing image or instantiate new one
             if (i < childCount)
             {

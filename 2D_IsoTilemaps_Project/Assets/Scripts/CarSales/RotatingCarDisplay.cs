@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 public class SpriteStackRotator : MonoBehaviour
 {
     public float heightScale = 0.05f;

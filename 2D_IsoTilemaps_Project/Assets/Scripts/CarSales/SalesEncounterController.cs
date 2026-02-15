@@ -449,7 +449,7 @@ public class SalesEncounterController : MonoBehaviour
 
         if (hintText)
             UpdateHint(
-              success  ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
+              success ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
                 : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)");
 
         return success;
