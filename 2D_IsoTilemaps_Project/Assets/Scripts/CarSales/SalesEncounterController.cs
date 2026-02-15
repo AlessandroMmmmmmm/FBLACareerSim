@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using TMPro;
-using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SalesEncounterController : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private CustomerData customer;
-
     [SerializeField] private List<CustomerData> customers = new List<CustomerData>();
-
     [SerializeField] private List<CarModelData> inventory = new List<CarModelData>();
 
     [Header("Car Cards (3)")]
@@ -50,10 +48,31 @@ public class SalesEncounterController : MonoBehaviour
     [SerializeField] private int earliestCloseTurn = 3;
 
     [Header("Rounds")]
-    [SerializeField] private int roundsTotal = 3;          // ✅ Round 1..3 then game ends
-    [SerializeField] private float nextRoundDelay = 1.5f;  // small delay after result before next customer
+    [SerializeField] private int roundsTotal = 3;
+    [SerializeField] private float nextRoundDelay = 1.5f;
+
     [Header("References")]
-    [SerializeField] private SpriteStackRotator carDisplay; // Drag your 3D display object here
+    [SerializeField] private SpriteStackRotator carDisplay;
+
+    [Header("Dynamic Text Colors")]
+    [SerializeField] private Color profitPositiveColor = new Color(0.48f, 0.88f, 0.54f); // #7AE08A green
+    [SerializeField] private Color profitNeutralColor = new Color(0.94f, 0.93f, 0.91f); // #F0EDE8 off-white
+    [SerializeField] private Color profitNegativeColor = new Color(0.88f, 0.48f, 0.48f); // #E07A7A red
+
+    [SerializeField] private Color chanceHighColor = new Color(0.48f, 0.88f, 0.54f); // #7AE08A green
+    [SerializeField] private Color chanceMidColor = new Color(0.96f, 0.84f, 0.48f); // #F5D67A yellow
+    [SerializeField] private Color chanceLowColor = new Color(0.88f, 0.48f, 0.48f); // #E07A7A red
+    [SerializeField] private Image backgroundImage; // Drag your background UI Image here
+    [SerializeField] private float colorLerpSpeed = 2f; // How fast it transitions
+
+    [SerializeField] private Color colorPickingCar = new Color(0.13f, 0.17f, 0.25f); // Dark blue - waiting
+    [SerializeField] private Color colorNegotiating = new Color(0.15f, 0.22f, 0.18f); // Dark green - active deal
+    [SerializeField] private Color colorThinking = new Color(0.20f, 0.18f, 0.10f); // Dark amber - suspense
+    [SerializeField] private Color colorDealClosed = new Color(0.10f, 0.28f, 0.12f); // Bright green - success
+    [SerializeField] private Color colorCustomerLeft = new Color(0.28f, 0.10f, 0.10f); // Dark red - failure
+    [SerializeField] private Color colorGameOver = new Color(0.08f, 0.08f, 0.12f); // Near black - end
+
+    private Color bgTargetColor;
 
     // Runtime state - per customer
     private CarModelData selectedCar;
@@ -68,7 +87,7 @@ public class SalesEncounterController : MonoBehaviour
     private bool ended;
 
     // Runtime state - overall game
-    private int currentRound = 1; // ✅ 1..roundsTotal
+    private int currentRound = 1;
     private int totalProfit = 0;
     private int successfulSales = 0;
 
@@ -85,19 +104,35 @@ public class SalesEncounterController : MonoBehaviour
         choiceCButton.onClick.AddListener(() => OnPickChoice(2));
         if (walkAwayButton) walkAwayButton.onClick.AddListener(() => End(false, "You walked away."));
 
+        // Start at picking color
+        if (backgroundImage != null)
+            backgroundImage.color = colorPickingCar;
+        bgTargetColor = colorPickingCar;
+
         StartEncounter();
     }
+
+    private void Update()
+    {
+        // Smoothly lerp background toward target color
+        if (backgroundImage != null)
+            backgroundImage.color = Color.Lerp(backgroundImage.color, bgTargetColor, Time.deltaTime * colorLerpSpeed);
+    }
+
+    private void SetBackgroundStage(Color target)
+    {
+        bgTargetColor = target;
+    }
+
     private CustomerData CurrentCustomer
     {
         get
         {
             if (customers == null || customers.Count == 0) return null;
-
             int idx = Mathf.Clamp(currentRound - 1, 0, customers.Count - 1);
             return customers[idx];
         }
     }
-
 
     private void StartEncounter()
     {
@@ -109,7 +144,6 @@ public class SalesEncounterController : MonoBehaviour
             return;
         }
 
-        // ✅ Stop if rounds done
         if (currentRound > roundsTotal)
         {
             EndGame();
@@ -127,7 +161,6 @@ public class SalesEncounterController : MonoBehaviour
         patienceMax = Mathf.Max(1, customer.PatienceMax);
         patience = patienceMax;
 
-        // Reset baseline chance for this customer/round
         dealChance = baseCloseChance;
 
         if (customerLineText)
@@ -138,6 +171,8 @@ public class SalesEncounterController : MonoBehaviour
 
         if (walkAwayButton) walkAwayButton.gameObject.SetActive(false);
         if (speechBubble) speechBubble.SetActive(false);
+
+        SetBackgroundStage(colorPickingCar); // Waiting for car selection
 
         RefreshHUD();
         ShowCarsForCustomer();
@@ -173,13 +208,11 @@ public class SalesEncounterController : MonoBehaviour
         };
 
         prefs.Sort((a, b) => b.value.CompareTo(a.value));
-
         topN = Mathf.Clamp(topN, 1, prefs.Count);
         var chosen = prefs.GetRange(0, topN);
 
         if (chosen.Count == 1) return $"{chosen[0].label} ({chosen[0].value})";
         if (chosen.Count == 2) return $"{chosen[0].label} ({chosen[0].value}) and {chosen[1].label} ({chosen[1].value})";
-
         return $"{chosen[0].label} ({chosen[0].value}), {chosen[1].label} ({chosen[1].value}), and {chosen[2].label} ({chosen[2].value})";
     }
 
@@ -213,17 +246,12 @@ public class SalesEncounterController : MonoBehaviour
 
     private void OnSelectCar(CarModelData car)
     {
-
         selectedCar = car;
 
-        // NEW: Update the visual stack
         if (carDisplay != null)
-        {
             carDisplay.SetCarModel(car);
-        }
 
         currentOfferPrice = selectedCar.MSRP;
-
         selectedCar = car;
         currentOfferPrice = selectedCar.MSRP;
 
@@ -231,7 +259,7 @@ public class SalesEncounterController : MonoBehaviour
         cardB.SetSelected(shownCars[1] == car);
         cardC.SetSelected(shownCars[2] == car);
 
-        RecomputeDealChance(); // ✅ includes affordability gate
+        RecomputeDealChance();
 
         if (customerLineText)
             customerLineText.text = $"{customer.CustomerName}: Tell me why {selectedCar.ModelName} is right for me.";
@@ -241,11 +269,12 @@ public class SalesEncounterController : MonoBehaviour
 
         if (walkAwayButton) walkAwayButton.gameObject.SetActive(true);
 
+        SetBackgroundStage(colorNegotiating); // Car selected, negotiation begins
+
         SetupChoicesForTurn();
         SetupChoiceButtonsEnabled(true);
         RefreshHUD();
         if (ended) return;
-
     }
 
     private void SetupChoicesForTurn()
@@ -274,6 +303,7 @@ public class SalesEncounterController : MonoBehaviour
         if (hintText)
             UpdateHint($"Round {currentRound}/{roundsTotal} — Offer: ${currentOfferPrice:N0} | Turn {turnIndex + 1}/{turnsPerCustomer}");
     }
+
     private void OnEnable()
     {
         choiceAButton.onClick.RemoveAllListeners();
@@ -284,8 +314,6 @@ public class SalesEncounterController : MonoBehaviour
         choiceBButton.onClick.AddListener(() => OnPickChoice(1));
         choiceCButton.onClick.AddListener(() => OnPickChoice(2));
     }
-
-
 
     private void OnPickChoice(int idx)
     {
@@ -305,28 +333,18 @@ public class SalesEncounterController : MonoBehaviour
             _ => null
         };
 
-
         if (picked == null) return;
 
         int oldPrice = currentOfferPrice;
-
-        // Apply price change
         currentOfferPrice += picked.PriceDelta;
         currentOfferPrice = Mathf.Max(currentOfferPrice, 100);
 
-        // ✅ PROFIT RULE: discounts lose money (negative), price increases gain money (positive)
         int priceChange = currentOfferPrice - oldPrice;
         profit += priceChange;
-        // Example: old 20000 -> new 18500 => priceChange = -1500 => profit -= 1500 (lost money)
-        // Example: old 20000 -> new 21000 => priceChange = +1000 => profit += 1000 (gained money)
 
-        // Apply deltas
         patience = Mathf.Clamp(patience + picked.PatienceDelta, 0f, patienceMax);
 
-        // ✅ Recompute chance (includes affordability gate)
         float personalityMod = PersonalityModifier(customer.Personality, picked);
-
-        // ✅ Recompute chance from scratch at the NEW price (stable + intuitive)
         dealChance = baseCloseChance;
 
         if (selectedCar != null)
@@ -335,23 +353,19 @@ public class SalesEncounterController : MonoBehaviour
             dealChance -= ComputePricePenalty(customer, currentOfferPrice);
         }
 
-        // ✅ Add the “tactic” effect (discount/fair/pressure) + personality effect
         dealChance += picked.DealChanceDelta + personalityMod;
-
-        // Clamp and then hard-gate affordability
         dealChance = Mathf.Clamp01(dealChance);
+
         int discountAmount = Mathf.Max(0, oldPrice - currentOfferPrice);
         float discountBonus = Mathf.Clamp01(discountAmount / 10000f) * 0.15f;
-        // ex: $1000 off => (0.1)*0.15 = +0.015 (1.5%)
-
         dealChance += discountBonus;
 
         ApplyAffordabilityGate();
 
-
-        // Speech bubble flow
         string salesLine = GenerateSalespersonLine(picked);
         ShowSpeechBubble(salesLine);
+
+        SetBackgroundStage(colorThinking); // Waiting for customer response
 
         SetupChoiceButtonsEnabled(false);
         if (walkAwayButton) walkAwayButton.interactable = false;
@@ -385,18 +399,15 @@ public class SalesEncounterController : MonoBehaviour
 
         bool canClose = (turnIndex + 1) >= earliestCloseTurn;
 
-        // ✅ If price is over budget+stretch, canClose may be true but deal is forced impossible.
         if (canClose && TryCloseDeal())
         {
-            // ✅ PROFIT RULE: profit is sale price; discounts already reduced profit earlier via priceChange
             profit += currentOfferPrice;
-
             End(true, $"Deal closed! Sold for ${currentOfferPrice:N0}");
             yield break;
         }
 
+        SetBackgroundStage(colorNegotiating); // Back to active negotiation
 
-        // Next turn
         turnIndex++;
         if (turnIndex >= turnsPerCustomer)
         {
@@ -404,15 +415,10 @@ public class SalesEncounterController : MonoBehaviour
             yield break;
         }
 
-        // Re-enable
         SetupChoiceButtonsEnabled(true);
         if (walkAwayButton) walkAwayButton.interactable = true;
         SetupChoicesForTurn();
     }
-
-    // ==========================
-    // ✅ KEY FIX: affordability gate
-    // ==========================
 
     private bool IsOfferAffordable()
     {
@@ -423,9 +429,7 @@ public class SalesEncounterController : MonoBehaviour
     private void ApplyAffordabilityGate()
     {
         if (!IsOfferAffordable())
-        {
-            dealChance = 0f; // ✅ hard stop
-        }
+            dealChance = 0f;
     }
 
     private void RecomputeDealChance()
@@ -436,7 +440,6 @@ public class SalesEncounterController : MonoBehaviour
 
     private bool TryCloseDeal()
     {
-        // ✅ Hard block first
         if (!IsOfferAffordable())
         {
             if (hintText)
@@ -455,10 +458,6 @@ public class SalesEncounterController : MonoBehaviour
         return success;
     }
 
-    // ==========================
-    // ✅ End / Round progression
-    // ==========================
-
     private void End(bool success, string message)
     {
         ended = true;
@@ -468,16 +467,17 @@ public class SalesEncounterController : MonoBehaviour
         if (customerLineText)
             customerLineText.text = $"Round {currentRound}/{roundsTotal} Result: {message}";
 
+        // Flash to success or failure color
+        SetBackgroundStage(success ? colorDealClosed : colorCustomerLeft);
+
         if (success)
         {
             totalProfit += profit;
             successfulSales++;
         }
 
-        // ✅ Advance round NOW when encounter ends (success OR failure)
         currentRound++;
 
-        // ✅ Immediately move on after deal closes (and also after failures)
         if (currentRound > roundsTotal)
         {
             Invoke(nameof(EndGame), nextRoundDelay);
@@ -500,6 +500,8 @@ public class SalesEncounterController : MonoBehaviour
 
         if (hintText)
             UpdateHint("Shift complete.");
+
+        SetBackgroundStage(colorGameOver); // All rounds done
     }
 
     // ==========================
@@ -516,6 +518,7 @@ public class SalesEncounterController : MonoBehaviour
     {
         if (speechBubble) speechBubble.SetActive(false);
     }
+
     private string GetTopStat()
     {
         if (selectedCar == null) return "value";
@@ -531,14 +534,26 @@ public class SalesEncounterController : MonoBehaviour
 
         return top;
     }
+
     private void RefreshHUD()
     {
-        if (profitText) profitText.text = $"Round Profit: ${profit:N0} | Total: ${totalProfit:N0}";
+        if (profitText)
+        {
+            profitText.text = $"Round Profit: ${profit:N0} | Total: ${totalProfit:N0}";
+            // Color based on total profit across all rounds
+            profitText.color = totalProfit > 0 ? profitPositiveColor
+                             : totalProfit < 0 ? profitNegativeColor
+                             : profitNeutralColor;
+        }
 
         if (dealChanceText)
         {
             float shown = IsOfferAffordable() ? dealChance : 0f;
             dealChanceText.text = $"Close Chance: {(shown * 100f):0}%";
+            // Color based on thresholds
+            dealChanceText.color = shown >= 0.5f ? chanceHighColor
+                                 : shown >= 0.2f ? chanceMidColor
+                                 : chanceLowColor;
         }
 
         if (patienceSlider)
@@ -547,7 +562,6 @@ public class SalesEncounterController : MonoBehaviour
             patienceSlider.value = patience;
         }
     }
-
 
     private void SetupChoiceButtonsEnabled(bool enabled)
     {
@@ -563,9 +577,14 @@ public class SalesEncounterController : MonoBehaviour
         if (choiceCText) choiceCText.text = c;
     }
 
+    private void UpdateHint(string message)
+    {
+        if (!hintText) return;
+        hintText.text = message;
+    }
+
     // ==========================
-    // Your existing text arrays and response logic
-    // (keep these exactly as you already have them)
+    // Text arrays and response logic (unchanged)
     // ==========================
 
     private string[] GetFairAskButtonTexts() => new[]
@@ -598,318 +617,45 @@ public class SalesEncounterController : MonoBehaviour
         string[] objections = t switch
         {
             0 => new[] { "What price are we talking?", "Alright, let's talk numbers.", "How much are we looking at here?" },
-            1 => new[] { "Reliability matters to me.", "How's this going to hold up over the years?" },
-            2 => new[] { "That feels expensive. Can you do better?", "I'm not sure I can stretch that far." },
-            3 => new[] { "What about warranty or add-ons?", "What extras are included?" },
-            _ => new[] { "Convince me this is the right choice.", "I'm still on the fence." }
+            1 => new[] { "I'm not sure about this...", "Can you do better on the price?", "Help me understand why it's worth it." },
+            2 => new[] { "I need to think about this.", "There are other dealerships, you know.", "I'm comparing a few options." },
+            3 => new[] { "You're running out of time to convince me.", "My patience is wearing thin.", "Give me a real reason to buy today." },
+            4 => new[] { "This is your last chance.", "Make me an offer I can't refuse.", "Why should I buy right now?" },
+            _ => new[] { "I'm listening...", "Go on.", "What else?" }
         };
         return GetRandomResponse(objections);
     }
 
-    private string GetRandomResponse(string[] responses)
+    private string GetRandomResponse(string[] options)
     {
-        if (responses == null || responses.Length == 0) return "Hmm...";
-        return responses[Random.Range(0, responses.Length)];
+        if (options == null || options.Length == 0) return "";
+        return options[Random.Range(0, options.Length)];
     }
 
-    // NOTE: keep your existing GenerateSalespersonLine / customer responses arrays here:
     private string GenerateSalespersonLine(ChoiceData picked)
     {
         if (picked == choiceFairAsk)
-            return GetRandomResponse(GetSalespersonFairLines());
+            return GetRandomResponse(new[] {
+                $"This {selectedCar?.ModelName} is priced at ${currentOfferPrice:N0} — solid value.",
+                $"At ${currentOfferPrice:N0}, you're getting great {GetTopStat()}.",
+                $"The {selectedCar?.ModelName} at ${currentOfferPrice:N0} is the right call.",
+            });
+
         if (picked == choiceDiscountAsk)
-            return GetRandomResponse(GetSalespersonDiscountLines());
+            return GetRandomResponse(new[] {
+                $"I can bring it down to ${currentOfferPrice:N0} just for you.",
+                $"How about ${currentOfferPrice:N0}? That's a real deal.",
+                $"I'll cut it to ${currentOfferPrice:N0} — best I can do.",
+            });
+
         if (picked == choicePressureSale)
-            return GetRandomResponse(GetSalespersonPressureLines());
+            return GetRandomResponse(new[] {
+                "This deal won't last — someone else is looking at this model.",
+                "I've got two other buyers interested today.",
+                "If you walk, this price walks with you.",
+            });
 
-        return "...";
-    }
-
-    private string[] GetSalespersonFairLines()
-    {
-        return new[] {
-        $"You: This {selectedCar.ModelName} is priced at ${currentOfferPrice:N0}. It's fair, and here's why...",
-        $"You: Let me be straight with you — ${currentOfferPrice:N0} is what this {selectedCar.ModelName} is worth.",
-        $"You: I'll be honest. At ${currentOfferPrice:N0}, this {selectedCar.ModelName} is a solid deal.",
-        $"You: Here's the deal — this {selectedCar.ModelName} has great {GetTopStat()}. ${currentOfferPrice:N0} is the price.",
-        $"You: No games here. The {selectedCar.ModelName} at ${currentOfferPrice:N0} speaks for itself.",
-        $"You: Let me walk you through what you're getting with the {selectedCar.ModelName}...",
-        $"You: The {selectedCar.ModelName} is a great car. At ${currentOfferPrice:N0}, I think it's a fair ask.",
-        $"You: I want you to feel good about this. Here's what the {selectedCar.ModelName} brings to the table..."
-    };
-    }
-
-    private string[] GetSalespersonDiscountLines()
-    {
-        return new[] {
-        $"You: Tell you what — I can bring it down to ${currentOfferPrice:N0} for you.",
-        $"You: I see you're hesitating. How about I knock it down to ${currentOfferPrice:N0}?",
-        $"You: Let me sweeten this up — ${currentOfferPrice:N0}. That's my best offer.",
-        $"You: I've got some room to work with. ${currentOfferPrice:N0} — what do you think?",
-        $"You: I can do ${currentOfferPrice:N0}. That's a solid saving on this {selectedCar.ModelName}.",
-        $"You: Let's meet in the middle. I'll take it down to ${currentOfferPrice:N0}.",
-        $"You: You drive a hard bargain, but I can do ${currentOfferPrice:N0}.",
-        $"You: How about ${currentOfferPrice:N0}? I think that's fair for both of us."
-    };
-    }
-
-    private string[] GetSalespersonPressureLines()
-    {
-        return new[] {
-        $"You: I gotta be real with you — this {selectedCar.ModelName} won't last long at ${currentOfferPrice:N0}.",
-        $"You: I've had three other people ask about this one today. ${currentOfferPrice:N0} is the price.",
-        $"You: This is one of the better {selectedCar.Tag}s we've had come in. You'd be smart to move on it.",
-        $"You: At ${currentOfferPrice:N0}, this {selectedCar.ModelName} is going fast. Don't want to miss out.",
-        $"You: Between you and me, I can't hold this price forever. What's it going to take?",
-        $"You: Someone's coming back for this one tomorrow. Are you in or not?",
-        $"You: The {selectedCar.ModelName} is in high demand. This price won't stick around.",
-        $"You: I'd hate for you to lose out on this. ${currentOfferPrice:N0} — let's lock it in."
-    };
-    }
-    private string[] GetPositiveDiscountResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "That discount sweetens the deal! I'm getting excited.",
-            "Now we're talking! That price works for me.",
-            "Perfect! Lower price means I can say yes faster.",
-            "You got me! That discount sealed it.",
-            "I love a good deal. This is looking better and better!"
-        },
-            PersonalityType.Cautious => new[] {
-            "The lower price makes me feel better about this.",
-            "That's more in line with what I was hoping for.",
-            "A discount helps me justify this purchase.",
-            "Okay, the price is starting to feel right.",
-            "I appreciate you working with me on the cost."
-        },
-            PersonalityType.Analytical => new[] {
-            "The revised price improves the value proposition significantly.",
-            "Now the numbers are starting to align with market data.",
-            "That discount brings it into my acceptable range.",
-            "The price-to-value ratio is looking better.",
-            "I can work with these numbers."
-        },
-            _ => new[] { "That helps a lot, actually.", "Better! I'm warming up to this.", "The discount makes a difference." }
-        };
-    }
-
-    private string[] GetPositivePressureResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "You know what? You're right. Let's do this!",
-            "Okay, okay, you convinced me. I'm in!",
-            "I can see myself driving this already!",
-            "Your enthusiasm is contagious. I'm excited!",
-            "You make a compelling case. Let's move forward."
-        },
-            PersonalityType.Cautious => new[] {
-            "You're persuasive, I'll give you that.",
-            "I suppose you have a point...",
-            "Your confidence is reassuring.",
-            "Maybe I am overthinking this.",
-            "Alright, you're starting to win me over."
-        },
-            PersonalityType.Analytical => new[] {
-            "Your arguments are logically sound.",
-            "The data supports what you're saying.",
-            "I can't argue with those facts.",
-            "You've addressed my concerns effectively.",
-            "The evidence is compelling."
-        },
-            _ => new[] { "You make a good point.", "I'm starting to see it your way.", "That's a fair argument." }
-        };
-    }
-
-    private string[] GetPositiveFairResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "I like your straightforward approach!",
-            "Honesty goes a long way with me.",
-            "You're not playing games. I respect that.",
-            "Finally, someone who tells it like it is!",
-            "Your transparency is refreshing."
-        },
-            PersonalityType.Cautious => new[] {
-            "I appreciate your honesty. That helps a lot.",
-            "Thank you for being upfront with me.",
-            "Your straightforward approach makes me more comfortable.",
-            "I trust someone who's honest about the details.",
-            "This feels like a fair conversation."
-        },
-            PersonalityType.Analytical => new[] {
-            "The numbers are starting to make sense.",
-            "I appreciate the transparent breakdown.",
-            "Your logical presentation is effective.",
-            "The facts speak for themselves.",
-            "You've given me the data I need to decide."
-        },
-            _ => new[] { "I appreciate the honesty.", "You're being fair with me.", "That's a reasonable approach." }
-        };
-    }
-
-    // ===== NEUTRAL =====
-    private string[] GetNeutralDiscountResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "Better! But I need to see more value.",
-            "That helps, but what else can you offer?",
-            "The price is improving, but I'm not sold yet.",
-            "Good start. Keep going."
-        },
-            PersonalityType.Cautious => new[] {
-            "That helps, but I'm still not sure...",
-            "It's a step in the right direction, I suppose.",
-            "The discount is nice, but I have other concerns.",
-            "I'm still weighing my options here."
-        },
-            PersonalityType.Analytical => new[] {
-            "The revised price is more reasonable.",
-            "That improves the equation somewhat.",
-            "Better, but I'm still calculating the total value.",
-            "The discount helps the math, but there's more to consider."
-        },
-            _ => new[] { "Okay, that's a step in the right direction.", "It helps, but I'm not there yet.", "Better, I guess." }
-        };
-    }
-
-    private string[] GetNeutralPressureResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "You're making a good case, but...",
-            "Hold on, let me think about this.",
-            "You're pushy, but I get it.",
-            "Slow down, I need a minute."
-        },
-            PersonalityType.Cautious => new[] {
-            "Don't rush me. I need time to think.",
-            "I don't respond well to pressure.",
-            "Give me space to make this decision.",
-            "Pushing me won't help your case."
-        },
-            PersonalityType.Analytical => new[] {
-            "Pressure tactics won't work on me.",
-            "I make decisions based on data, not urgency.",
-            "Your sense of urgency doesn't align with my process.",
-            "I need time to analyze, not be rushed."
-        },
-            _ => new[] { "Hold on, I'm still considering.", "Don't push me into this.", "I need more time." }
-        };
-    }
-
-    private string[] GetNeutralFairResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "I hear you, but I'm not jumping in yet.",
-            "Sounds reasonable, but I'm not convinced.",
-            "Fair enough, but show me more.",
-            "Okay, but what's the catch?"
-        },
-            PersonalityType.Cautious => new[] {
-            "I'm still weighing my options.",
-            "That sounds fair, but I'm naturally cautious.",
-            "I need to think this through carefully.",
-            "It's reasonable, but I want to be sure."
-        },
-            PersonalityType.Analytical => new[] {
-            "I need more concrete data to decide.",
-            "The logic is sound, but I want to verify the details.",
-            "Let me run through the numbers one more time.",
-            "I need to compare this against other options."
-        },
-            _ => new[] { "I'm listening, but not convinced yet.", "Okay, but I'm not ready to commit.", "I need more information." }
-        };
-    }
-
-    // ===== NEGATIVE =====
-    private string[] GetNegativePressureResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "Back off. You're losing me here.",
-            "Too much pressure. I'm out.",
-            "You're being too aggressive. Not interested.",
-            "This pushy approach is turning me off."
-        },
-            PersonalityType.Cautious => new[] {
-            "You're pushing too hard. I don't like this.",
-            "Stop. You're making me uncomfortable.",
-            "This aggressive approach is a dealbreaker for me.",
-            "I'm walking if you keep this up.",
-            "Your tactics are making me want to leave."
-        },
-            PersonalityType.Analytical => new[] {
-            "This aggressive approach isn't working.",
-            "Pressure tactics are illogical and off-putting.",
-            "Your urgency suggests desperation, not value.",
-            "I don't make rushed decisions under pressure."
-        },
-            _ => new[] { "Stop pushing. It's not working.", "You're being too aggressive.", "This isn't how I want to do business." }
-        };
-    }
-
-    private string[] GetNegativeDiscountResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "It's not just about price anymore...",
-            "The discount doesn't fix my other concerns.",
-            "Too little, too late.",
-            "Price isn't the only issue here."
-        },
-            PersonalityType.Cautious => new[] {
-            "The discount helps, but I'm still very uncertain.",
-            "Even with the discount, I have doubts.",
-            "Lower price doesn't address all my concerns.",
-            "I'm not feeling confident about this."
-        },
-            PersonalityType.Analytical => new[] {
-            "The price reduction doesn't change the fundamental value equation.",
-            "Discount aside, the overall package still doesn't compute.",
-            "You're addressing price, but not the core issues.",
-            "The math still doesn't work for me, even discounted."
-        },
-            _ => new[] { "It's not just about price at this point...", "The discount isn't enough.", "I have bigger concerns than cost." }
-        };
-    }
-
-    private string[] GetNegativeFairResponses(PersonalityType type)
-    {
-        return type switch
-        {
-            PersonalityType.Impulsive => new[] {
-            "I'm losing interest fast...",
-            "This isn't exciting me anymore.",
-            "I think I'm done here.",
-            "I'm just not feeling it."
-        },
-            PersonalityType.Cautious => new[] {
-            "I'm getting uncomfortable with this whole thing.",
-            "My gut is telling me to walk away.",
-            "This doesn't feel right to me.",
-            "I think this isn't the right fit."
-        },
-            PersonalityType.Analytical => new[] {
-            "The value just isn't adding up for me.",
-            "I've analyzed this thoroughly and it's not working.",
-            "The data doesn't support moving forward.",
-            "Logically, this isn't the right decision for me."
-        },
-            _ => new[] { "I don't know about this...", "I'm having serious doubts.", "This might not be for me." }
-        };
+        return "Let's make this work.";
     }
 
     private string GenerateCustomerResponse(ChoiceData picked, bool priceChanged)
@@ -920,39 +666,26 @@ public class SalesEncounterController : MonoBehaviour
         bool isDiscount = picked == choiceDiscountAsk;
         bool isPressure = picked == choicePressureSale;
 
-        // HIGH PATIENCE + GOOD DEAL CHANCE
         if (patiencePercent > 0.7f && dealChance > 0.5f)
         {
-            if (isDiscount)
-                return GetRandomResponse(GetPositiveDiscountResponses(customer.Personality));
-            if (isPressure)
-                return GetRandomResponse(GetPositivePressureResponses(customer.Personality));
-            if (isFairAsk)
-                return GetRandomResponse(GetPositiveFairResponses(customer.Personality));
+            if (isDiscount) return GetRandomResponse(GetPositiveDiscountResponses(customer.Personality));
+            if (isPressure) return GetRandomResponse(GetPositivePressureResponses(customer.Personality));
+            if (isFairAsk) return GetRandomResponse(GetPositiveFairResponses(customer.Personality));
         }
 
-        // MEDIUM PATIENCE
         if (patiencePercent > 0.4f)
         {
-            if (priceChanged && isDiscount)
-                return GetRandomResponse(GetNeutralDiscountResponses(customer.Personality));
-            if (isPressure)
-                return GetRandomResponse(GetNeutralPressureResponses(customer.Personality));
-            if (isFairAsk)
-                return GetRandomResponse(GetNeutralFairResponses(customer.Personality));
+            if (priceChanged && isDiscount) return GetRandomResponse(GetNeutralDiscountResponses(customer.Personality));
+            if (isPressure) return GetRandomResponse(GetNeutralPressureResponses(customer.Personality));
+            if (isFairAsk) return GetRandomResponse(GetNeutralFairResponses(customer.Personality));
         }
 
-        // LOW PATIENCE
-        if (isPressure)
-            return GetRandomResponse(GetNegativePressureResponses(customer.Personality));
-        if (isDiscount)
-            return GetRandomResponse(GetNegativeDiscountResponses(customer.Personality));
-        if (isFairAsk)
-            return GetRandomResponse(GetNegativeFairResponses(customer.Personality));
+        if (isPressure) return GetRandomResponse(GetNegativePressureResponses(customer.Personality));
+        if (isDiscount) return GetRandomResponse(GetNegativeDiscountResponses(customer.Personality));
+        if (isFairAsk) return GetRandomResponse(GetNegativeFairResponses(customer.Personality));
 
         return "Let me think about this...";
     }
-
 
     private float ComputeFitBoost(CustomerData cust, CarModelData car)
     {
@@ -981,10 +714,8 @@ public class SalesEncounterController : MonoBehaviour
         if (over <= cust.MaxStretch) return 0.08f;
         return 0.20f;
     }
-    private int GetMaxAffordablePrice()
-    {
-        return customer.Budget + customer.MaxStretch;
-    }
+
+    private int GetMaxAffordablePrice() => customer.Budget + customer.MaxStretch;
 
     private float PersonalityModifier(PersonalityType type, ChoiceData picked)
     {
@@ -994,13 +725,79 @@ public class SalesEncounterController : MonoBehaviour
         if (type == PersonalityType.Cautious && picked == choiceDiscountAsk) return +0.03f;
         return 0f;
     }
-    private void UpdateHint(string message)
+
+    // ===== POSITIVE =====
+    private string[] GetPositiveDiscountResponses(PersonalityType type) => type switch
     {
-        if (!hintText) return;
-        hintText.text = message;
-    }
+        PersonalityType.Impulsive => new[] { "Now we're talking!", "That price just changed everything.", "Okay, I'm interested now!" },
+        PersonalityType.Cautious => new[] { "That's more reasonable. I'm warming up to it.", "The lower price helps my confidence.", "That makes it feel safer." },
+        PersonalityType.Analytical => new[] { "That discount improves the value equation.", "The revised price fits my budget model better.", "Now the numbers make sense." },
+        _ => new[] { "That's a good offer.", "I like where this is going.", "You've got my attention." }
+    };
 
+    private string[] GetPositivePressureResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "You know what, let's do it!", "Fine, I'm in. Let's close this.", "Okay okay, I'll take it!" },
+        PersonalityType.Cautious => new[] { "Alright, if you say so...", "I'll trust your judgment on this.", "Okay, I'll go with it." },
+        PersonalityType.Analytical => new[] { "Your urgency is noted. The data still supports this.", "If the opportunity is limited, I'll act now.", "Logic supports moving forward." },
+        _ => new[] { "Okay, let's do it.", "You've convinced me.", "I'll go ahead." }
+    };
 
+    private string[] GetPositiveFairResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "I love your honesty. Let's go!", "Straight talk — I respect that.", "Simple and clear. I'm sold!" },
+        PersonalityType.Cautious => new[] { "I appreciate the transparency.", "Your honesty makes me feel better about this.", "That straightforward approach builds trust." },
+        PersonalityType.Analytical => new[] { "The data checks out. Good presentation.", "Logical and clear. I'm impressed.", "Your facts align with my research." },
+        _ => new[] { "That's fair.", "I appreciate the honesty.", "Good pitch." }
+    };
 
+    // ===== NEUTRAL =====
+    private string[] GetNeutralDiscountResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "Getting better... but I want more.", "A discount helps, but I'm not there yet.", "Nice, but can you do even better?" },
+        PersonalityType.Cautious => new[] { "The lower price helps a little.", "I'm slightly more comfortable now.", "It's moving in the right direction." },
+        PersonalityType.Analytical => new[] { "The discount improves cost-effectiveness somewhat.", "Price reduction noted. Still analyzing.", "Better, but not yet optimal." },
+        _ => new[] { "Better, but I'm still thinking.", "Getting there...", "Not quite enough." }
+    };
 
+    private string[] GetNeutralPressureResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "Don't rush me.", "I need a moment.", "Pressure won't make me decide faster." },
+        PersonalityType.Cautious => new[] { "I need more time than you're giving me.", "Don't push — I make better decisions without pressure.", "I'm cautious by nature. Give me space." },
+        PersonalityType.Analytical => new[] { "Urgency is irrelevant to my analysis.", "I make decisions based on data, not urgency.", "Your sense of urgency doesn't align with my process." },
+        _ => new[] { "Hold on, I'm still considering.", "Don't push me into this.", "I need more time." }
+    };
+
+    private string[] GetNeutralFairResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "I hear you, but I'm not jumping in yet.", "Sounds reasonable, but I'm not convinced.", "Fair enough, but show me more." },
+        PersonalityType.Cautious => new[] { "I'm still weighing my options.", "That sounds fair, but I'm naturally cautious.", "I need to think this through carefully." },
+        PersonalityType.Analytical => new[] { "I need more concrete data to decide.", "The logic is sound, but I want to verify.", "Let me run through the numbers one more time." },
+        _ => new[] { "I'm listening, but not convinced yet.", "Okay, but I'm not ready to commit.", "I need more information." }
+    };
+
+    // ===== NEGATIVE =====
+    private string[] GetNegativePressureResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "Back off. You're losing me here.", "Too much pressure. I'm out.", "You're being too aggressive." },
+        PersonalityType.Cautious => new[] { "You're pushing too hard. I don't like this.", "Stop. You're making me uncomfortable.", "I'm walking if you keep this up." },
+        PersonalityType.Analytical => new[] { "Pressure tactics are illogical and off-putting.", "Your urgency suggests desperation, not value.", "I don't make rushed decisions under pressure." },
+        _ => new[] { "Stop pushing. It's not working.", "You're being too aggressive.", "This isn't how I want to do business." }
+    };
+
+    private string[] GetNegativeDiscountResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "It's not just about price anymore...", "Too little, too late.", "Price isn't the only issue here." },
+        PersonalityType.Cautious => new[] { "The discount helps, but I'm still very uncertain.", "Even with the discount, I have doubts.", "I'm not feeling confident about this." },
+        PersonalityType.Analytical => new[] { "The price reduction doesn't change the fundamental value equation.", "The math still doesn't work for me, even discounted." },
+        _ => new[] { "It's not just about price at this point...", "The discount isn't enough.", "I have bigger concerns than cost." }
+    };
+
+    private string[] GetNegativeFairResponses(PersonalityType type) => type switch
+    {
+        PersonalityType.Impulsive => new[] { "I'm losing interest fast...", "I think I'm done here.", "I'm just not feeling it." },
+        PersonalityType.Cautious => new[] { "I'm getting uncomfortable with this whole thing.", "My gut is telling me to walk away.", "This doesn't feel right to me." },
+        PersonalityType.Analytical => new[] { "The value just isn't adding up for me.", "The data doesn't support moving forward.", "Logically, this isn't the right decision for me." },
+        _ => new[] { "I don't know about this...", "I'm having serious doubts.", "This might not be for me." }
+    };
 }

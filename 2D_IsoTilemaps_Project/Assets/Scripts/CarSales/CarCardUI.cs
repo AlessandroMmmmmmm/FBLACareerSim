@@ -1,6 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CarCardUI : MonoBehaviour
 {
@@ -9,9 +9,10 @@ public class CarCardUI : MonoBehaviour
     [SerializeField] private TMP_Text statsText;
 
     [Header("Sprite Stack UI Settings")]
-    [SerializeField] private RectTransform stackContainer; // A child UI object to hold layers
-    [SerializeField] private GameObject uiLayerPrefab;    // A UI Image prefab
-    [SerializeField] private float uiHeightScale = 2f;     // UI uses pixels, so this is usually 1-5
+    [SerializeField] private RectTransform stackContainer;
+    [SerializeField] private GameObject uiLayerPrefab;
+    [SerializeField] private float uiHeightScale = 2f;
+    [SerializeField] private float stackVerticalOffset = 0f;
 
     [SerializeField] private GameObject selectedOutline;
     [SerializeField] private Button button;
@@ -41,14 +42,14 @@ public class CarCardUI : MonoBehaviour
     {
         if (stackContainer == null || car.stackLayers == null) return;
 
-        // Clear existing layers or reuse them
+        ApplyOffset();
+
         int childCount = stackContainer.childCount;
 
         for (int i = 0; i < car.stackLayers.Length; i++)
         {
             Image layerImg;
 
-            // Reuse existing image or instantiate new one
             if (i < childCount)
             {
                 layerImg = stackContainer.GetChild(i).GetComponent<Image>();
@@ -61,17 +62,35 @@ public class CarCardUI : MonoBehaviour
             }
 
             layerImg.sprite = car.stackLayers[i];
-            layerImg.SetNativeSize(); // Keeps sprite proportions
-
-            // Stack strictly upward in UI space (anchoredPosition)
+            layerImg.SetNativeSize();
             layerImg.rectTransform.anchoredPosition = new Vector2(0, i * uiHeightScale);
         }
 
-        // Hide unused layers if the new car has fewer layers than the previous one
         for (int i = car.stackLayers.Length; i < stackContainer.childCount; i++)
-        {
             stackContainer.GetChild(i).gameObject.SetActive(false);
-        }
+    }
+
+    private void ApplyOffset()
+    {
+        if (stackContainer == null) return;
+
+        // Force this object to ignore the parent VerticalLayoutGroup
+        LayoutElement le = stackContainer.GetComponent<LayoutElement>();
+        if (le == null) le = stackContainer.gameObject.AddComponent<LayoutElement>();
+        le.ignoreLayout = true;
+
+        // Center anchors so it stays horizontally centered on the card
+        stackContainer.anchorMin = new Vector2(0.5f, 0.5f);
+        stackContainer.anchorMax = new Vector2(0.5f, 0.5f);
+        stackContainer.pivot = new Vector2(0.5f, 0.5f);
+
+        // Only change Y, X stays at 0 (centered)
+        stackContainer.anchoredPosition = new Vector2(0, stackVerticalOffset);
+    }
+
+    private void OnValidate()
+    {
+        ApplyOffset();
     }
 
     public void SetSelected(bool selected) => selectedOutline?.SetActive(selected);
