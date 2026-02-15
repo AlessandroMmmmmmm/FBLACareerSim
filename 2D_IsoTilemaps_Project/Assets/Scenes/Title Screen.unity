@@ -270,8 +270,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -360,6 +361,7 @@ GameObject:
   - component: {fileID: 106407907}
   - component: {fileID: 106407906}
   - component: {fileID: 106407905}
+  - component: {fileID: 106407908}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -408,8 +410,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8962264, g: 0.88354397, b: 0.88354397, a: 1}
+    m_NormalColor: {r: 0.9411765, g: 0.47058824, b: 0.3137255, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.57169807, b: 0.9143397, a: 1}
     m_PressedColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -456,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83396226, g: 0.3257173, b: 0.83396226, a: 0.6313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -481,6 +483,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106407903}
   m_CullTransparentMesh: 1
+--- !u!114 &106407908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106407903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5dbafb75d64b845ad8588d7f681d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimator
+  hoverScale: 1.1
+  clickScale: 0.95
+  animationSpeed: 10
+  useColorAnimation: 0
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
+  volume: 0.5
 --- !u!1 &144426044
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +517,7 @@ GameObject:
   - component: {fileID: 144426047}
   - component: {fileID: 144426046}
   - component: {fileID: 144426049}
+  - component: {fileID: 144426050}
   m_Layer: 5
   m_Name: Instructions Button
   m_TagString: Untagged
@@ -542,9 +566,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8962264, g: 0.88354397, b: 0.88354397, a: 1}
-    m_PressedColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+    m_NormalColor: {r: 0.9411765, g: 0.47058824, b: 0.3137255, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.57169807, b: 0.9143397, a: 1}
+    m_PressedColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -590,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83396226, g: 0.3257173, b: 0.83396226, a: 0.6313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -628,6 +652,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
   clickSound: {fileID: 8300000, guid: 8570eb75689755646859cec83068800a, type: 3}
+--- !u!114 &144426050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144426044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5dbafb75d64b845ad8588d7f681d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimator
+  hoverScale: 1.1
+  clickScale: 0.95
+  animationSpeed: 10
+  useColorAnimation: 0
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
+  volume: 0.5
 --- !u!1 &492344728
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,15 +734,16 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -828,15 +874,16 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1148,15 +1195,16 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1239,6 +1287,7 @@ GameObject:
   - component: {fileID: 807167294}
   - component: {fileID: 807167293}
   - component: {fileID: 807167296}
+  - component: {fileID: 807167297}
   m_Layer: 5
   m_Name: Accessibility Button
   m_TagString: Untagged
@@ -1287,8 +1336,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.9411765, g: 0.47058824, b: 0.3137255, a: 0.8}
+    m_HighlightedColor: {r: 0.78039217, g: 0.78039217, b: 0.78039217, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1335,7 +1384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 0.6117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1373,6 +1422,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
   clickSound: {fileID: 8300000, guid: 8570eb75689755646859cec83068800a, type: 3}
+--- !u!114 &807167297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807167291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5dbafb75d64b845ad8588d7f681d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimator
+  hoverScale: 1.1
+  clickScale: 0.95
+  animationSpeed: 10
+  useColorAnimation: 0
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
+  volume: 0.5
 --- !u!1 &1036359110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,7 +6341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48.5, y: 174}
+  m_AnchoredPosition: {x: -48.5, y: 226}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182191068
@@ -6296,8 +6366,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Clocked In!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6321,13 +6392,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -6386,6 +6457,7 @@ GameObject:
   - component: {fileID: 1215983053}
   - component: {fileID: 1215983052}
   - component: {fileID: 1215983051}
+  - component: {fileID: 1215983054}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -6434,8 +6506,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8962264, g: 0.88354397, b: 0.88354397, a: 1}
+    m_NormalColor: {r: 0.9411765, g: 0.47058824, b: 0.3137255, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.57169807, b: 0.9143397, a: 1}
     m_PressedColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6482,7 +6554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83396226, g: 0.3257173, b: 0.83396226, a: 0.6313726}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6507,6 +6579,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215983049}
   m_CullTransparentMesh: 1
+--- !u!114 &1215983054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215983049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5dbafb75d64b845ad8588d7f681d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonAnimator
+  hoverScale: 1.1
+  clickScale: 0.95
+  animationSpeed: 10
+  useColorAnimation: 0
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
+  volume: 0.5
 --- !u!1 &1517939094
 GameObject:
   m_ObjectHideFlags: 0
@@ -6786,7 +6879,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -48.5, y: 80.2}
-  m_SizeDelta: {x: 305.21, y: 55.01}
+  m_SizeDelta: {x: 1000, y: 55.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942470396
 MonoBehaviour:
@@ -6810,8 +6903,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Discover your future!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 464648b99f702bf4faf1d341785a655d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f7044c9ecf011e47b489909001ad2a7, type: 2}
+  m_sharedMaterial: {fileID: 8246112903459805532, guid: 9f7044c9ecf011e47b489909001ad2a7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6835,13 +6929,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31
-  m_fontSizeBase: 31
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

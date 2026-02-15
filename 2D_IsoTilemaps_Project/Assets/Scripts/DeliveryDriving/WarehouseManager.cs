@@ -14,6 +14,7 @@ public class WarehouseManager : MonoBehaviour
 
     [Header("Scan Instruction")]
     public GameObject scanInstructionBox;    // NEW: Panel/Text telling user to hold click
+    public GameObject minimapContainer;     // Minimap UI - hidden until shift starts
 
     [Header("Minigame Logic")]
     public TextMeshProUGUI scanCountText;
@@ -30,6 +31,10 @@ public class WarehouseManager : MonoBehaviour
         // Hide scan instruction at start
         if (scanInstructionBox != null)
             scanInstructionBox.SetActive(false);
+
+        // Hide minimap until shift starts
+        if (minimapContainer != null)
+            minimapContainer.SetActive(false);
     }
 
     // Step 1: Called by LoadingZone Trigger
@@ -121,6 +126,10 @@ public class WarehouseManager : MonoBehaviour
         // Show the delivery HUD
         if (driveHUD != null)
             driveHUD.SetActive(true);
+
+        // Show minimap now that shift has started
+        if (minimapContainer != null)
+            minimapContainer.SetActive(true);
 
         // Generate roads ONCE here - single source of truth
         RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
