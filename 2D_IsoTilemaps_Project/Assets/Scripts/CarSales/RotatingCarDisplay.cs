@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class SpriteStackRotator : MonoBehaviour
 {
-    public float heightScale = 0.05f;
+    public float heightScale = 0.0625f;
     public float rotationSpeed = 50f;
 
     // Call this from the SalesEncounterController

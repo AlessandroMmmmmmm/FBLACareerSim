@@ -1102,8 +1102,8 @@ Camera:
   m_GameObject: {fileID: 200378360}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.6226415, g: 0.6213238, b: 0.61970454, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.61960787, g: 0.62352943, b: 0.62267876, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1152,8 +1152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200378360}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 940.9946, y: 347.46204, z: 12.60915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1691,7 +1691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367182600}
   - component: {fileID: 367182601}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373682611}
   - component: {fileID: 373682612}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1976,7 +1976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469277119}
   - component: {fileID: 469277120}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RotatingCarDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1992,9 +1992,9 @@ Transform:
   m_GameObject: {fileID: 469277117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 182, y: 160, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 803, y: 434, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 604200852}
   - {fileID: 367182600}
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d53dca49dcc4b94295b74c9b1608ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotatingCarDisplay
-  heightScale: 0.05
+  heightScale: 0.0625
   rotationSpeed: 30
 --- !u!1 &512425104
 GameObject:
@@ -2107,7 +2107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604200852}
   - component: {fileID: 604200853}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2198,7 +2198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 706969191}
   - component: {fileID: 706969192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2847,7 +2847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957041740}
   - component: {fileID: 957041741}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2996,7 +2996,7 @@ Canvas:
   m_GameObject: {fileID: 1108851949}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 200378362}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3285,7 +3285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -24.943665}
+  m_AnchoredPosition: {x: 0, y: -24.943604}
   m_SizeDelta: {x: -684.80176, y: -363.3506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1239223338
@@ -3979,7 +3979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343959481}
   - component: {fileID: 1343959482}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5748,7 +5748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739811067}
   - component: {fileID: 1739811068}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5839,7 +5839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768587881}
   - component: {fileID: 1768587882}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6419,7 +6419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1898582432}
   - component: {fileID: 1898582433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: layer9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7438,8 +7438,8 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 200378363}
   - {fileID: 1108851953}
   - {fileID: 249401930}
   - {fileID: 773617130}
   - {fileID: 1386101597}
+  - {fileID: 200378363}
