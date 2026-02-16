@@ -47,7 +47,7 @@ public class PauseManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f; // Make sure time is running
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void LoadMainScene()

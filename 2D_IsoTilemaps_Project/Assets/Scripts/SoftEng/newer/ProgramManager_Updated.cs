@@ -160,6 +160,12 @@ public class ProgramManager : MonoBehaviour
         }
 
         if (isRunning || program.Count == 0) return;
+        
+        SoftwareEngScoring scoring = FindFirstObjectByType<SoftwareEngScoring>();
+        if (scoring != null)
+        {
+            scoring.IncrementAttempts();
+        }
 
         programAborted = false; // Reset abort flag
         StartCoroutine(RunProgramRoutine());
@@ -351,5 +357,10 @@ public class ProgramManager : MonoBehaviour
     public bool IsRunning()
     {
         return isRunning;
+    }
+
+    public int GetProgramLength()
+    {
+        return program.Count;
     }
 }
