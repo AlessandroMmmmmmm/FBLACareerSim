@@ -13240,7 +13240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6f202e3b9e40149ae579330b5bddc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  targetCamera: {fileID: 0}
+  targetCamera: {fileID: 1154841869}
   trailCount: 18
   trailMinSpeed: 0.3
   trailMaxSpeed: 0.9

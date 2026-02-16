@@ -97,6 +97,16 @@ public class TitleScreenBackground : MonoBehaviour
         _orbSprite = CreateSoftCircleSprite(64);
     }
 
+    void OnDisable()
+    {
+        targetCamera = null;
+    }
+
+    void OnDestroy()
+    {
+        targetCamera = null;
+    }
+
     void Start()
     {
         SpawnTrails();
@@ -106,6 +116,8 @@ public class TitleScreenBackground : MonoBehaviour
 
     void Update()
     {
+        if (targetCamera == null) return;
+
         RefreshBounds();
 
         // Detect mode change and recolor all elements
@@ -150,6 +162,7 @@ public class TitleScreenBackground : MonoBehaviour
     // ── Bounds ────────────────────────────────────────────────────────────
     void RefreshBounds()
     {
+        if (targetCamera == null) return;
         float h = targetCamera.orthographicSize;
         float w = h * targetCamera.aspect;
         Vector3 c = targetCamera.transform.position;
