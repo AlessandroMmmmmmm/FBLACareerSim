@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _ColorblindType: 0
+    - _ColorblindType: 4
     - _Cutoff: 0.5
     - _DashSpacing: 20
     - _DetailNormalMapScale: 1
