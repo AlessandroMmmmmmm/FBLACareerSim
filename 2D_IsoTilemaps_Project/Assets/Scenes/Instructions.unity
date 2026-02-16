@@ -1004,6 +1004,7 @@ GameObject:
   - component: {fileID: 2059376512}
   - component: {fileID: 2059376511}
   - component: {fileID: 2059376510}
+  - component: {fileID: 2059376513}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -1085,6 +1086,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2059376513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059376509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19342787e1f97084c827c548542d09e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorblindManager
+  colorblindMaterial: {fileID: 2100000, guid: 7a4391a6de8db214eb171bb18d4f714e, type: 2}
 --- !u!1 &2102207534
 GameObject:
   m_ObjectHideFlags: 0
