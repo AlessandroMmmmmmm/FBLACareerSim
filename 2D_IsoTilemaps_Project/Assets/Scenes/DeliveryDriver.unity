@@ -28332,7 +28332,6 @@ GameObject:
   - component: {fileID: 1931189128}
   - component: {fileID: 1931189130}
   - component: {fileID: 1931189129}
-  - component: {fileID: 1931189131}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28482,19 +28481,6 @@ MonoBehaviour:
   packageLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &1931189131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931189123}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19342787e1f97084c827c548542d09e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorblindManager
-  colorblindMaterial: {fileID: 2100000, guid: 7a4391a6de8db214eb171bb18d4f714e, type: 2}
 --- !u!1001 &1932926800
 PrefabInstance:
   m_ObjectHideFlags: 0
