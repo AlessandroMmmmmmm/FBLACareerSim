@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Learn the Controls!
   gridSize: {x: 10, y: 10}
   startPosition: {x: 0, y: 0}
-  goalPosition: {x: 0, y: 0}
+  goalPosition: {x: 2, y: 2}
   obstacles: []
   maxMoves: -1
   restrictMoveTypes: 0

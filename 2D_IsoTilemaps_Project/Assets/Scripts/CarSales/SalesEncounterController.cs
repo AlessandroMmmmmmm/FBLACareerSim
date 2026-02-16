@@ -490,18 +490,55 @@ public class SalesEncounterController : MonoBehaviour
         }
     }
 
+    // private void EndGame()
+    // {
+    //     SetupChoiceButtonsEnabled(false);
+    //     if (walkAwayButton) walkAwayButton.interactable = false;
+
+    //     if (customerLineText)
+    //         customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
+
+    //     if (hintText)
+    //         UpdateHint("Shift complete.");
+
+    //     SetBackgroundStage(colorGameOver); // All rounds done
+    // }
     private void EndGame()
     {
         SetupChoiceButtonsEnabled(false);
         if (walkAwayButton) walkAwayButton.interactable = false;
 
-        if (customerLineText)
-            customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
+        // Calculate max possible money (you'll need to track this)
+        int maxPossibleMoney = CalculateMaxPossibleMoney(); // implement this based on your car prices
+        
+        // Show scoring popup
+        CarSalesScoring scoring = FindFirstObjectByType<CarSalesScoring>();
+        if (scoring != null)
+        {
+            scoring.ShowEndGameReport(totalProfit, maxPossibleMoney, successfulSales, roundsTotal);
+        }
+        else
+        {
+            // Fallback to your original end game display
+            if (customerLineText)
+                customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
 
-        if (hintText)
-            UpdateHint("Shift complete.");
+            if (hintText)
+                UpdateHint("Shift complete.");
 
-        SetBackgroundStage(colorGameOver); // All rounds done
+            SetBackgroundStage(colorGameOver);
+        }
+    }
+
+    // Add this method to calculate max possible
+    private int CalculateMaxPossibleMoney()
+    {
+        // This depends on your game design - you need to track what the maximum 
+        // possible profit is for each round (probably the MSRP of each car * 3 rounds)
+        // For example, if each car could net $5000 profit maximum:
+        return 15000; // 3 rounds * $5000 per round
+        
+        // Or calculate dynamically based on your inventory
     }
 
     // ==========================
