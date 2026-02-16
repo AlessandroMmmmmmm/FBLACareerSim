@@ -490,26 +490,13 @@ public class SalesEncounterController : MonoBehaviour
         }
     }
 
-    // private void EndGame()
-    // {
-    //     SetupChoiceButtonsEnabled(false);
-    //     if (walkAwayButton) walkAwayButton.interactable = false;
-
-    //     if (customerLineText)
-    //         customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
-
-    //     if (hintText)
-    //         UpdateHint("Shift complete.");
-
-    //     SetBackgroundStage(colorGameOver); // All rounds done
-    // }
     private void EndGame()
     {
         SetupChoiceButtonsEnabled(false);
         if (walkAwayButton) walkAwayButton.interactable = false;
 
-        // Calculate max possible money (you'll need to track this)
-        int maxPossibleMoney = CalculateMaxPossibleMoney(); // implement this based on your car prices
+        // Calculate max possible money from all customer budgets
+        int maxPossibleMoney = CalculateMaxPossibleMoney();
         
         // Show scoring popup
         CarSalesScoring scoring = FindFirstObjectByType<CarSalesScoring>();
@@ -519,7 +506,7 @@ public class SalesEncounterController : MonoBehaviour
         }
         else
         {
-            // Fallback to your original end game display
+            // Fallback to original display if no scoring system
             if (customerLineText)
                 customerLineText.text = $"Game Finished! Profit: ${totalProfit:N0} | Sales: {successfulSales}/{roundsTotal}";
 
@@ -530,16 +517,39 @@ public class SalesEncounterController : MonoBehaviour
         }
     }
 
-    // Add this method to calculate max possible
     private int CalculateMaxPossibleMoney()
     {
-        // This depends on your game design - you need to track what the maximum 
-        // possible profit is for each round (probably the MSRP of each car * 3 rounds)
-        // For example, if each car could net $5000 profit maximum:
-        return 15000; // 3 rounds * $5000 per round
+        // Sum up all customer budgets + max stretch
+        // This represents the maximum possible money you could earn
+        int maxMoney = 0;
         
-        // Or calculate dynamically based on your inventory
+        if (customers != null)
+        {
+            int roundsToCount = Mathf.Min(roundsTotal, customers.Count);
+            for (int i = 0; i < roundsToCount; i++)
+            {
+                CustomerData cust = customers[i];
+                if (cust != null)
+                {
+                    // Max possible is their budget + max stretch
+                    maxMoney += cust.Budget + cust.MaxStretch;
+                }
+            }
+        }
+        
+        Debug.Log($"Max possible money calculated: ${maxMoney:N0} from {roundsTotal} customers");
+        return maxMoney;
     }
+    // // Add this method to calculate max possible
+    // private int CalculateMaxPossibleMoney()
+    // {
+    //     // This depends on your game design - you need to track what the maximum 
+    //     // possible profit is for each round (probably the MSRP of each car * 3 rounds)
+    //     // For example, if each car could net $5000 profit maximum:
+    //     return 15000; // 3 rounds * $5000 per round
+        
+    //     // Or calculate dynamically based on your inventory
+    // }
 
     // ==========================
     // UI helpers
