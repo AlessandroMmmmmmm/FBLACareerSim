@@ -122,9 +122,11 @@ public class PortalTrigger : MonoBehaviour
     private void ActivatePortal()
     {
         if (showDebugInfo)
-        {
             Debug.Log($"Portal '{gameObject.name}' activated! Loading scene {sceneToLoad}");
-        }
+
+        // Silence MusicManager before scene loads so it can't override delivery music
+        MusicManager mm = FindFirstObjectByType<MusicManager>();
+        if (mm != null) mm.Suppress();
 
         SceneManager.LoadScene(sceneToLoad);
     }

@@ -5,35 +5,41 @@ public class DeliveryManager : MonoBehaviour
 {
     public int packagesRequired = 3;
     public int currentPackagesInTruck = 0;
-    public int packagesDelivered = 0; // Track deliveries
+    public int packagesDelivered = 0;
     public float shiftTimer = 120f;
-    public float totalPenalties = 0f; // Accumulated off-road penalty seconds
+    public float totalPenalties = 0f;
     public GameObject driveHUD;
 
     [Header("UI References")]
-    public TextMeshProUGUI timerText;   // Drag 'Timer_Text' here
-    public TextMeshProUGUI packageText; // Drag 'Package_Text' here
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI packageText;
 
-    private bool timerRunning = false; // Controls when timer updates
+    [Header("Music")]
+    public DeliveryMusicController musicController;
+
+    private bool timerRunning = false;
 
     void Start()
     {
-        // Start the game paused until the truck is ready
         timerRunning = false;
         packagesDelivered = 0;
+
+        // Start music immediately when scene loads - never restarts
+        if (musicController != null)
+            musicController.StartShiftMusic();
     }
 
     void Update()
     {
-        if (!timerRunning) return; // Only update if the timer is running
+        if (!timerRunning) return;
 
         shiftTimer -= Time.deltaTime;
 
-        // Update the UI text fields
         timerText.text = $"Time Left: {Mathf.Round(shiftTimer)}s";
         packageText.text = $"Deliveries: {packagesDelivered}/{packagesRequired}";
 
-        if (shiftTimer <= 0) EndShift(false);
+        if (shiftTimer <= 0)
+            EndShift(false);
     }
 
     // Called by WarehouseManager once secure packages is clicked
@@ -43,48 +49,49 @@ public class DeliveryManager : MonoBehaviour
         packagesDelivered = 0;
         totalPenalties = 0f;
 
-        // Initialize the Delivery Text immediately so it doesn't show old data
         if (packageText != null)
             packageText.text = $"Deliveries: 0/{packagesRequired}";
+        // No music call here - already playing from Start()
     }
 
-    // Called by ArcadeTruck when a package is delivered
     public void RegisterDelivery()
     {
         packagesDelivered++;
         Debug.Log($"Delivery registered: {packagesDelivered}/{packagesRequired}");
 
-        // Update UI immediately
         if (packageText != null)
-        {
             packageText.text = $"Deliveries: {packagesDelivered}/{packagesRequired}";
-        }
     }
 
     public void CheckDelivery()
     {
         if (packagesDelivered >= packagesRequired)
-        {
             EndShift(true);
-        }
         else
-        {
             Debug.Log($"Not enough deliveries! {packagesDelivered}/{packagesRequired}");
-        }
     }
 
     void EndShift(bool success)
     {
-        timerRunning = false; // Stop the timer when the shift ends
+        timerRunning = false;
 
-        // Show scoring
         ShiftScoring scoring = FindObjectOfType<ShiftScoring>();
         if (scoring != null)
-        {
             scoring.ShowEndOfShiftReport(success);
+
+        if (musicController != null)
+        {
+            if (success) musicController.PlaySuccessMusic();
+            else musicController.PlayFailureMusic();
         }
 
         Debug.Log(success ? "Shift Complete! Career XP Gained." : "Shift Failed. Try again.");
-        Time.timeScale = 0; // Pause game
+        Time.timeScale = 0;
+    }
+
+    void OnDestroy()
+    {
+        if (musicController != null)
+            musicController.StopMusic();
     }
 }

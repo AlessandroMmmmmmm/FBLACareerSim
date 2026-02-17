@@ -7232,8 +7232,6 @@ MonoBehaviour:
     musicClip: {fileID: 8300000, guid: e2c5bf9ecce2ad7488035519a902b334, type: 3}
   - sceneIndex: 3
     musicClip: {fileID: 8300000, guid: 10dddd8f0fa18a942a36e6587a7002b7, type: 3}
-  - sceneIndex: 4
-    musicClip: {fileID: 8300000, guid: ad67b8836913cac40a527d2999bb8930, type: 3}
   - sceneIndex: 5
     musicClip: {fileID: 8300000, guid: c16f4960d6935144ca4df22464675c1c, type: 3}
   fadeDuration: 1
