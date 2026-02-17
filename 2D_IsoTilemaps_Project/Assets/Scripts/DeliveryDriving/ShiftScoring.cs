@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -10,6 +11,10 @@ public class ShiftScoring : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject scorePanel; // Panel to show at end of shift
+    public Button returnToMenuButton; // Button to return to main menu
+
+    [Header("Scene Settings")]
+    public string mainMenuSceneName = "MainMenu"; // Name of your main menu scene
 
     [Header("Star Images (Assign 5 Image GameObjects)")]
     public Image[] starImages = new Image[5]; // Drag 5 UI Image objects here
@@ -63,8 +68,21 @@ public class ShiftScoring : MonoBehaviour
         {
             scorePanel.SetActive(false);
         }
+
+        // Setup return to menu button
+        if (returnToMenuButton != null)
+        {
+            returnToMenuButton.onClick.AddListener(ReturnToMenu);
+        }
+
         // NOTE: Penalties are now tracked directly in DeliveryManager.totalPenalties
         // by OffRoadPenalty - no event subscription needed here
+    }
+
+    private void ReturnToMenu()
+    {
+        Time.timeScale = 1f; // Reset time scale in case it was paused
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void ShowEndOfShiftReport(bool success)
