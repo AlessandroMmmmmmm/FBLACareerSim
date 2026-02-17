@@ -4,40 +4,47 @@ using UnityEngine;
 public class WarehouseManager : MonoBehaviour
 {
     [Header("UI State Elements")]
-    public GameObject truckInstructionsText; // "Park at Ramp"
-    public GameObject enterWarehouseButton;  // The button that appears at the ramp
-    public GameObject minigamePanel;         // The 2D UI scanning minigame
+    public GameObject truckInstructionsText;
+    public GameObject enterWarehouseButton;
+    public GameObject minigamePanel;
     public GameObject masterWarehouseUI;
     public GameObject securePackagesButton;
     public GameObject driveHUD;
     public DeliveryManager deliveryManager;
 
     [Header("Scan Instruction")]
-    public GameObject scanInstructionBox;    // NEW: Panel/Text telling user to hold click
-    public GameObject minimapContainer;     // Minimap UI - hidden until shift starts
+    public GameObject scanInstructionBox;
+    public GameObject minimapContainer;
 
     [Header("Minigame Logic")]
     public TextMeshProUGUI scanCountText;
     public int packagesScanned = 0;
     public int requiredPackages = 3;
 
+    [Header("Audio")]
+    public AudioClip securePackagesSound; // "Packages secured" confirmation sound
+
+    private AudioSource audioSource;
+
     void Start()
     {
-        // Start everything hidden
         truckInstructionsText.SetActive(false);
         enterWarehouseButton.SetActive(false);
         minigamePanel.SetActive(false);
 
-        // Hide scan instruction at start
         if (scanInstructionBox != null)
             scanInstructionBox.SetActive(false);
 
-        // Hide minimap until shift starts
         if (minimapContainer != null)
             minimapContainer.SetActive(false);
+
+        // Create audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
     }
 
-    // Step 1: Called by LoadingZone Trigger
     public void SetInLoadingZone(bool isInside)
     {
         if (masterWarehouseUI != null)
@@ -51,7 +58,6 @@ public class WarehouseManager : MonoBehaviour
         }
     }
 
-    // Step 2: Called by Ramp_Trigger
     public void SetAtRamp(bool isAtRamp)
     {
         if (isAtRamp)
@@ -65,7 +71,6 @@ public class WarehouseManager : MonoBehaviour
         }
     }
 
-    // Step 3: Button Click - opens the minigame
     public void OnEnterWarehouseClick()
     {
         if (enterWarehouseButton != null)
@@ -77,11 +82,9 @@ public class WarehouseManager : MonoBehaviour
         if (minigamePanel != null)
             minigamePanel.SetActive(true);
 
-        // Show the scan instruction when minigame opens
         if (scanInstructionBox != null)
             scanInstructionBox.SetActive(true);
 
-        // Reset scan count each time warehouse is entered
         packagesScanned = 0;
         if (scanCountText != null)
             scanCountText.text = $"Scanned: 0/{requiredPackages}";
@@ -89,7 +92,6 @@ public class WarehouseManager : MonoBehaviour
         Debug.Log("Career Quest: User entered Warehouse. Launching Minigame.");
     }
 
-    // Step 4: Called each time a package is scanned
     public void OnScanPackage()
     {
         packagesScanned++;
@@ -99,7 +101,6 @@ public class WarehouseManager : MonoBehaviour
 
         if (packagesScanned >= requiredPackages)
         {
-            // All packages scanned - hide instruction, show secure button
             if (scanInstructionBox != null)
                 scanInstructionBox.SetActive(false);
 
@@ -107,7 +108,6 @@ public class WarehouseManager : MonoBehaviour
         }
     }
 
-    // Step 5: Show the final secure button
     private void ShowSecureButton()
     {
         if (securePackagesButton != null)
@@ -117,26 +117,24 @@ public class WarehouseManager : MonoBehaviour
             driveHUD.SetActive(false);
     }
 
-    // Step 6: Secure packages - start the shift
     public void OnSecurePackagesClick()
     {
-        // Hide warehouse UI
+        // Play secure packages sound
+        if (securePackagesSound != null && audioSource != null)
+            audioSource.PlayOneShot(securePackagesSound, 0.8f);
+
         masterWarehouseUI.SetActive(false);
 
-        // Show the delivery HUD
         if (driveHUD != null)
             driveHUD.SetActive(true);
 
-        // Show minimap now that shift has started
         if (minimapContainer != null)
             minimapContainer.SetActive(true);
 
-        // Generate roads ONCE here - single source of truth
         RoadGenerator roadGen = FindObjectOfType<RoadGenerator>();
         if (roadGen != null)
             roadGen.GenerateRoadNetwork();
 
-        // Start shift timer
         if (deliveryManager != null)
             deliveryManager.StartShiftTimer();
     }
@@ -144,7 +142,6 @@ public class WarehouseManager : MonoBehaviour
     private void FinishCareerTask()
     {
         minigamePanel.SetActive(false);
-        // Road generation is handled by DeliveryManager.StartShiftTimer()
         Debug.Log("Quest Progress: Logistics Task Complete. Starting City Drive.");
     }
 }

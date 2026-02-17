@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: db4888ca450d1ea4e93a95a333554624
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
