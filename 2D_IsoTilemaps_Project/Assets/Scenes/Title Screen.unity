@@ -7237,6 +7237,7 @@ MonoBehaviour:
   - sceneIndex: 5
     musicClip: {fileID: 8300000, guid: c16f4960d6935144ca4df22464675c1c, type: 3}
   fadeDuration: 1
+  maxVolume: 0.358
 --- !u!4 &1790519575
 Transform:
   m_ObjectHideFlags: 0

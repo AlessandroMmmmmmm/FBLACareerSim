@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,30 +10,39 @@ public class MusicManager : MonoBehaviour
         public int sceneIndex;
         public AudioClip musicClip;
     }
-    
-    public SceneMusic[] sceneMusicList; // Assign music for each scene
-    public float fadeDuration = 1f; // How long to fade between tracks
-    
+
+    public SceneMusic[] sceneMusicList;
+    public float fadeDuration = 1f;
+
+    [Header("Volume Settings")]
+    [Range(0f, 1f)]
+    public float maxVolume = 0.5f; // Adjustable max volume (default 50%)
+
     private AudioSource audioSource;
     private static MusicManager instance;
-    
+    private float currentTargetVolume; // Tracks what volume we're fading to
+
     void Awake()
     {
-        // Singleton - only one music manager
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            
+
             audioSource = GetComponent<AudioSource>();
             if (audioSource == null)
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
-            
+
             audioSource.loop = true;
             audioSource.playOnAwake = false;
-            
+
+            // Load saved volume or use default
+            maxVolume = PlayerPrefs.GetFloat("MusicVolume", maxVolume);
+            audioSource.volume = maxVolume;
+            currentTargetVolume = maxVolume;
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -41,7 +50,7 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     void OnDestroy()
     {
         if (instance == this)
@@ -49,15 +58,14 @@ public class MusicManager : MonoBehaviour
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
-    
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayMusicForScene(scene.buildIndex);
     }
-    
+
     void PlayMusicForScene(int sceneIndex)
     {
-        // Find music for this scene
         AudioClip newClip = null;
         foreach (SceneMusic sm in sceneMusicList)
         {
@@ -67,79 +75,94 @@ public class MusicManager : MonoBehaviour
                 break;
             }
         }
-        
-        // If no music assigned for this scene, stop music
+
         if (newClip == null)
         {
             StopCoroutine("FadeMusic");
             StartCoroutine(FadeOut());
             return;
         }
-        
-        // If same music is already playing, don't restart
+
         if (audioSource.clip == newClip && audioSource.isPlaying)
         {
             return;
         }
-        
-        // Change to new music
+
         StopCoroutine("FadeMusic");
         StartCoroutine(FadeMusic(newClip));
     }
-    
+
     IEnumerator FadeMusic(AudioClip newClip)
     {
         // Fade out current music
-        float startVolume = audioSource.volume;
-        
         for (float t = 0; t < fadeDuration / 2; t += Time.deltaTime)
         {
-            audioSource.volume = Mathf.Lerp(startVolume, 0, t / (fadeDuration / 2));
+            audioSource.volume = Mathf.Lerp(currentTargetVolume, 0, t / (fadeDuration / 2));
             yield return null;
         }
-        
-        // Change music
+
         audioSource.Stop();
         audioSource.clip = newClip;
         audioSource.Play();
-        
-        // Fade in new music
+
+        // Fade in new music to maxVolume
         for (float t = 0; t < fadeDuration / 2; t += Time.deltaTime)
         {
-            audioSource.volume = Mathf.Lerp(0, startVolume, t / (fadeDuration / 2));
+            audioSource.volume = Mathf.Lerp(0, maxVolume, t / (fadeDuration / 2));
             yield return null;
         }
-        
-        audioSource.volume = startVolume;
+
+        audioSource.volume = maxVolume;
+        currentTargetVolume = maxVolume;
     }
-    
+
     IEnumerator FadeOut()
     {
-        float startVolume = audioSource.volume;
-        
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)
         {
-            audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeDuration);
+            audioSource.volume = Mathf.Lerp(currentTargetVolume, 0, t / fadeDuration);
             yield return null;
         }
-        
+
         audioSource.Stop();
-        audioSource.volume = startVolume;
+        audioSource.volume = maxVolume; // Reset to max for next track
+        currentTargetVolume = maxVolume;
     }
-    
-    // Public methods to control music
+
+    // ══════════════════════════════════════════════════════════════════════
+    // PUBLIC VOLUME CONTROL (For Options Menu Slider)
+    // ══════════════════════════════════════════════════════════════════════
+
+    /// <summary>
+    /// Set music volume (0-1 range). Call this from Options menu slider.
+    /// </summary>
     public void SetVolume(float volume)
     {
-        audioSource.volume = Mathf.Clamp01(volume);
+        maxVolume = Mathf.Clamp01(volume);
+        audioSource.volume = maxVolume;
+        currentTargetVolume = maxVolume;
+        PlayerPrefs.SetFloat("MusicVolume", maxVolume);
+        PlayerPrefs.Save();
     }
-    
+
+    /// <summary>
+    /// Get current music volume setting
+    /// </summary>
+    public float GetVolume()
+    {
+        return maxVolume;
+    }
+
     public void Pause()
     {
         audioSource.Pause();
     }
-    
+
     public void Resume()
     {
         audioSource.UnPause();
     }
+
+    // Static accessor for easy access from anywhere
+    public static MusicManager Instance => instance;
 }
