@@ -3195,6 +3195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284954053}
+  - component: {fileID: 284954054}
   m_Layer: 0
   m_Name: DeliveryStingPlayer
   m_TagString: Untagged
@@ -3217,6 +3218,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284954054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284954052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90ea19c1c37dbb4dbf40191e8703612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliveryStingPlayer
+  successSting: {fileID: 8300000, guid: 2539b26093ffa414ea9b6a2f9e3d845e, type: 3}
+  failureTone: {fileID: 8300000, guid: 8a97b905085ca1c4da351f30a925c6e3, type: 3}
+  stingVolume: 0.8
 --- !u!1001 &289061398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11168,7 +11184,7 @@ MonoBehaviour:
   driveHUD: {fileID: 917106781}
   timerText: {fileID: 1223772972}
   packageText: {fileID: 1606209914}
-  stingPlayer: {fileID: 0}
+  musicController: {fileID: 1417441461}
 --- !u!4 &823046976
 Transform:
   m_ObjectHideFlags: 0
@@ -20992,12 +21008,9 @@ MonoBehaviour:
   mainLoopClip: {fileID: 8300000, guid: e883a131ed5af0745b3342bcdd742f5b, type: 3}
   successSting: {fileID: 8300000, guid: 2539b26093ffa414ea9b6a2f9e3d845e, type: 3}
   failureTone: {fileID: 8300000, guid: 8a97b905085ca1c4da351f30a925c6e3, type: 3}
-  introVolume: 0.6
-  gameplayVolume: 0.3
+  mainVolume: 0.6
   tensionVolume: 0.45
-  introFadeDuration: 10
   tensionThreshold: 30
-  volumeFadeSpeed: 2
   tensionHighPassCutoff: 800
 --- !u!4 &1417441462
 Transform:
