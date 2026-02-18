@@ -20,6 +20,7 @@ public class CarModelData : ScriptableObject
 
     [Header("Pricing")]
     [SerializeField] private int msrp;
+    [SerializeField] private int salePrice;
 
     [Header("Ratings (0-100)")]
     [SerializeField, Range(0, 100)] private int reliability = 50;
@@ -32,10 +33,14 @@ public class CarModelData : ScriptableObject
     [Header("Optional Visual")]
     [SerializeField] private Sprite image;
 
+    // Inside your CarModelData.cs
+    [Header("Visuals")]
+    public Sprite[] stackLayers; // Drag the slices for THIS specific car here
+
     public string ModelName => modelName;
     public CarTag Tag => tag;
     public int MSRP => msrp;
-
+    public int SalePrice => salePrice;
     public int Reliability => reliability;
     public int Safety => safety;
     public int FuelEconomy => fuelEconomy;
@@ -43,9 +48,7 @@ public class CarModelData : ScriptableObject
     public int Space => space;
     public int Performance => performance;
 
-    // Inside your CarModelData.cs
-    [Header("Visuals")]
-    public Sprite[] stackLayers; // Drag the slices for THIS specific car here
+
 
 
 }

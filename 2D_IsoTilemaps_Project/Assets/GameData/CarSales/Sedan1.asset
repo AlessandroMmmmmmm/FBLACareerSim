@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarModelData
   modelName: Honda Accord 2001
   tag: 0
-  msrp: 18000
+  msrp: 15000
+  salePrice: 21000
   reliability: 97
   safety: 69
   fuelEconomy: 73

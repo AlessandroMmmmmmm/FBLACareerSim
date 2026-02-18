@@ -22,6 +22,7 @@ MonoBehaviour:
   space: 95
   performance: 63
   image: {fileID: 0}
+  salePrice: 57000
   stackLayers:
   - {fileID: 1157232783, guid: 26de4fa498863694db8f706409ce1f2d, type: 3}
   - {fileID: 1001222298, guid: 26de4fa498863694db8f706409ce1f2d, type: 3}

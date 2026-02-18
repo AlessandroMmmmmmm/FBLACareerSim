@@ -44,7 +44,7 @@ public class SalesEncounterController : MonoBehaviour
 
     [Header("Tuning")]
     [SerializeField] private int turnsPerCustomer = 5;
-    [SerializeField, Range(0f, 1f)] private float baseCloseChance = 0.10f;
+    [SerializeField, Range(0f, 1f)] private float baseCloseChance = 0.25f;
     [SerializeField] private int earliestCloseTurn = 3;
 
     [Header("Rounds")]
@@ -121,7 +121,7 @@ public class SalesEncounterController : MonoBehaviour
         musicSource.loop = true;
         musicSource.spatialBlend = 0f;
         musicSource.volume = 0.4f;  // Background music at 40% volume
-
+   
         if (backgroundMusic != null)
         {
             musicSource.clip = backgroundMusic;
@@ -199,7 +199,7 @@ public class SalesEncounterController : MonoBehaviour
 
         patienceMax = Mathf.Max(1, customer.PatienceMax);
         patience = patienceMax;
-
+        baseCloseChance = ComputeBaseChance();
         dealChance = baseCloseChance;
 
         if (customerLineText)
@@ -290,9 +290,10 @@ public class SalesEncounterController : MonoBehaviour
         if (carDisplay != null)
             carDisplay.SetCarModel(car);
 
-        currentOfferPrice = selectedCar.MSRP;
+        currentOfferPrice = selectedCar.SalePrice;
+        profit = currentOfferPrice - selectedCar.MSRP;
         selectedCar = car;
-        currentOfferPrice = selectedCar.MSRP;
+        currentOfferPrice = selectedCar.SalePrice;
 
         cardA.SetSelected(shownCars[0] == car);
         cardB.SetSelected(shownCars[1] == car);
@@ -353,7 +354,64 @@ public class SalesEncounterController : MonoBehaviour
         choiceBButton.onClick.AddListener(() => OnPickChoice(1));
         choiceCButton.onClick.AddListener(() => OnPickChoice(2));
     }
+    private float ComputeDealChanceDelta(ChoiceData picked)
+    {
+        float fitScore = ComputeFitBoost(customer, selectedCar);
+        float patienceRatio = patience / patienceMax;
 
+        if (picked == choiceFairAsk)
+        {
+            // More effective the better the car fits their needs
+            return fitScore * 1.5f;
+        }
+
+        if (picked == choiceDiscountAsk)
+        {
+            // More effective the more over-budget they are
+            int over = currentOfferPrice - customer.Budget;
+            float overRatio = Mathf.Clamp01(over / (float)customer.MaxStretch);
+            return 0.05f + overRatio * 0.20f;
+        }
+
+        if (picked == choicePressureSale)
+        {
+            // Backfires on low patience, works well on impulsive customers at high patience
+            float impulseBonus = customer.Personality == PersonalityType.Impulsive ? 0.10f : 0f;
+            float cautionPenalty = customer.Personality == PersonalityType.Cautious ? 0.15f : 0f;
+            return (patienceRatio * 0.20f + impulseBonus) - cautionPenalty;
+        }
+
+        return 0f;
+    }
+
+    private float ComputePatienceDelta(ChoiceData picked)
+    {
+        if (picked == choiceFairAsk)
+        {
+            // Honest pitch always neutral-to-positive on patience
+            return customer.Personality == PersonalityType.Cautious ? 5f : 2f;
+        }
+
+        if (picked == choiceDiscountAsk)
+        {
+            // Discounts feel good, always restore some patience
+            return 4f;
+        }
+
+        if (picked == choicePressureSale)
+        {
+            // Pressure drains patience — worse on cautious, barely affects impulsive
+            return customer.Personality switch
+            {
+                PersonalityType.Cautious => -15f,
+                PersonalityType.Impulsive => -3f,
+                PersonalityType.Analytical => -10f,
+                _ => -8f,
+            };
+        }
+
+        return 0f;
+    }
     private void OnPickChoice(int idx)
     {
         if (ended) return;
@@ -374,31 +432,24 @@ public class SalesEncounterController : MonoBehaviour
 
         if (picked == null) return;
 
-        int oldPrice = currentOfferPrice;
         currentOfferPrice += picked.PriceDelta;
-        currentOfferPrice = Mathf.Max(currentOfferPrice, 100);
+        int priceFloor = Mathf.RoundToInt(selectedCar.MSRP * 0.85f);
+        currentOfferPrice = Mathf.Max(currentOfferPrice, priceFloor);
+        profit = currentOfferPrice - selectedCar.MSRP;
 
-        int priceChange = currentOfferPrice - oldPrice;
-        profit += priceChange;
-
-        patience = Mathf.Clamp(patience + picked.PatienceDelta, 0f, patienceMax);
+        patience = Mathf.Clamp(patience + ComputePatienceDelta(picked), 0f, patienceMax);
 
         float personalityMod = PersonalityModifier(customer.Personality, picked);
-        dealChance = baseCloseChance;
+        dealChance = ComputeBaseChance();
+        dealChance += ComputeFitBoost(customer, selectedCar);
+        dealChance -= ComputePricePenalty(customer, currentOfferPrice);
+        dealChance += ComputeDealChanceDelta(picked) + personalityMod;
 
-        if (selectedCar != null)
-        {
-            dealChance += ComputeFitBoost(customer, selectedCar);
-            dealChance -= ComputePricePenalty(customer, currentOfferPrice);
-        }
-
-        dealChance += picked.DealChanceDelta + personalityMod;
-        dealChance = Mathf.Clamp01(dealChance);
-
-        int discountAmount = Mathf.Max(0, oldPrice - currentOfferPrice);
-        float discountBonus = Mathf.Clamp01(discountAmount / 10000f) * 0.15f;
+        int discountFromSalePrice = Mathf.Max(0, selectedCar.SalePrice - currentOfferPrice);
+        float discountBonus = Mathf.Clamp01(discountFromSalePrice / 5000f) * 0.20f;
         dealChance += discountBonus;
 
+        dealChance = Mathf.Clamp01(dealChance);
         ApplyAffordabilityGate();
 
         string salesLine = GenerateSalespersonLine(picked);
@@ -409,7 +460,7 @@ public class SalesEncounterController : MonoBehaviour
         SetupChoiceButtonsEnabled(false);
         if (walkAwayButton) walkAwayButton.interactable = false;
 
-        bool priceChanged = currentOfferPrice != oldPrice;
+        bool priceChanged = currentOfferPrice != selectedCar.MSRP;
         string customerResponse = GenerateCustomerResponse(picked, priceChanged);
         StartCoroutine(ResolveChoiceAfterDelay(picked, customerResponse));
     }
@@ -438,15 +489,14 @@ public class SalesEncounterController : MonoBehaviour
 
         bool canClose = (turnIndex + 1) >= earliestCloseTurn;
 
+        // AFTER:
         if (canClose && TryCloseDeal())
         {
-            profit += currentOfferPrice;
-            End(true, $"Deal closed! Sold for ${currentOfferPrice:N0}");
-            yield break;
+            // profit is already = currentOfferPrice - MSRP, no extra addition needed
+            End(true, $"Deal closed! Sold for ${currentOfferPrice:N0} (margin: ${profit:N0})");
+
+            SetBackgroundStage(colorNegotiating); // Back to active negotiation
         }
-
-        SetBackgroundStage(colorNegotiating); // Back to active negotiation
-
         turnIndex++;
         if (turnIndex >= turnsPerCustomer)
         {
@@ -486,13 +536,13 @@ public class SalesEncounterController : MonoBehaviour
             return false;
         }
 
-        float roll = 0.50F;
+        float roll =0.98 *  Random.value + 0.01;  // ← was hardcoded 0.50f, now actually random
         bool success = roll <= dealChance;
 
         if (hintText)
             UpdateHint(
               success ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
-                : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)");
+                      : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)");
 
         return success;
     }
@@ -655,7 +705,7 @@ public class SalesEncounterController : MonoBehaviour
     {
         if (profitText)
         {
-            profitText.text = $"Round Profit: ${profit:N0} | Total: ${totalProfit:N0}";
+            profitText.text = $"Margin: ${profit:N0} | Total Earned: ${totalProfit:N0}";
             // Color based on total profit across all rounds
             profitText.color = totalProfit > 0 ? profitPositiveColor
                              : totalProfit < 0 ? profitNegativeColor
@@ -664,12 +714,19 @@ public class SalesEncounterController : MonoBehaviour
 
         if (dealChanceText)
         {
-            float shown = IsOfferAffordable() ? dealChance : 0f;
-            dealChanceText.text = $"Close Chance: {(shown * 100f):0}%";
-            // Color based on thresholds
-            dealChanceText.color = shown >= 0.5f ? chanceHighColor
-                                 : shown >= 0.2f ? chanceMidColor
-                                 : chanceLowColor;
+            if (selectedCar == null)
+            {
+                dealChanceText.text = "Close Chance: —";
+                dealChanceText.color = profitNeutralColor;
+            }
+            else
+            {
+                float shown = IsOfferAffordable() ? dealChance : 0f;
+                dealChanceText.text = $"Close Chance: {(shown * 100f):0}%";
+                dealChanceText.color = shown >= 0.5f ? chanceHighColor
+                                     : shown >= 0.2f ? chanceMidColor
+                                     : chanceLowColor;
+            }
         }
 
         if (patienceSlider)
@@ -802,6 +859,25 @@ public class SalesEncounterController : MonoBehaviour
 
         return "Let me think about this...";
     }
+    private float ComputeBaseChance()
+    {
+        if (patienceMax <= 0f) return 0f;
+
+        float patienceRatio = patience / patienceMax;
+        float personalityScore = customer.Friendliness / 100f;
+
+        float typeModifier = customer.Personality switch
+        {
+            PersonalityType.Impulsive => 0.05f,
+            PersonalityType.Cautious => -0.05f,
+            PersonalityType.Analytical => -0.03f,
+            _ => 0.00f,
+        };
+
+        // Scale way down — base chance should be low, choices and fit earn the rest
+        return Mathf.Clamp01((patienceRatio + personalityScore) / 2f * 0.25f + typeModifier);
+    }
+
 
     private float ComputeFitBoost(CustomerData cust, CarModelData car)
     {

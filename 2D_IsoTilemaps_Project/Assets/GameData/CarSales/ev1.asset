@@ -15,12 +15,13 @@ MonoBehaviour:
   modelName: Model S 2025
   tag: 5
   msrp: 60000
+  salePrice: 68000
   reliability: 90
   safety: 76
   fuelEconomy: 76
   technology: 86
   space: 84
-  performance: 66
+  performance: 59
   image: {fileID: 0}
   stackLayers:
   - {fileID: 159800316, guid: df1a8f67088990347ad5e73f33c627f7, type: 3}

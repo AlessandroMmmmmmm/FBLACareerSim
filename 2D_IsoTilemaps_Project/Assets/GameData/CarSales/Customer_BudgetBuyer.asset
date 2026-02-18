@@ -15,9 +15,9 @@ MonoBehaviour:
   customerName: Alex
   budget: 20000
   maxStretch: 2000
-  patienceMax: 100
+  patienceMax: 80
   personalityType: 1
-  friendliness: 60
+  friendliness: 66
   wantReliability: 83
   wantSafety: 69
   wantFuelEconomy: 70
