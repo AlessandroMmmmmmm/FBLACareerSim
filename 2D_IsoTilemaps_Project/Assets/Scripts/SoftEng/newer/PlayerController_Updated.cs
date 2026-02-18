@@ -98,6 +98,12 @@ public class PlayerController : MonoBehaviour
                 // Stop current movement immediately
                 StopMovement();
 
+                // Play collision failure sound
+                if (programManager != null)
+                {
+                    programManager.PlayCollisionFailure();
+                }
+
                 // IMPORTANT: Stop/abort the program so it doesn't try to reset again
                 if (programManager != null)
                 {

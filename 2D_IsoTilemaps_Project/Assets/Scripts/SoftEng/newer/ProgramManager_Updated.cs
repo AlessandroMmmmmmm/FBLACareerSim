@@ -14,33 +14,56 @@ public class ProgramManager : MonoBehaviour
     private List<MoveType> program = new List<MoveType>();
     private MoveType selectedMove;
     private bool isRunning = false;
-    private bool programAborted = false; // NEW: Track if program was aborted (by bug collision)
+    private bool programAborted = false;
 
     [Header("Cursor Settings")]
-    public GameObject cursorIndicator; // Visual indicator for cursor position
-    private int cursorPosition = 0; // Where new commands will be inserted (0 = start, program.Count = end)
+    public GameObject cursorIndicator;
+    private int cursorPosition = 0;
+
+    [Header("Audio")]
+    public AudioClip backgroundMusic;
+    public AudioClip buttonClickSound;
+    public AudioClip levelCompleteSound;
+    public AudioClip collisionFailureSound;
+
+    private AudioSource musicSource;
+    private AudioSource sfxSource;
 
     void Start()
     {
         Debug.Log("ProgramManager Start() called");
 
-        // Check if player reference is assigned
         if (player == null)
         {
             Debug.Log("Player reference is null, trying to find it...");
             player = FindFirstObjectByType<PlayerController>();
             if (player == null)
-            {
                 Debug.LogError("ProgramManager: No PlayerController found in scene!");
-            }
             else
-            {
                 Debug.Log("Found PlayerController: " + player.gameObject.name);
-            }
         }
         else
         {
             Debug.Log("Player reference already assigned: " + player.gameObject.name);
+        }
+
+        // Create audio sources
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.playOnAwake = false;
+        musicSource.loop = true;
+        musicSource.spatialBlend = 0f;
+        musicSource.volume = 0.35f;
+
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.playOnAwake = false;
+        sfxSource.loop = false;
+        sfxSource.spatialBlend = 0f;
+
+        // Start background music
+        if (backgroundMusic != null)
+        {
+            musicSource.clip = backgroundMusic;
+            musicSource.Play();
         }
 
         moveDropdown.ClearOptions();
@@ -57,13 +80,10 @@ public class ProgramManager : MonoBehaviour
         }
 
         moveDropdown.AddOptions(options);
-
         moveDropdown.value = 0;
         moveDropdown.RefreshShownValue();
-
         selectedMove = MoveType.MoveForward;
 
-        // Initialize cursor
         cursorPosition = 0;
         if (cursorIndicator != null)
         {
@@ -76,9 +96,10 @@ public class ProgramManager : MonoBehaviour
         }
     }
 
-    // Called by Dropdown → On Value Changed
     public void OnMoveDropdownChanged(int _)
     {
+        PlayButtonClick();
+
         string label = moveDropdown.options[moveDropdown.value].text;
 
         switch (label)
@@ -100,30 +121,23 @@ public class ProgramManager : MonoBehaviour
         Debug.Log("Selected move (label-based): " + selectedMove);
     }
 
-    // Called by Add button
     public void AddSelectedMove()
     {
-        if (isRunning) return; // Don't allow adding while program is running
+        if (isRunning) return;
 
-        // Insert at cursor position
+        PlayButtonClick();
+
         program.Insert(cursorPosition, selectedMove);
 
-        // Create UI line
         GameObject line = Instantiate(programLinePrefab, contentParent);
         uiLines.Insert(cursorPosition, line);
         line.GetComponent<ProgramLine>().SetMove(selectedMove);
 
-        // Add click handler if not present
         ProgramLineClickHandler clickHandler = line.GetComponentInChildren<ProgramLineClickHandler>();
         if (clickHandler != null)
-        {
             clickHandler.SetLineIndex(cursorPosition);
-        }
 
-        // Move cursor forward after inserting
         cursorPosition++;
-
-        // Rebuild UI to maintain correct order
         RebuildProgramUI();
     }
 
@@ -131,7 +145,8 @@ public class ProgramManager : MonoBehaviour
     {
         if (program.Count == 0 || isRunning || cursorPosition == 0) return;
 
-        // Delete the item before the cursor
+        PlayButtonClick();
+
         int deleteIndex = cursorPosition - 1;
         program.RemoveAt(deleteIndex);
 
@@ -139,10 +154,7 @@ public class ProgramManager : MonoBehaviour
         uiLines.RemoveAt(deleteIndex);
         Destroy(lineToDelete);
 
-        // Move cursor back
         cursorPosition--;
-
-        // Rebuild UI
         RebuildProgramUI();
     }
 
@@ -160,14 +172,14 @@ public class ProgramManager : MonoBehaviour
         }
 
         if (isRunning || program.Count == 0) return;
-        
+
+        PlayButtonClick();
+
         SoftwareEngScoring scoring = FindFirstObjectByType<SoftwareEngScoring>();
         if (scoring != null)
-        {
             scoring.IncrementAttempts();
-        }
 
-        programAborted = false; // Reset abort flag
+        programAborted = false;
         StartCoroutine(RunProgramRoutine());
     }
 
@@ -179,7 +191,6 @@ public class ProgramManager : MonoBehaviour
 
         foreach (MoveType move in program)
         {
-            // Check if program was aborted (e.g., by bug collision)
             if (programAborted)
             {
                 Debug.Log("Program aborted - stopping execution");
@@ -188,7 +199,6 @@ public class ProgramManager : MonoBehaviour
 
             yield return new WaitUntil(() => !player.IsMoving());
 
-            // Check again after waiting (in case abort happened during wait)
             if (programAborted)
             {
                 Debug.Log("Program aborted during wait - stopping execution");
@@ -213,30 +223,26 @@ public class ProgramManager : MonoBehaviour
                     break;
             }
 
-            // Move all bugs after ANY player action
             BugObstacle[] bugs = FindObjectsByType<BugObstacle>(FindObjectsSortMode.None);
             foreach (BugObstacle bug in bugs)
-            {
                 bug.StepForward();
-            }
 
             yield return new WaitForSeconds(stepDelay);
 
-            // Check if level complete after each step
             if (levelManager != null && levelManager.IsLevelComplete())
             {
                 goalReached = true;
+                PlayLevelComplete();
                 break;
             }
         }
 
         isRunning = false;
 
-        // Only reset if program completed normally (not aborted) and goal not reached
         if (!programAborted && !goalReached && levelManager != null)
         {
             Debug.Log("Program finished without reaching goal - resetting player position");
-            yield return new WaitForSeconds(0.5f); // Small delay before reset
+            yield return new WaitForSeconds(0.5f);
             levelManager.ResetPlayerPosition();
         }
         else if (programAborted)
@@ -244,13 +250,13 @@ public class ProgramManager : MonoBehaviour
             Debug.Log("Program was aborted - no auto-reset (already handled by collision)");
         }
 
-        // Reset abort flag for next run
         programAborted = false;
     }
 
     public void ClearProgram()
     {
-        // Stop any running program first
+        PlayButtonClick();
+
         StopAllCoroutines();
         isRunning = false;
         programAborted = false;
@@ -258,9 +264,7 @@ public class ProgramManager : MonoBehaviour
         program.Clear();
 
         foreach (GameObject line in uiLines)
-        {
             Destroy(line);
-        }
         uiLines.Clear();
 
         cursorPosition = 0;
@@ -271,12 +275,9 @@ public class ProgramManager : MonoBehaviour
     {
         StopAllCoroutines();
         isRunning = false;
-        programAborted = true; // Mark as aborted
+        programAborted = true;
     }
 
-    /// <summary>
-    /// Call this when player hits a bug to abort the program without auto-reset
-    /// </summary>
     public void AbortProgram()
     {
         Debug.Log("ProgramManager: AbortProgram called");
@@ -285,7 +286,12 @@ public class ProgramManager : MonoBehaviour
         isRunning = false;
     }
 
-    // Called when user clicks between lines to set cursor position
+    public void PlayCollisionFailure()
+    {
+        if (collisionFailureSound != null && sfxSource != null)
+            sfxSource.PlayOneShot(collisionFailureSound, 0.7f);
+    }
+
     public void SetCursorPosition(int position)
     {
         cursorPosition = Mathf.Clamp(position, 0, program.Count);
@@ -293,67 +299,57 @@ public class ProgramManager : MonoBehaviour
         Debug.Log($"Cursor moved to position {cursorPosition}");
     }
 
-    // Move cursor to end
     public void MoveCursorToEnd()
     {
         cursorPosition = program.Count;
         UpdateCursorVisual();
     }
 
-    // Move cursor to start
     public void MoveCursorToStart()
     {
         cursorPosition = 0;
         UpdateCursorVisual();
     }
 
-    // Rebuild the UI to maintain correct hierarchy order
     void RebuildProgramUI()
     {
         for (int i = 0; i < uiLines.Count; i++)
         {
             uiLines[i].transform.SetSiblingIndex(i);
 
-            // Update click handler index (might be on child GameObject)
             ProgramLineClickHandler clickHandler = uiLines[i].GetComponentInChildren<ProgramLineClickHandler>();
             if (clickHandler != null)
-            {
                 clickHandler.SetLineIndex(i);
-            }
             else
-            {
                 Debug.LogWarning($"No ProgramLineClickHandler found on line {i}");
-            }
         }
         UpdateCursorVisual();
     }
 
-    // Update visual indicator of cursor position
     void UpdateCursorVisual()
     {
         if (cursorIndicator == null) return;
 
-        // Position cursor indicator at the correct location
         if (cursorPosition == 0)
-        {
-            // At the start
             cursorIndicator.transform.SetAsFirstSibling();
-        }
         else if (cursorPosition >= uiLines.Count)
-        {
-            // At the end
             cursorIndicator.transform.SetAsLastSibling();
-        }
         else
-        {
-            // Between items
             cursorIndicator.transform.SetSiblingIndex(cursorPosition);
-        }
     }
 
-    /// <summary>
-    /// Check if program is currently running
-    /// </summary>
+    private void PlayButtonClick()
+    {
+        if (buttonClickSound != null && sfxSource != null)
+            sfxSource.PlayOneShot(buttonClickSound, 0.4f);
+    }
+
+    private void PlayLevelComplete()
+    {
+        if (levelCompleteSound != null && sfxSource != null)
+            sfxSource.PlayOneShot(levelCompleteSound, 0.8f);
+    }
+
     public bool IsRunning()
     {
         return isRunning;
