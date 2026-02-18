@@ -22797,9 +22797,9 @@ MonoBehaviour:
   oneStarColor: {r: 1, g: 0, b: 0, a: 1}
   zeroStarColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   emptyStarColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  fiveStarTimeThreshold: 60
-  fourStarTimeThreshold: 40
-  threeStarTimeThreshold: 20
+  fiveStarTimeThreshold: 80
+  fourStarTimeThreshold: 60
+  threeStarTimeThreshold: 40
   twoStarTimeThreshold: 10
 --- !u!4 &1549274293
 Transform:
