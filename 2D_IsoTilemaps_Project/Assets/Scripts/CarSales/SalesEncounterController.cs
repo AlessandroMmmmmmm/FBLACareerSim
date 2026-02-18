@@ -445,12 +445,12 @@ public class SalesEncounterController : MonoBehaviour
 
         // Recalculate from scratch each turn
         dealChance = ComputeBaseChance();
-        dealChance += ComputeFitBoost(customer, selectedCar);
+        //dealChance += ComputeFitBoost(customer, selectedCar);
         dealChance -= ComputePricePenalty(customer, currentOfferPrice);
         dealChance += ComputeDealChanceDelta(picked) + personalityMod;
 
         int discountFromSalePrice = Mathf.Max(0, selectedCar.SalePrice - currentOfferPrice);
-        float discountBonus = Mathf.Clamp01(discountFromSalePrice / 5000f) * 0.20f;
+        float discountBonus = Mathf.Clamp01(discountFromSalePrice / 5000f) * 0.10f;
         dealChance += discountBonus;
 
         dealChance = Mathf.Clamp01(dealChance);
@@ -888,7 +888,7 @@ public class SalesEncounterController : MonoBehaviour
         };
 
         // Scale way down — base chance should be low, choices and fit earn the rest
-        return Mathf.Clamp01((patienceRatio + personalityScore) / 2f * 0.25f + typeModifier);
+        return Mathf.Clamp01((patienceRatio + personalityScore) / 2f * 0.15f + typeModifier);
     }
 
 

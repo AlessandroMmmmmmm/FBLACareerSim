@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChoiceData
   buttonText: We have a discount for 500$ off
   customerResponseText: 
-  profitDelta: -500
+  profitDelta: -1500
   patienceDelta: 15
-  dealChanceDelta: 0.24
+  dealChanceDelta: 0.2
   priceDelta: -1500
