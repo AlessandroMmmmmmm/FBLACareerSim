@@ -369,7 +369,7 @@ public class SalesEncounterController : MonoBehaviour
 
         if (picked == choiceFairAsk)
         {
-            return fitScore * 0.3f;  // Reduced from 1.5f
+            return 0.1f;  // Reduced from 1.5f
         }
         if (picked == choiceDiscountAsk)
         {
@@ -445,7 +445,7 @@ public class SalesEncounterController : MonoBehaviour
 
         // Recalculate from scratch each turn
         dealChance = ComputeBaseChance();
-        //dealChance += ComputeFitBoost(customer, selectedCar);
+        dealChance += ComputeFitBoost(customer, selectedCar);
         dealChance -= ComputePricePenalty(customer, currentOfferPrice);
         dealChance += ComputeDealChanceDelta(picked) + personalityMod;
 
