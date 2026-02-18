@@ -369,26 +369,20 @@ public class SalesEncounterController : MonoBehaviour
 
         if (picked == choiceFairAsk)
         {
-            // More effective the better the car fits their needs
-            return fitScore * 1.5f;
+            return fitScore * 0.3f;  // Reduced from 1.5f
         }
-
         if (picked == choiceDiscountAsk)
         {
-            // More effective the more over-budget they are
             int over = currentOfferPrice - customer.Budget;
             float overRatio = Mathf.Clamp01(over / (float)customer.MaxStretch);
-            return 0.05f + overRatio * 0.20f;
+            return 0.02f + overRatio * 0.08f;  // Reduced from 0.05f + 0.20f
         }
-
         if (picked == choicePressureSale)
         {
-            // Backfires on low patience, works well on impulsive customers at high patience
-            float impulseBonus = customer.Personality == PersonalityType.Impulsive ? 0.10f : 0f;
-            float cautionPenalty = customer.Personality == PersonalityType.Cautious ? 0.15f : 0f;
-            return (patienceRatio * 0.20f + impulseBonus) - cautionPenalty;
+            float impulseBonus = customer.Personality == PersonalityType.Impulsive ? 0.05f : 0f;
+            float cautionPenalty = customer.Personality == PersonalityType.Cautious ? 0.10f : 0f;
+            return (patienceRatio * 0.08f + impulseBonus) - cautionPenalty;  // Reduced from 0.20f
         }
-
         return 0f;
     }
 
@@ -448,6 +442,8 @@ public class SalesEncounterController : MonoBehaviour
         patience = Mathf.Clamp(patience + ComputePatienceDelta(picked), 0f, patienceMax);
 
         float personalityMod = PersonalityModifier(customer.Personality, picked);
+
+        // Recalculate from scratch each turn
         dealChance = ComputeBaseChance();
         dealChance += ComputeFitBoost(customer, selectedCar);
         dealChance -= ComputePricePenalty(customer, currentOfferPrice);
@@ -470,6 +466,12 @@ public class SalesEncounterController : MonoBehaviour
 
         bool priceChanged = currentOfferPrice != selectedCar.MSRP;
         string customerResponse = GenerateCustomerResponse(picked, priceChanged);
+        Debug.Log($"=== Turn {turnIndex + 1} Complete ===");
+        Debug.Log($"Final dealChance: {dealChance:F3} ({dealChance * 100f:F1}%)");
+        Debug.Log($"Patience: {patience:F1}/{patienceMax:F1}");
+        Debug.Log($"Current offer: ${currentOfferPrice:N0}, Profit: ${profit:N0}");
+        Debug.Log($"==================");
+
         StartCoroutine(ResolveChoiceAfterDelay(picked, customerResponse));
     }
 
@@ -502,9 +504,11 @@ public class SalesEncounterController : MonoBehaviour
         {
             // profit is already = currentOfferPrice - MSRP, no extra addition needed
             End(true, $"Deal closed! Sold for ${currentOfferPrice:N0} (margin: ${profit:N0})");
-
-            SetBackgroundStage(colorNegotiating); // Back to active negotiation
+            yield break;  // ADD THIS LINE - stop coroutine after deal closes
         }
+
+        SetBackgroundStage(colorNegotiating); // Back to active negotiation
+
         turnIndex++;
         if (turnIndex >= turnsPerCustomer)
         {
@@ -544,14 +548,15 @@ public class SalesEncounterController : MonoBehaviour
             return false;
         }
 
-        float roll = (float)(0.98 * Random.value + 0.01);  // ← was hardcoded 0.50f, now actually random
+        float roll = (float)(0.98 * Random.value + 0.01);
         bool success = roll <= dealChance;
+
+        Debug.Log($"*** TryCloseDeal: roll={roll:F3}, dealChance={dealChance:F3}, success={success} ***");
 
         if (hintText)
             UpdateHint(
               success ? $"Round {currentRound}/{roundsTotal} — ✅ Closed! (chance {(dealChance * 100f):0}%)"
                       : $"Round {currentRound}/{roundsTotal} — ❌ Not yet… (chance {(dealChance * 100f):0}%)");
-
         return success;
     }
 
