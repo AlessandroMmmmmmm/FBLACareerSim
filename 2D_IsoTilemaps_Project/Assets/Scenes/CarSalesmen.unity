@@ -2955,6 +2955,11 @@ MonoBehaviour:
   colorDealClosed: {r: 0.1, g: 0.28, b: 0.12, a: 1}
   colorCustomerLeft: {r: 0.28, g: 0.1, b: 0.1, a: 1}
   colorGameOver: {r: 0.08, g: 0.08, b: 0.12, a: 1}
+  buttonClickSound: {fileID: 8300000, guid: 68b82f56572340c4e996b5ebbfd401fb, type: 3}
+  dealSuccessSound: {fileID: 8300000, guid: 8b6a62e0ddc13464783bb4923afb98f0, type: 3}
+  dealFailureSound: {fileID: 8300000, guid: f45644211bd73874ca21ba9c573a592b, type: 3}
+  finalSuccessSound: {fileID: 8300000, guid: 2539b26093ffa414ea9b6a2f9e3d845e, type: 3}
+  finalFailureSound: {fileID: 8300000, guid: 8a97b905085ca1c4da351f30a925c6e3, type: 3}
 --- !u!4 &773617130
 Transform:
   m_ObjectHideFlags: 0

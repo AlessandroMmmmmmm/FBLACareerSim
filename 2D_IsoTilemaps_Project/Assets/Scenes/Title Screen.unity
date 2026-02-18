@@ -7230,10 +7230,10 @@ MonoBehaviour:
     musicClip: {fileID: 8300000, guid: 10dddd8f0fa18a942a36e6587a7002b7, type: 3}
   - sceneIndex: 2
     musicClip: {fileID: 8300000, guid: e2c5bf9ecce2ad7488035519a902b334, type: 3}
-  - sceneIndex: 3
-    musicClip: {fileID: 8300000, guid: 10dddd8f0fa18a942a36e6587a7002b7, type: 3}
   - sceneIndex: 5
     musicClip: {fileID: 8300000, guid: c16f4960d6935144ca4df22464675c1c, type: 3}
+  - sceneIndex: 6
+    musicClip: {fileID: 8300000, guid: 10dddd8f0fa18a942a36e6587a7002b7, type: 3}
   fadeDuration: 1
   maxVolume: 0.358
 --- !u!4 &1790519575
@@ -12453,6 +12453,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4216014651461098656, guid: cbd4f7349ce86e949b21394fa75208e4,
+        type: 3}
+      propertyPath: clickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 68b82f56572340c4e996b5ebbfd401fb, type: 3}
     - target: {fileID: 7739433417423971247, guid: cbd4f7349ce86e949b21394fa75208e4,
         type: 3}
       propertyPath: m_LocalPosition.x

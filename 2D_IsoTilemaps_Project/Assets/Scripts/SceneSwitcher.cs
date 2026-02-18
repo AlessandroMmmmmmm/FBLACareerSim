@@ -27,19 +27,21 @@ public class PortalTrigger : MonoBehaviour
     [Tooltip("Optional sprite/effect to show portal visual")]
     public SpriteRenderer portalVisual;
 
+    [Header("Audio")]
+    public AudioClip portalSound; // Sound when entering portal
+
     [Header("Debug")]
     public bool showDebugInfo = true;
 
     private PolygonCollider2D portalCollider;
     private bool playerInPortal = false;
     private GameObject playerObject;
+    private AudioSource audioSource;
 
     private void Start()
     {
-        // Get the polygon collider
         portalCollider = GetComponent<PolygonCollider2D>();
 
-        // Validate setup
         if (portalCollider == null)
         {
             Debug.LogError("PortalTrigger: PolygonCollider2D not found! Add one to this GameObject.");
@@ -52,50 +54,45 @@ public class PortalTrigger : MonoBehaviour
             portalCollider.isTrigger = true;
         }
 
-        // Hide prompt initially
         if (promptUI != null)
             promptUI.SetActive(false);
 
+        // Create audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
+
         if (showDebugInfo)
-        {
             Debug.Log($"Portal '{gameObject.name}' initialized. Will load scene {sceneToLoad}");
-        }
     }
 
     private void Update()
     {
-        // If player is in portal and button press is required
         if (requireButtonPress && playerInPortal)
         {
             if (Input.GetKeyDown(activationKey))
-            {
                 ActivatePortal();
-            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the object that entered is the player
         if (other.CompareTag("Player"))
         {
             playerInPortal = true;
             playerObject = other.gameObject;
 
             if (showDebugInfo)
-            {
                 Debug.Log($"Player entered portal '{gameObject.name}'");
-            }
 
             if (requireButtonPress)
             {
-                // Show prompt
                 if (promptUI != null)
                     promptUI.SetActive(true);
             }
             else
             {
-                // Immediate activation
                 ActivatePortal();
             }
         }
@@ -109,11 +106,8 @@ public class PortalTrigger : MonoBehaviour
             playerObject = null;
 
             if (showDebugInfo)
-            {
                 Debug.Log($"Player exited portal '{gameObject.name}'");
-            }
 
-            // Hide prompt
             if (promptUI != null)
                 promptUI.SetActive(false);
         }
@@ -124,21 +118,29 @@ public class PortalTrigger : MonoBehaviour
         if (showDebugInfo)
             Debug.Log($"Portal '{gameObject.name}' activated! Loading scene {sceneToLoad}");
 
-        // Silence MusicManager before scene loads so it can't override delivery music
+        // Play portal sound before scene transition
+        if (portalSound != null && audioSource != null)
+            audioSource.PlayOneShot(portalSound, 0.7f);
+
+        // Silence MusicManager before scene loads
         MusicManager mm = FindFirstObjectByType<MusicManager>();
         if (mm != null) mm.Suppress();
 
+        // Small delay to let sound play before scene loads
+        Invoke(nameof(LoadScene), 0.2f);
+    }
+
+    private void LoadScene()
+    {
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    // Visualize the portal polygon in Scene view
     private void OnDrawGizmos()
     {
         PolygonCollider2D col = GetComponent<PolygonCollider2D>();
         if (col == null || col.pathCount == 0)
             return;
 
-        // Draw the polygon outline
         Gizmos.color = playerInPortal ? Color.green : Color.cyan;
 
         Vector2[] points = col.GetPath(0);
@@ -149,25 +151,18 @@ public class PortalTrigger : MonoBehaviour
             Gizmos.DrawLine(start, end);
         }
 
-        // Draw filled semi-transparent area
         if (playerInPortal)
-        {
             Gizmos.color = new Color(0, 1, 0, 0.2f);
-        }
         else
-        {
             Gizmos.color = new Color(0, 1, 1, 0.1f);
-        }
     }
 
     private void OnDrawGizmosSelected()
     {
-        // When selected, show the portal more clearly
         PolygonCollider2D col = GetComponent<PolygonCollider2D>();
         if (col == null || col.pathCount == 0)
             return;
 
-        // Draw bright outline when selected
         Gizmos.color = Color.yellow;
         Vector2[] points = col.GetPath(0);
         for (int i = 0; i < points.Length; i++)
@@ -175,8 +170,6 @@ public class PortalTrigger : MonoBehaviour
             Vector3 start = transform.TransformPoint(points[i]);
             Vector3 end = transform.TransformPoint(points[(i + 1) % points.Length]);
             Gizmos.DrawLine(start, end);
-
-            // Draw points
             Gizmos.DrawSphere(start, 0.1f);
         }
     }

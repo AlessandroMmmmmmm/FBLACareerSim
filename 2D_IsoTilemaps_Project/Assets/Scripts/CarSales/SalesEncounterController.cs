@@ -72,6 +72,17 @@ public class SalesEncounterController : MonoBehaviour
     [SerializeField] private Color colorCustomerLeft = new Color(0.28f, 0.10f, 0.10f); // Dark red - failure
     [SerializeField] private Color colorGameOver = new Color(0.08f, 0.08f, 0.12f); // Near black - end
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip buttonClickSound;
+    [SerializeField] private AudioClip dealSuccessSound;
+    [SerializeField] private AudioClip dealFailureSound;
+    [SerializeField] private AudioClip finalSuccessSound;
+    [SerializeField] private AudioClip finalFailureSound;
+    [SerializeField] private AudioClip backgroundMusic;  // ADD THIS LINE
+
+    private AudioSource audioSource;
+    private AudioSource musicSource;  // ADD THIS LINE
+
     private Color bgTargetColor;
 
     // Runtime state - per customer
@@ -98,11 +109,39 @@ public class SalesEncounterController : MonoBehaviour
         roundsTotal = Mathf.Min(roundsTotal, customers.Count);
         if (customers.Count < roundsTotal)
             Debug.LogWarning($"Not enough customers for {roundsTotal} rounds. Customers={customers.Count}");
+        // Create audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
 
+        // Create music source  - ADD THIS SECTION
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.playOnAwake = false;
+        musicSource.loop = true;
+        musicSource.spatialBlend = 0f;
+        musicSource.volume = 0.4f;  // Background music at 40% volume
+
+        if (backgroundMusic != null)
+        {
+            musicSource.clip = backgroundMusic;
+            musicSource.Play();
+        }
+
+        // Add click sounds to all buttons
+        if (buttonClickSound != null)
+        {
+            choiceAButton.onClick.AddListener(() => PlayButtonClick());
+            choiceBButton.onClick.AddListener(() => PlayButtonClick());
+            choiceCButton.onClick.AddListener(() => PlayButtonClick());
+            if (walkAwayButton) walkAwayButton.onClick.AddListener(() => PlayButtonClick());
+        }
         choiceAButton.onClick.AddListener(() => OnPickChoice(0));
         choiceBButton.onClick.AddListener(() => OnPickChoice(1));
         choiceCButton.onClick.AddListener(() => OnPickChoice(2));
         if (walkAwayButton) walkAwayButton.onClick.AddListener(() => End(false, "You walked away."));
+
+
 
         // Start at picking color
         if (backgroundImage != null)
@@ -469,7 +508,17 @@ public class SalesEncounterController : MonoBehaviour
 
         // Flash to success or failure color
         SetBackgroundStage(success ? colorDealClosed : colorCustomerLeft);
-
+        // Play deal sound based on outcome
+        if (success && profit > 0)
+        {
+            if (dealSuccessSound != null && audioSource != null)
+                audioSource.PlayOneShot(dealSuccessSound, 0.7f);
+        }
+        else if (!success)
+        {
+            if (dealFailureSound != null && audioSource != null)
+                audioSource.PlayOneShot(dealFailureSound, 0.2f);
+        }
         if (success)
         {
             totalProfit += profit;
@@ -497,7 +546,27 @@ public class SalesEncounterController : MonoBehaviour
 
         // Calculate max possible money from all customer budgets
         int maxPossibleMoney = CalculateMaxPossibleMoney();
-        
+
+        SetBackgroundStage(colorGameOver);
+
+        // Calculate success (you may need to adjust this logic based on your scoring)
+        bool overallSuccess = successfulSales >= 2 || totalProfit > 5000;
+
+        // Play final sound
+        if (overallSuccess)
+        {
+            if (finalSuccessSound != null && audioSource != null)
+                audioSource.PlayOneShot(finalSuccessSound, 0.8f);
+            if (musicSource != null)
+                musicSource.Stop();
+        }
+        else
+        {
+            if (finalFailureSound != null && audioSource != null)
+                audioSource.PlayOneShot(finalFailureSound, 0.7f);
+            if (musicSource != null)
+                musicSource.Stop();
+        }
         // Show scoring popup
         CarSalesScoring scoring = FindFirstObjectByType<CarSalesScoring>();
         if (scoring != null)
@@ -522,7 +591,7 @@ public class SalesEncounterController : MonoBehaviour
         // Sum up all customer budgets + max stretch
         // This represents the maximum possible money you could earn
         int maxMoney = 0;
-        
+
         if (customers != null)
         {
             int roundsToCount = Mathf.Min(roundsTotal, customers.Count);
@@ -536,7 +605,7 @@ public class SalesEncounterController : MonoBehaviour
                 }
             }
         }
-        
+
         Debug.Log($"Max possible money calculated: ${maxMoney:N0} from {roundsTotal} customers");
         return maxMoney;
     }
@@ -547,7 +616,7 @@ public class SalesEncounterController : MonoBehaviour
     //     // possible profit is for each round (probably the MSRP of each car * 3 rounds)
     //     // For example, if each car could net $5000 profit maximum:
     //     return 15000; // 3 rounds * $5000 per round
-        
+
     //     // Or calculate dynamically based on your inventory
     // }
 
@@ -847,4 +916,12 @@ public class SalesEncounterController : MonoBehaviour
         PersonalityType.Analytical => new[] { "The value just isn't adding up for me.", "The data doesn't support moving forward.", "Logically, this isn't the right decision for me." },
         _ => new[] { "I don't know about this...", "I'm having serious doubts.", "This might not be for me." }
     };
+
+    private void PlayButtonClick()
+    {
+        if (buttonClickSound != null && audioSource != null)
+            audioSource.PlayOneShot(buttonClickSound, 0.4f);
+    }
 }
+
+

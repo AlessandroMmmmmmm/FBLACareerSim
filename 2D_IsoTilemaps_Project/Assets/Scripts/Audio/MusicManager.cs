@@ -93,6 +93,7 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
+        // If same clip is already playing, don't restart it
         if (audioSource.clip == newClip && audioSource.isPlaying)
             return;
 
