@@ -286,23 +286,41 @@ public class SoftwareEngScoring : MonoBehaviour
 
     void OnRetryClicked()
     {
+        Debug.Log("=== OnRetryClicked START ===");
         Time.timeScale = 1f;
 
         // Check if there's a second level to load
         LevelManager levelManager = FindFirstObjectByType<LevelManager>();
-        if (levelManager != null && levelManager.ShouldLoadSecondLevel())
-        {
-            // Close scoring panel and load second level
-            if (scorePanel != null)
-                scorePanel.SetActive(false);
+        Debug.Log($"LevelManager found: {levelManager != null}");
 
-            levelManager.LoadSecondLevel();
+        if (levelManager != null)
+        {
+            bool shouldLoad = levelManager.ShouldLoadSecondLevel();
+            Debug.Log($"ShouldLoadSecondLevel returned: {shouldLoad}");
+
+            if (shouldLoad)
+            {
+                Debug.Log("Closing scoring panel and loading second level...");
+
+                // Close scoring panel and load second level
+                if (scorePanel != null)
+                    scorePanel.SetActive(false);
+
+                levelManager.LoadSecondLevel();
+            }
+            else
+            {
+                Debug.Log("No second level - reloading scene");
+                SceneManager.LoadScene(currentSceneIndex);
+            }
         }
         else
         {
-            // Normal retry - reload scene
+            Debug.LogError("LevelManager not found!");
             SceneManager.LoadScene(currentSceneIndex);
         }
+
+        Debug.Log("=== OnRetryClicked END ===");
     }
 
     public void ResetTracking()

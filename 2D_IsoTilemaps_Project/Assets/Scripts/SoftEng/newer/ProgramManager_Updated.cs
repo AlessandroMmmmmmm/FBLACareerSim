@@ -28,6 +28,7 @@ public class ProgramManager : MonoBehaviour
 
     private AudioSource musicSource;
     private AudioSource sfxSource;
+    private MusicManager mainMusicManager;
 
     void Start()
     {
@@ -64,6 +65,14 @@ public class ProgramManager : MonoBehaviour
         {
             musicSource.clip = backgroundMusic;
             musicSource.Play();
+        }
+
+        // Suppress main menu music
+        mainMusicManager = FindFirstObjectByType<MusicManager>();
+        if (mainMusicManager != null)
+        {
+            mainMusicManager.Suppress();
+            Debug.Log("ProgramManager: Suppressed MusicManager");
         }
 
         moveDropdown.ClearOptions();
@@ -357,5 +366,15 @@ public class ProgramManager : MonoBehaviour
     public int GetProgramLength()
     {
         return program.Count;
+    }
+
+    void OnDestroy()
+    {
+        // Unsuppress music manager when leaving software engineer game
+        if (mainMusicManager != null)
+        {
+            mainMusicManager.Unsuppress();
+            Debug.Log("ProgramManager: Unsuppressed MusicManager");
+        }
     }
 }

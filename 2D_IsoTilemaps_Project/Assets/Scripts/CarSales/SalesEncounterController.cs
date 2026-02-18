@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SalesEncounterController : MonoBehaviour
 {
+
+    private MusicManager musicManager;
+
     [Header("Data")]
     [SerializeField] private CustomerData customer;
     [SerializeField] private List<CustomerData> customers = new List<CustomerData>();
@@ -121,6 +124,11 @@ public class SalesEncounterController : MonoBehaviour
         musicSource.loop = true;
         musicSource.spatialBlend = 0f;
         musicSource.volume = 0.4f;  // Background music at 40% volume
+
+        // Suppress main menu music
+        musicManager = FindFirstObjectByType<MusicManager>();
+        if (musicManager != null)
+            musicManager.Suppress();
 
         if (backgroundMusic != null)
         {
@@ -997,6 +1005,13 @@ public class SalesEncounterController : MonoBehaviour
     {
         if (buttonClickSound != null && audioSource != null)
             audioSource.PlayOneShot(buttonClickSound, 0.4f);
+    }
+
+    void OnDestroy()
+    {
+        // Unsuppress music manager when leaving
+        if (musicManager != null)
+            musicManager.Unsuppress();
     }
 }
 

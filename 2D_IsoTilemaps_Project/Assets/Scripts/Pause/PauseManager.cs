@@ -3,62 +3,75 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject pauseMenuUI; // Assign your pause menu panel here
-    public KeyCode pauseKey = KeyCode.Escape; // Default pause key
-    
+    public GameObject pauseMenuUI;
+    public KeyCode pauseKey = KeyCode.Escape;
+
     private bool isPaused = false;
-    
+
     void Update()
     {
-        // Check for pause key press
         if (Input.GetKeyDown(pauseKey))
         {
             if (isPaused)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();
-            }
         }
     }
-    
+
     public void Pause()
     {
         if (pauseMenuUI != null)
-        {
             pauseMenuUI.SetActive(true);
-        }
-        Time.timeScale = 0f; // Freeze game time
+        Time.timeScale = 0f;
         isPaused = true;
     }
-    
+
     public void Resume()
     {
         if (pauseMenuUI != null)
-        {
             pauseMenuUI.SetActive(false);
-        }
-        Time.timeScale = 1f; // Resume game time
+        Time.timeScale = 1f;
         isPaused = false;
     }
-    
+
     public void RestartLevel()
     {
-        Time.timeScale = 1f; // Make sure time is running
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+
+        // Check if we're in the software engineer game and there's a second level to load
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null && levelManager.ShouldLoadSecondLevel())
+        {
+            Debug.Log("PauseManager: Loading second level instead of restarting");
+
+            // Close any open UI
+            if (pauseMenuUI != null)
+                pauseMenuUI.SetActive(false);
+
+            // Close scoring panel if it's open
+            SoftwareEngScoring scoring = FindFirstObjectByType<SoftwareEngScoring>();
+            if (scoring != null && scoring.scorePanel != null)
+                scoring.scorePanel.SetActive(false);
+
+            levelManager.LoadSecondLevel();
+        }
+        else
+        {
+            // Normal restart - reload the scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
-    
+
     public void LoadMainScene()
     {
-        Time.timeScale = 1f; // Make sure time is running
-        SceneManager.LoadScene(2); // Assumes title screen is index 0
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
     }
-    
+
     public void QuitGame()
     {
-        Time.timeScale = 1f; // Make sure time is running
+        Time.timeScale = 1f;
         Application.Quit();
         Debug.Log("Quit Game");
     }
