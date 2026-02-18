@@ -2960,6 +2960,7 @@ MonoBehaviour:
   dealFailureSound: {fileID: 8300000, guid: f45644211bd73874ca21ba9c573a592b, type: 3}
   finalSuccessSound: {fileID: 8300000, guid: 2539b26093ffa414ea9b6a2f9e3d845e, type: 3}
   finalFailureSound: {fileID: 8300000, guid: 8a97b905085ca1c4da351f30a925c6e3, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 20ca5f9d73e35304dabc3134c36e6f6a, type: 3}
 --- !u!4 &773617130
 Transform:
   m_ObjectHideFlags: 0
