@@ -232,7 +232,6 @@ public class ProgramManager : MonoBehaviour
             if (levelManager != null && levelManager.IsLevelComplete())
             {
                 goalReached = true;
-                PlayLevelComplete();
                 break;
             }
         }
@@ -344,7 +343,7 @@ public class ProgramManager : MonoBehaviour
             sfxSource.PlayOneShot(buttonClickSound, 0.4f);
     }
 
-    private void PlayLevelComplete()
+    public void PlayLevelComplete()
     {
         if (levelCompleteSound != null && sfxSource != null)
             sfxSource.PlayOneShot(levelCompleteSound, 0.8f);

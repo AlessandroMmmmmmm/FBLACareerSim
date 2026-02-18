@@ -776,12 +776,21 @@ MonoBehaviour:
   finalScoreText: {fileID: 1974151849}
   statusText: {fileID: 1664255399}
   ratingText: {fileID: 646556619}
-  statusSuccessColor: {r: 0.4, g: 1, b: 0.4, a: 1}
-  timeTextColor: {r: 1, g: 1, b: 1, a: 1}
-  attemptsTextColor: {r: 1, g: 1, b: 1, a: 1}
-  commandsTextColor: {r: 1, g: 1, b: 1, a: 1}
-  scoreTextColor: {r: 1, g: 1, b: 1, a: 1}
-  ratingTextColor: {r: 1, g: 0.84, b: 0, a: 1}
+  timeExcellent: {r: 0.4, g: 1, b: 0.4, a: 1}
+  timeGood: {r: 0.8, g: 1, b: 0.4, a: 1}
+  timeAverage: {r: 1, g: 1, b: 0.4, a: 1}
+  timePoor: {r: 1, g: 0.6, b: 0.2, a: 1}
+  timeSlow: {r: 1, g: 0.3, b: 0.3, a: 1}
+  attemptsExcellent: {r: 0.4, g: 1, b: 0.4, a: 1}
+  attemptsGood: {r: 0.8, g: 1, b: 0.4, a: 1}
+  attemptsAverage: {r: 1, g: 1, b: 0.4, a: 1}
+  attemptsPoor: {r: 1, g: 0.6, b: 0.2, a: 1}
+  attemptsMany: {r: 1, g: 0.3, b: 0.3, a: 1}
+  commandsExcellent: {r: 0.4, g: 1, b: 0.4, a: 1}
+  commandsGood: {r: 0.8, g: 1, b: 0.4, a: 1}
+  commandsAverage: {r: 1, g: 1, b: 0.4, a: 1}
+  commandsVerbose: {r: 1, g: 0.6, b: 0.2, a: 1}
+  commandsExcessive: {r: 1, g: 0.3, b: 0.3, a: 1}
   fiveStarColor: {r: 1, g: 0.84, b: 0, a: 1}
   fourStarColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   threeStarColor: {r: 0.8, g: 0.5, b: 0.2, a: 1}
@@ -793,10 +802,14 @@ MonoBehaviour:
   fourStarTimeThreshold: 60
   threeStarTimeThreshold: 90
   twoStarTimeThreshold: 120
-  fiveStarAttemptThreshold: 3
-  fourStarAttemptThreshold: 6
-  threeStarAttemptThreshold: 9
-  twoStarAttemptThreshold: 12
+  fiveStarAttemptThreshold: 4
+  fourStarAttemptThreshold: 8
+  threeStarAttemptThreshold: 12
+  twoStarAttemptThreshold: 16
+  commandsOptimal: 20
+  commandsGoodRange: 25
+  commandsAvgRange: 30
+  commandsVerboseRange: 35
 --- !u!4 &183287567
 Transform:
   m_ObjectHideFlags: 0
@@ -4512,6 +4525,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f23208a422be4ec4a8fc78033ef03973, type: 2}
   - {fileID: 11400000, guid: 0a304c041d438a34892791c6c0536933, type: 2}
   - {fileID: 11400000, guid: 154d49f8bd0a7fe4bbd79e9f58592b50, type: 2}
+  forceStartLevel: 1
+  forceSecondLevel: 0
 --- !u!4 &1077197506
 Transform:
   m_ObjectHideFlags: 0

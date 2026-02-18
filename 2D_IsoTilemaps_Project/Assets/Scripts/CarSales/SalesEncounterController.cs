@@ -121,7 +121,7 @@ public class SalesEncounterController : MonoBehaviour
         musicSource.loop = true;
         musicSource.spatialBlend = 0f;
         musicSource.volume = 0.4f;  // Background music at 40% volume
-   
+
         if (backgroundMusic != null)
         {
             musicSource.clip = backgroundMusic;
@@ -536,7 +536,7 @@ public class SalesEncounterController : MonoBehaviour
             return false;
         }
 
-        float roll =0.98 *  Random.value + 0.01;  // ← was hardcoded 0.50f, now actually random
+        float roll = (float)(0.98 * Random.value + 0.01);  // ← was hardcoded 0.50f, now actually random
         bool success = roll <= dealChance;
 
         if (hintText)
