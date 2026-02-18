@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Scoring system for Car Salesman minigame
-/// Rates performance based on money earned vs max possible and successful sales count
-/// </summary>
-
-/// <summary>
-/// Scoring system for Car Salesman minigame
-/// Rates performance based on money earned vs max possible and successful sales count
+/// Rates performance based on total profit earned and successful sales count
 /// </summary>
 public class CarSalesScoring : MonoBehaviour
 {
@@ -31,9 +26,9 @@ public class CarSalesScoring : MonoBehaviour
     public Sprite emptyStarSprite; // Sprite for empty star
 
     [Header("Text Elements")]
-    public TextMeshProUGUI moneyText; // "Money Earned: $15,000 / $20,000"
+    public TextMeshProUGUI moneyText; // "Total Profit: $15,000"
     public TextMeshProUGUI salesText; // "Successful Sales: 2/3"
-    public TextMeshProUGUI timeText; // "Time: 2:45"
+    public TextMeshProUGUI timeText; // "Time: 2:45" (informational only)
     public TextMeshProUGUI finalScoreText; // "Score: 4/5 Stars"
     public TextMeshProUGUI statusText; // "SHIFT COMPLETE"
     public TextMeshProUGUI ratingText; // "Excellent Work"
@@ -41,12 +36,12 @@ public class CarSalesScoring : MonoBehaviour
     [Header("Text Colors")]
     public Color statusSuccessColor = new Color(0.4f, 1f, 0.4f); // Light green
 
-    [Header("Money Text Colors")]
-    public Color moneyExcellentColor = new Color(0.4f, 1f, 0.4f); // Green (90%+)
-    public Color moneyGoodColor = new Color(0.7f, 1f, 0.4f); // Yellow-green (75-90%)
-    public Color moneyAverageColor = new Color(1f, 1f, 0.4f); // Yellow (50-75%)
-    public Color moneyPoorColor = new Color(1f, 0.6f, 0.2f); // Orange (30-50%)
-    public Color moneyFailColor = new Color(1f, 0.4f, 0.4f); // Red (<30%)
+    [Header("Money Text Colors (applied based on profit thresholds)")]
+    public Color moneyExcellentColor = new Color(0.4f, 1f, 0.4f); // Green (5★ profit)
+    public Color moneyGoodColor = new Color(0.7f, 1f, 0.4f);      // Yellow-green (4★ profit)
+    public Color moneyAverageColor = new Color(1f, 1f, 0.4f);     // Yellow (3★ profit)
+    public Color moneyPoorColor = new Color(1f, 0.6f, 0.2f);      // Orange (2★ profit)
+    public Color moneyFailColor = new Color(1f, 0.4f, 0.4f);      // Red (1★ or less)
 
     [Header("Sales Text Colors")]
     public Color salesPerfectColor = new Color(0.4f, 1f, 0.4f); // Green (all sales)
@@ -72,14 +67,19 @@ public class CarSalesScoring : MonoBehaviour
     public Color zeroStarColor = Color.gray;
     public Color emptyStarColor = new Color(0.3f, 0.3f, 0.3f); // Dark gray
 
-    [Header("Scoring Thresholds")]
-    [Tooltip("Money earned percentage thresholds (0-1 range)")]
-    public float fiveStarMoneyThreshold = 0.90f; // 90%+ of max possible
-    public float fourStarMoneyThreshold = 0.75f; // 75%+ of max possible
-    public float threeStarMoneyThreshold = 0.50f; // 50%+ of max possible
-    public float twoStarMoneyThreshold = 0.30f; // 30%+ of max possible
+    [Header("Profit Thresholds (absolute $)")]
+    [Tooltip("Profit needed for 5 stars")]
+    public int fiveStarProfit = 15000;
+    [Tooltip("Profit needed for 4 stars")]
+    public int fourStarProfit = 10000;
+    [Tooltip("Profit needed for 3 stars")]
+    public int threeStarProfit = 5000;
+    [Tooltip("Profit needed for 2 stars")]
+    public int twoStarProfit = 2000;
+    // 1 star is awarded for any profit > 0 below twoStarProfit
 
-    [Tooltip("Time thresholds in seconds")]
+    // Time thresholds are kept for display coloring only, no longer affect stars
+    [Tooltip("Time thresholds in seconds (for display only)")]
     public float fiveStarTimeThreshold = 120f; // Under 2 minutes
     public float fourStarTimeThreshold = 180f; // Under 3 minutes
     public float threeStarTimeThreshold = 240f; // Under 4 minutes
@@ -112,7 +112,7 @@ public class CarSalesScoring : MonoBehaviour
 
     void Update()
     {
-        // Track time while playing
+        // Track time while playing (for display only)
         if (isTracking && Time.timeScale > 0)
         {
             totalTime += Time.deltaTime;
@@ -123,7 +123,7 @@ public class CarSalesScoring : MonoBehaviour
     /// Call this when all rounds are complete
     /// </summary>
     /// <param name="moneyEarned">Total profit earned</param>
-    /// <param name="maxPossibleMoney">Maximum possible profit</param>
+    /// <param name="maxPossibleMoney">Maximum possible profit (unused, kept for compatibility)</param>
     /// <param name="successfulSales">Number of successful sales</param>
     /// <param name="totalRounds">Total number of sales rounds</param>
     public void ShowEndGameReport(int moneyEarned, int maxPossibleMoney, int successfulSales, int totalRounds)
@@ -153,10 +153,8 @@ public class CarSalesScoring : MonoBehaviour
         // Pause the game
         Time.timeScale = 0f;
 
-        // Calculate money ratio
-        float moneyRatio = maxPossibleMoney > 0 ? (float)moneyEarned / maxPossibleMoney : 0f;
-
-        int stars = CalculateStars(moneyRatio, totalTime, successfulSales, totalRounds);
+        // Calculate stars based on absolute profit
+        int stars = CalculateStars(moneyEarned, successfulSales, totalRounds);
         UpdateStarDisplay(stars);
 
         if (statusText != null)
@@ -167,9 +165,9 @@ public class CarSalesScoring : MonoBehaviour
 
         if (moneyText != null)
         {
-            int percentage = Mathf.RoundToInt(moneyRatio * 100f);
-            moneyText.text = $"Money Earned\n<size=60><b>${moneyEarned:N0}</b> / ${maxPossibleMoney:N0}</size>\n<size=50>({percentage}%)</size>";
-            moneyText.color = GetMoneyColor(moneyRatio);
+            // Show only total profit, color based on profit thresholds
+            moneyText.text = $"Total Profit\n<size=80><b>${moneyEarned:N0}</b></size>";
+            moneyText.color = GetMoneyColorFromProfit(moneyEarned);
         }
 
         if (salesText != null)
@@ -184,7 +182,7 @@ public class CarSalesScoring : MonoBehaviour
             int minutes = timeSeconds / 60;
             int seconds = timeSeconds % 60;
             timeText.text = $"Total Time\n<size=80><b>{minutes}:{seconds:D2}</b></size>";
-            timeText.color = GetTimeColor(totalTime);
+            timeText.color = GetTimeColor(totalTime); // Still color-coded for info, but doesn't affect stars
         }
 
         if (finalScoreText != null)
@@ -224,64 +222,35 @@ public class CarSalesScoring : MonoBehaviour
         }
     }
 
-    private int CalculateStars(float moneyRatio, float timeTaken, int salesSucceeded, int totalRounds)
+    // Stars are based on absolute profit with sales‑based caps
+    private int CalculateStars(int totalProfit, int salesSucceeded, int totalRounds)
     {
-        // Calculate stars for each factor independently
-        int moneyStars = 5;
-        int timeStars = 5;
+        // Determine base stars from profit
+        int profitStars;
+        if (totalProfit <= 0)
+            profitStars = 0;
+        else if (totalProfit >= fiveStarProfit)
+            profitStars = 5;
+        else if (totalProfit >= fourStarProfit)
+            profitStars = 4;
+        else if (totalProfit >= threeStarProfit)
+            profitStars = 3;
+        else if (totalProfit >= twoStarProfit)
+            profitStars = 2;
+        else
+            profitStars = 1;
 
-        // Money ratio-based stars (primary factor)
-        if (moneyRatio < twoStarMoneyThreshold)
-        {
-            moneyStars = 1;
-        }
-        else if (moneyRatio < threeStarMoneyThreshold)
-        {
-            moneyStars = 2;
-        }
-        else if (moneyRatio < fourStarMoneyThreshold)
-        {
-            moneyStars = 3;
-        }
-        else if (moneyRatio < fiveStarMoneyThreshold)
-        {
-            moneyStars = 4;
-        }
-
-        // Time-based stars (secondary factor)
-        if (timeTaken > twoStarTimeThreshold)
-        {
-            timeStars = 1;
-        }
-        else if (timeTaken > threeStarTimeThreshold)
-        {
-            timeStars = 2;
-        }
-        else if (timeTaken > fourStarTimeThreshold)
-        {
-            timeStars = 3;
-        }
-        else if (timeTaken > fiveStarTimeThreshold)
-        {
-            timeStars = 4;
-        }
-
-        // Penalty: If no sales were made, cap at 1 star
+        // Apply sales‑based caps:
+        // If no sales, max 1 star
         if (salesSucceeded == 0)
-        {
-            moneyStars = Mathf.Min(moneyStars, 1);
-        }
+            profitStars = Mathf.Min(profitStars, 1);
+        // If only 1 sale out of 3 rounds, max 3 stars
+        else if (totalRounds == 3 && salesSucceeded == 1)
+            profitStars = Mathf.Min(profitStars, 3);
 
-        // Penalty: If only 1 sale out of 3, cap at 3 stars
-        if (totalRounds == 3 && salesSucceeded == 1)
-        {
-            moneyStars = Mathf.Min(moneyStars, 3);
-        }
+        int finalStars = profitStars;
 
-        // Take the minimum of money and time factors
-        int finalStars = Mathf.Min(moneyStars, timeStars);
-
-        Debug.Log($"Stars breakdown - Money ratio: {moneyRatio:P0} ({moneyStars}⭐), Time: {timeTaken:F0}s ({timeStars}⭐), Sales: {salesSucceeded}/{totalRounds}, Final: {finalStars}⭐");
+        Debug.Log($"Stars breakdown - Profit: ${totalProfit:N0} ({profitStars}⭐), Sales: {salesSucceeded}/{totalRounds}, Final: {finalStars}⭐");
 
         return Mathf.Clamp(finalStars, 0, 5);
     }
@@ -312,13 +281,18 @@ public class CarSalesScoring : MonoBehaviour
         }
     }
 
-    private Color GetMoneyColor(float ratio)
+    // New method: color money text based on absolute profit thresholds
+    private Color GetMoneyColorFromProfit(int profit)
     {
-        if (ratio >= fiveStarMoneyThreshold) return moneyExcellentColor; // 90%+
-        if (ratio >= fourStarMoneyThreshold) return moneyGoodColor;      // 75-90%
-        if (ratio >= threeStarMoneyThreshold) return moneyAverageColor;  // 50-75%
-        if (ratio >= twoStarMoneyThreshold) return moneyPoorColor;       // 30-50%
-        return moneyFailColor;                                            // <30%
+        if (profit >= fiveStarProfit)
+            return moneyExcellentColor;
+        if (profit >= fourStarProfit)
+            return moneyGoodColor;
+        if (profit >= threeStarProfit)
+            return moneyAverageColor;
+        if (profit >= twoStarProfit)
+            return moneyPoorColor;
+        return moneyFailColor; // profit < twoStarProfit (including zero or negative)
     }
 
     private Color GetSalesColor(int sales, int total)

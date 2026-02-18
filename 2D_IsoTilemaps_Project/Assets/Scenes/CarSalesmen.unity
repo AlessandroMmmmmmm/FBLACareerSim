@@ -5445,10 +5445,10 @@ MonoBehaviour:
   oneStarColor: {r: 1, g: 0, b: 0, a: 1}
   zeroStarColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   emptyStarColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  fiveStarMoneyThreshold: 0.9
-  fourStarMoneyThreshold: 0.75
-  threeStarMoneyThreshold: 0.5
-  twoStarMoneyThreshold: 0.3
+  fiveStarProfit: 15000
+  fourStarProfit: 10000
+  threeStarProfit: 5000
+  twoStarProfit: 1000
   fiveStarTimeThreshold: 120
   fourStarTimeThreshold: 180
   threeStarTimeThreshold: 240

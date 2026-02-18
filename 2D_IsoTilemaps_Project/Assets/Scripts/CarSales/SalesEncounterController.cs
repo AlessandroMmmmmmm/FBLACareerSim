@@ -369,13 +369,13 @@ public class SalesEncounterController : MonoBehaviour
 
         if (picked == choiceFairAsk)
         {
-            return 0.1f;  // Reduced from 1.5f
+            return 0.05f;  // Reduced from 1.5f
         }
         if (picked == choiceDiscountAsk)
         {
             int over = currentOfferPrice - customer.Budget;
             float overRatio = Mathf.Clamp01(over / (float)customer.MaxStretch);
-            return 0.02f + overRatio * 0.08f;  // Reduced from 0.05f + 0.20f
+            return 0.05f + overRatio * 0.08f;  // Reduced from 0.05f + 0.20f
         }
         if (picked == choicePressureSale)
         {
@@ -455,6 +455,7 @@ public class SalesEncounterController : MonoBehaviour
 
         dealChance = Mathf.Clamp01(dealChance);
         ApplyAffordabilityGate();
+        RefreshHUD();
 
         string salesLine = GenerateSalespersonLine(picked);
         ShowSpeechBubble(salesLine);
