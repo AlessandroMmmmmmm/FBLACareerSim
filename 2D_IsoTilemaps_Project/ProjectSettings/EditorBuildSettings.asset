@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DeliveryDriver.unity
     guid: c666abb28eb2b3440994cae357c6297e
   - enabled: 1
-    path: Assets/Scenes/SoftwareEng Screen.unity
+    path: Assets/Scenes/SoftwareEngineer.unity
     guid: 0a9481262fe311940abfc20ae0f81d37
   - enabled: 1
     path: Assets/Scenes/Options.unity
