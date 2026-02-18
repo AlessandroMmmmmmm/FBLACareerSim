@@ -2907,8 +2907,8 @@ MonoBehaviour:
   customer: {fileID: 11400000, guid: 63b470f703d49674b93bc295a7717db9, type: 2}
   customers:
   - {fileID: 11400000, guid: 63b470f703d49674b93bc295a7717db9, type: 2}
-  - {fileID: 11400000, guid: 63b470f703d49674b93bc295a7717db9, type: 2}
-  - {fileID: 11400000, guid: 63b470f703d49674b93bc295a7717db9, type: 2}
+  - {fileID: 11400000, guid: df2e4ca32284b4b4cabcf2b457b91022, type: 2}
+  - {fileID: 11400000, guid: 104d2b657a1bda44f889f62dad2e52cb, type: 2}
   inventory:
   - {fileID: 11400000, guid: b9a06ed9731780b49b48262c3151d685, type: 2}
   - {fileID: 11400000, guid: 880cd38a05376ab4683e4ef80a20bf97, type: 2}
