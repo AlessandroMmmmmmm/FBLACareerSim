@@ -734,6 +734,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a4e40fc2ae79314e809768aa5f8bf6f, type: 3}
+--- !u!1 &73927777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 1bd2b55baa9e28343b5d60dd0904130f,
+    type: 3}
+  m_PrefabInstance: {fileID: 792957216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &87701246
 GameObject:
   m_ObjectHideFlags: 0
@@ -10471,7 +10477,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 6723afb41754b954c879928b97656aae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 776808900}
   m_SourcePrefab: {fileID: 100100000, guid: 6723afb41754b954c879928b97656aae, type: 3}
 --- !u!1 &776808894 stripped
 GameObject:
@@ -10485,6 +10495,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 776808893}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &776808900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776808894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &777436066
 GameObject:
   m_ObjectHideFlags: 0
@@ -10791,7 +10819,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1bd2b55baa9e28343b5d60dd0904130f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 792957221}
   m_SourcePrefab: {fileID: 100100000, guid: 1bd2b55baa9e28343b5d60dd0904130f, type: 3}
 --- !u!4 &792957217 stripped
 Transform:
@@ -10799,6 +10831,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 792957216}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &792957221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73927777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 2
+  penaltyType: 0
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1001 &799716674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11451,56 +11501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838721400}
   m_CullTransparentMesh: 1
---- !u!1 &858717337
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 858717339}
-  - component: {fileID: 858717338}
-  m_Layer: 0
-  m_Name: OffRoadPenalty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &858717338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858717337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
-  penaltyPerSecond: 2
-  penaltyType: 0
-  onPenaltyApplied:
-    m_PersistentCalls:
-      m_Calls: []
-  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
---- !u!4 &858717339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858717337}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: 0.5, z: -50}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &869368439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12073,7 +12073,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 9157ada87ca094444826bb1f66038818,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 937282190}
   m_SourcePrefab: {fileID: 100100000, guid: 9157ada87ca094444826bb1f66038818, type: 3}
 --- !u!4 &937282185 stripped
 Transform:
@@ -12087,6 +12091,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 937282184}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &937282190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937282186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &938273060
 GameObject:
   m_ObjectHideFlags: 0
@@ -15179,7 +15201,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 833b9dd7b17d9e7419612ed54e0ef43c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1049510923}
   m_SourcePrefab: {fileID: 100100000, guid: 833b9dd7b17d9e7419612ed54e0ef43c, type: 3}
 --- !u!4 &1049510918 stripped
 Transform:
@@ -15193,6 +15219,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1049510917}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1049510923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049510919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &1056068049
 GameObject:
   m_ObjectHideFlags: 0
@@ -20276,7 +20320,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: f77d31432a7ec9a4aa9e4d8ce2620d24,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380676138}
   m_SourcePrefab: {fileID: 100100000, guid: f77d31432a7ec9a4aa9e4d8ce2620d24, type: 3}
 --- !u!4 &1380676133 stripped
 Transform:
@@ -20290,6 +20338,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1380676132}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1380676138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380676134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &1385289772
 GameObject:
   m_ObjectHideFlags: 0
@@ -23444,7 +23510,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 2b12e82ddc10010439a15659403d8ac5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1573884939}
   m_SourcePrefab: {fileID: 100100000, guid: 2b12e82ddc10010439a15659403d8ac5, type: 3}
 --- !u!4 &1573884934 stripped
 Transform:
@@ -23458,6 +23528,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1573884933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1573884939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573884935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &1589806639
 GameObject:
   m_ObjectHideFlags: 0
@@ -27291,7 +27379,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: f4391ef7d786c3c42b0f3516a24c3b8b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1834018079}
   m_SourcePrefab: {fileID: 100100000, guid: f4391ef7d786c3c42b0f3516a24c3b8b, type: 3}
 --- !u!4 &1834018074 stripped
 Transform:
@@ -27305,6 +27397,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1834018073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1834018079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834018075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &1846070055
 GameObject:
   m_ObjectHideFlags: 0
@@ -27625,7 +27735,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 1bd2b55baa9e28343b5d60dd0904130f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1863369260}
   m_SourcePrefab: {fileID: 100100000, guid: 1bd2b55baa9e28343b5d60dd0904130f, type: 3}
 --- !u!4 &1863369255 stripped
 Transform:
@@ -27639,6 +27753,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1863369254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1863369260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863369256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 2
+  penaltyType: 0
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &1865697033
 GameObject:
   m_ObjectHideFlags: 0
@@ -31459,7 +31591,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 30f6775bbd12fbe488a8e45ec483e01f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2107484614}
   m_SourcePrefab: {fileID: 100100000, guid: 30f6775bbd12fbe488a8e45ec483e01f, type: 3}
 --- !u!4 &2107484609 stripped
 Transform:
@@ -31473,6 +31609,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2107484608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2107484614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107484610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4888ca450d1ea4e93a95a333554624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OffRoadPenalty
+  penaltyPerSecond: 5
+  penaltyType: 1
+  onPenaltyApplied:
+    m_PersistentCalls:
+      m_Calls: []
+  penaltySound: {fileID: 8300000, guid: 70c2c5c96541d5645ac731623601242a, type: 3}
 --- !u!1 &2110673769
 GameObject:
   m_ObjectHideFlags: 0
@@ -32037,4 +32191,3 @@ SceneRoots:
   - {fileID: 117683463}
   - {fileID: 1417441462}
   - {fileID: 284954053}
-  - {fileID: 858717339}
