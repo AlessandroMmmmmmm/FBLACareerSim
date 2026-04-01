@@ -3603,7 +3603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1002355763}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: LoadMainScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16694,7 +16694,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1002355763}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: LoadMainScene
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
